@@ -1,86 +1,128 @@
-xplicación del Proyecto
+Explicación del Proyecto
 Este repositorio contiene los archivos necesarios para desarrollar, entrenar y ejecutar el modelo de clasificación, junto con la interfaz gráfica y el código fuente para la predicción.
 
 Estructura del Proyecto
 
-1. env/
+env/
 
--Directorio que contiene el entorno virtual de Python, con todas las dependencias necesarias para el proyecto.
+Contiene el entorno virtual de Python con las dependencias necesarias.
 
-2. data/
+data/
 
-Carpeta que contiene las imágenes utilizadas para entrenar, validar y probar el modelo:
+Contiene todas las imágenes necesarias para entrenar, validar y probar el modelo.
 
--raw/: Imágenes sin procesar.
+2.1 raw/
 
-processed/: Imágenes que han sido preprocesadas.
+Imágenes originales sin procesar.
 
-test_samples/: Imágenes utilizadas para la evaluación del modelo.
+2.2 processed/
 
-train/: Datos de entrenamiento organizados por categorías o etiquetas.
+Imágenes preprocesadas (redimensionadas, normalizadas, etc.).
 
-val/: Datos de validación, con la misma estructura que la carpeta train/.
+2.3 test_samples/
 
-3. models/
+Imágenes de prueba para evaluar el modelo.
 
-Contiene los modelos entrenados y los checkpoints intermedios:
+2.4 train/
 
-checkpoints/: Archivos que guardan los pesos intermedios durante el proceso de entrenamiento.
+Conjunto de entrenamiento (dividido en carpetas por categorías).
 
-final_model.h5: Modelo final entrenado listo para la predicción.
+2.5 val/
 
-4. src/
+Conjunto de validación (misma estructura que el conjunto de entrenamiento).
 
-Código fuente del proyecto:
+models/
 
-train.py: Script principal para entrenar el modelo.
+Contiene los modelos entrenados y sus respectivos checkpoints.
 
-predict.py: Permite hacer predicciones utilizando el modelo entrenado.
+3.1 checkpoints/
 
-preprocess.py: Contiene las funciones para la preprocesamiento de las imágenes.
+Guardado de pesos intermedios durante el entrenamiento.
 
-config.py: Configuraciones del modelo y rutas a los archivos.
+3.2 final_model.h5
 
-5. ui/
+Modelo final entrenado, listo para hacer predicciones.
 
-Archivos relacionados con la interfaz gráfica del usuario:
+src/
 
-static/: Archivos estáticos como iconos e imágenes.
+Código fuente del proyecto.
 
-templates/: Archivos HTML si se utiliza un motor de plantillas para la interfaz.
+4.1 train.py
 
-main.ui: Archivo de diseño de la interfaz creado con Qt Designer.
+Script de entrenamiento del modelo.
 
-main_window.py: Código generado por PyQt desde el archivo main.ui.
+4.2 predict.py
 
-app.py: Conecta la interfaz gráfica con el modelo.
+Script para hacer predicciones con imágenes nuevas.
 
-6. notebooks/
+4.3 preprocess.py
 
-Carpeta que contiene experimentos y pruebas realizadas en Jupyter Notebooks:
+Funciones para preprocesar imágenes antes del entrenamiento.
 
-data_exploration.ipynb: Notebooks de exploración de los datos.
+4.4 config.py
 
-model_training.ipynb: Notebooks con las pruebas de entrenamiento del modelo.
+Parámetros generales y rutas de archivos.
 
-7. tests/
+ui/
 
-Contiene las pruebas unitarias para el proyecto:
+Contiene la interfaz gráfica del proyecto.
 
-test_model.py: Verifica que el modelo realice predicciones de manera adecuada.
+5.1 static/
 
-8. logs/
+Archivos estáticos como iconos y hojas de estilo.
 
-Carpeta para los archivos de registro del sistema:
+5.2 templates/
 
-training.log: Registra las métricas de entrenamiento del modelo.
+Archivos HTML si la interfaz utiliza un motor de plantillas.
 
-app.log: Registra los eventos que ocurren cuando se ejecuta la aplicación.
+5.3 main.ui
 
-9. requirements.txt
+Archivo original de diseño de interfaz creado con Qt Designer.
 
-Contiene las dependencias necesarias para instalar el proyecto.
+5.4 main_window.py
 
-10. README.md
+Código generado a partir de main.ui usando pyuic6.
 
-Este archivo contiene la documentación del proyecto.
+5.5 app.py
+
+Código que conecta la interfaz con el modelo.
+
+notebooks/
+
+Contiene notebooks para pruebas y experimentos.
+
+6.1 data_exploration.ipynb
+
+Análisis de imágenes y estadísticas del dataset.
+
+6.2 model_training.ipynb
+
+Pruebas con el entrenamiento del modelo.
+
+tests/
+
+Contiene pruebas automáticas para verificar el modelo y la interfaz.
+
+7.1 test_model.py
+
+Verifica que el modelo realice predicciones correctamente.
+
+logs/
+
+Carpeta que contiene los registros del sistema.
+
+8.1 training.log
+
+Registra métricas del entrenamiento.
+
+8.2 app.log
+
+Guarda eventos y errores cuando la aplicación se ejecuta.
+
+requirements.txt
+
+Lista de dependencias necesarias para instalar el proyecto.
+
+README.md
+
+Documentación general del proyecto.
