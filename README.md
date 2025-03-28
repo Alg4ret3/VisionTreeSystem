@@ -1,128 +1,76 @@
-Explicación del Proyecto
-Este repositorio contiene los archivos necesarios para desarrollar, entrenar y ejecutar el modelo de clasificación, junto con la interfaz gráfica y el código fuente para la predicción.
 
-Estructura del Proyecto
+---
 
-env/
+# **TreeLearner**
 
-Contiene el entorno virtual de Python con las dependencias necesarias.
+## **Descripción**
 
-data/
+**TreeLearner** es un **sistema de clasificación de especies de árboles** diseñado para diferenciar 4 especies de árboles ubicados en el Centro Ambiental Chimayoy, en Pasto, Colombia, utilizando **visión artificial**. Este proyecto tiene como objetivo facilitar la identificación de especies a partir de imágenes, mejorando la gestión ecológica y de conservación en la región.
 
-Contiene todas las imágenes necesarias para entrenar, validar y probar el modelo.
+El sistema se desarrolla en **Python** y emplea modelos de **visión por computadora** basados en redes neuronales convolucionales para el entrenamiento y la clasificación de las imágenes.
 
-2.1 raw/
+---
 
-Imágenes originales sin procesar.
+## **Características Principales**
 
-2.2 processed/
+- **Clasificación de Especies de Árboles**:
+  - Entrenamiento de modelos para diferenciar 4 especies de árboles.
+  - Uso de imágenes como datos de entrada para la clasificación.
+  
+- **Visión Artificial**:
+  - Preprocesamiento de imágenes para normalización y redimensionamiento.
+  - Uso de redes neuronales convolucionales (CNN) para la clasificación.
 
-Imágenes preprocesadas (redimensionadas, normalizadas, etc.).
+- **Interfaz Gráfica**:
+  - Interfaz gráfica para facilitar el uso del sistema, desarrollada con **PyQt6**.
+  - Funcionalidad para cargar imágenes y hacer predicciones en tiempo real.
 
-2.3 test_samples/
+- **Generación de Reportes**:
+  - Exportación de resultados y análisis de predicciones.
+  - Generación de reportes en formato PDF.
 
-Imágenes de prueba para evaluar el modelo.
+- **Modelo Entrenado**:
+  - Guardado de modelos entrenados y pesos intermedios.
+  - Capacidad de hacer predicciones con nuevos datos.
 
-2.4 train/
+---
 
-Conjunto de entrenamiento (dividido en carpetas por categorías).
+## **Estructura del Proyecto**
 
-2.5 val/
+```plaintext
+treelearner/
+├── env/                              # Entorno virtual con las dependencias necesarias
+├── data/                             # Imágenes y datos de entrenamiento
+│   ├── raw/                          # Imágenes originales sin procesar
+│   ├── processed/                    # Imágenes preprocesadas
+│   ├── test_samples/                 # Imágenes de prueba
+│   ├── train/                        # Conjunto de entrenamiento
+│   └── val/                          # Conjunto de validación
+├── models/                           # Modelos entrenados y pesos intermedios
+│   ├── checkpoints/                  # Guardado de pesos intermedios
+│   └── final_model.h5                # Modelo final entrenado
+├── src/                              # Código fuente del proyecto
+│   ├── train.py                      # Entrenamiento del modelo
+│   ├── predict.py                    # Predicciones con nuevas imágenes
+│   ├── preprocess.py                 # Preprocesamiento de imágenes
+│   └── config.py                     # Configuraciones generales del proyecto
+├── ui/                               # Interfaz gráfica del proyecto
+│   ├── static/                       # Archivos estáticos (iconos, CSS)
+│   ├── templates/                    # Archivos HTML
+│   ├── main.ui                       # Diseño de la interfaz con Qt Designer
+│   ├── main_window.py                # Código generado a partir de main.ui
+│   └── app.py                        # Conexión de la UI con el modelo
+├── notebooks/                        # Notebooks para pruebas y análisis
+│   ├── data_exploration.ipynb        # Análisis y visualización de los datos
+│   └── model_training.ipynb          # Entrenamiento y evaluación del modelo
+├── tests/                            # Pruebas automáticas
+│   └── test_model.py                 # Verificación de la clasificación
+├── logs/                             # Archivos de registro del sistema
+│   ├── training.log                  # Métricas del entrenamiento
+│   └── app.log                       # Eventos y errores de la aplicación
+├── requirements.txt                  # Dependencias del proyecto
+├── README.md                         # Este archivo
+└── setup.py                          # Configuración del paquete
+```
 
-Conjunto de validación (misma estructura que el conjunto de entrenamiento).
-
-models/
-
-Contiene los modelos entrenados y sus respectivos checkpoints.
-
-3.1 checkpoints/
-
-Guardado de pesos intermedios durante el entrenamiento.
-
-3.2 final_model.h5
-
-Modelo final entrenado, listo para hacer predicciones.
-
-src/
-
-Código fuente del proyecto.
-
-4.1 train.py
-
-Script de entrenamiento del modelo.
-
-4.2 predict.py
-
-Script para hacer predicciones con imágenes nuevas.
-
-4.3 preprocess.py
-
-Funciones para preprocesar imágenes antes del entrenamiento.
-
-4.4 config.py
-
-Parámetros generales y rutas de archivos.
-
-ui/
-
-Contiene la interfaz gráfica del proyecto.
-
-5.1 static/
-
-Archivos estáticos como iconos y hojas de estilo.
-
-5.2 templates/
-
-Archivos HTML si la interfaz utiliza un motor de plantillas.
-
-5.3 main.ui
-
-Archivo original de diseño de interfaz creado con Qt Designer.
-
-5.4 main_window.py
-
-Código generado a partir de main.ui usando pyuic6.
-
-5.5 app.py
-
-Código que conecta la interfaz con el modelo.
-
-notebooks/
-
-Contiene notebooks para pruebas y experimentos.
-
-6.1 data_exploration.ipynb
-
-Análisis de imágenes y estadísticas del dataset.
-
-6.2 model_training.ipynb
-
-Pruebas con el entrenamiento del modelo.
-
-tests/
-
-Contiene pruebas automáticas para verificar el modelo y la interfaz.
-
-7.1 test_model.py
-
-Verifica que el modelo realice predicciones correctamente.
-
-logs/
-
-Carpeta que contiene los registros del sistema.
-
-8.1 training.log
-
-Registra métricas del entrenamiento.
-
-8.2 app.log
-
-Guarda eventos y errores cuando la aplicación se ejecuta.
-
-requirements.txt
-
-Lista de dependencias necesarias para instalar el proyecto.
-
-README.md
-
-Documentación general del proyecto.
+---
