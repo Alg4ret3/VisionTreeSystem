@@ -1,73 +1,86 @@
-Estructura General
+xplicación del Proyecto
+Este repositorio contiene los archivos necesarios para desarrollar, entrenar y ejecutar el modelo de clasificación, junto con la interfaz gráfica y el código fuente para la predicción.
+
+Estructura del Proyecto
 
 1. env/
-Contiene el entorno virtual de Python con todas las dependencias instaladas para el proyecto.
+
+-Directorio que contiene el entorno virtual de Python, con todas las dependencias necesarias para el proyecto.
 
 2. data/
-Contiene todas las imágenes necesarias para entrenar, validar y probar el modelo.
 
-raw/ → Imágenes originales sin procesar.
+Carpeta que contiene las imágenes utilizadas para entrenar, validar y probar el modelo:
 
-processed/ → Imágenes preprocesadas (redimensionadas, normalizadas, etc.).
+-raw/: Imágenes sin procesar.
 
-test_samples/ → Imágenes de prueba para evaluar el modelo.
+processed/: Imágenes que han sido preprocesadas.
 
-train/ → Conjunto de entrenamiento (dividido en carpetas según la especie del árbol).
+test_samples/: Imágenes utilizadas para la evaluación del modelo.
 
-val/ → Conjunto de validación (misma estructura que train/).
+train/: Datos de entrenamiento organizados por categorías o etiquetas.
+
+val/: Datos de validación, con la misma estructura que la carpeta train/.
 
 3. models/
-Contiene los modelos entrenados.
 
-checkpoints/ → Guardado de pesos intermedios durante el entrenamiento.
+Contiene los modelos entrenados y los checkpoints intermedios:
 
-final_model.h5 → Modelo final entrenado, listo para hacer predicciones.
+checkpoints/: Archivos que guardan los pesos intermedios durante el proceso de entrenamiento.
+
+final_model.h5: Modelo final entrenado listo para la predicción.
 
 4. src/
-Código fuente del proyecto.
 
-train.py → Entrenamiento del modelo.
+Código fuente del proyecto:
 
-predict.py → Permite hacer predicciones con imágenes nuevas.
+train.py: Script principal para entrenar el modelo.
 
-preprocess.py → Contiene funciones para preprocesar imágenes antes del entrenamiento.
+predict.py: Permite hacer predicciones utilizando el modelo entrenado.
 
-config.py → Parámetros generales, como rutas de archivos y configuraciones del modelo.
+preprocess.py: Contiene las funciones para la preprocesamiento de las imágenes.
+
+config.py: Configuraciones del modelo y rutas a los archivos.
 
 5. ui/
-Contiene la interfaz gráfica creada con PyQt6 o Qt Designer.
 
-static/ → Archivos estáticos como iconos y hojas de estilo.
+Archivos relacionados con la interfaz gráfica del usuario:
 
-templates/ → Archivos HTML si la interfaz usa QWebEngineView o es una aplicación híbrida.
+static/: Archivos estáticos como iconos e imágenes.
 
-main.ui → Archivo original de Qt Designer.
+templates/: Archivos HTML si se utiliza un motor de plantillas para la interfaz.
 
-main_window.py → Código generado a partir de main.ui usando pyuic6.
+main.ui: Archivo de diseño de la interfaz creado con Qt Designer.
 
-app.py → Código que conecta la UI con el modelo.
+main_window.py: Código generado por PyQt desde el archivo main.ui.
+
+app.py: Conecta la interfaz gráfica con el modelo.
 
 6. notebooks/
-Contiene experimentos y pruebas en Jupyter Notebook.
 
-data_exploration.ipynb → Análisis de imágenes y estadísticas del dataset.
+Carpeta que contiene experimentos y pruebas realizadas en Jupyter Notebooks:
 
-model_training.ipynb → Pruebas con el entrenamiento del modelo.
+data_exploration.ipynb: Notebooks de exploración de los datos.
+
+model_training.ipynb: Notebooks con las pruebas de entrenamiento del modelo.
 
 7. tests/
-Contiene pruebas automáticas para el modelo y la interfaz.
 
-test_model.py → Verifica que el modelo clasifica correctamente.
+Contiene las pruebas unitarias para el proyecto:
+
+test_model.py: Verifica que el modelo realice predicciones de manera adecuada.
 
 8. logs/
-Contiene registros del sistema.
 
-training.log → Guarda métricas del entrenamiento.
+Carpeta para los archivos de registro del sistema:
 
-app.log → Guarda eventos cuando la aplicación se ejecuta.
+training.log: Registra las métricas de entrenamiento del modelo.
+
+app.log: Registra los eventos que ocurren cuando se ejecuta la aplicación.
 
 9. requirements.txt
-Lista de dependencias necesarias para instalar el proyecto.
+
+Contiene las dependencias necesarias para instalar el proyecto.
 
 10. README.md
-Documentación general del proyecto.
+
+Este archivo contiene la documentación del proyecto.
