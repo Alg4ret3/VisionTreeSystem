@@ -1,3 +1,11 @@
+# 📂 Explicación de la estructura del proyecto
+
+Este repositorio contiene la estructura organizada del proyecto, facilitando la navegación y comprensión de cada componente.
+
+---
+
+## 🏗 Estructura General
+
 
 ---
 
