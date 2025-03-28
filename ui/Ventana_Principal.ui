@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1449</width>
+    <height>962</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);
+QPushButton {
+    background-color: #6BA614;  /* Fondo más transparente */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px 5px;  /* Espaciado interno */
+    font: bold 12px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+}
+
+QPushButton:hover {
+    background-color: #3A5A40;  /* Cambio de color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #2C4A34;  /* Cambio de color al hacer clic */
+    box-shadow: none;  /* Quita la sombra para efecto de presión */
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QStackedWidget" name="StackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <widget class="QWidget" name="gridStackedWidgetPage1">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QFrame" name="framecamera">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(155, 124, 255);
+background-color: rgb(255, 255, 255);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QFrame" name="frame_3">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item alignment="Qt::AlignTop">
+               <widget class="QLabel" name="LabelCamara">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>650</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(177, 217, 137);a</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QFrame" name="frame_4">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>200</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_3">
+                 <item row="1" column="0" alignment="Qt::AlignHCenter">
+                  <widget class="QPushButton" name="BtnSubir">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+    background-color: #6BA614;  /* Fondo más transparente */
+    border-radius: 2px;  /* Bordes redondeados */
+    padding: 5px 5px;  /* Espaciado interno */
+    font: bold 22px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+}
+
+QPushButton:hover {
+    background-color: #3A5A40;  /* Cambio de color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #2C4A34;  /* Cambio de color al hacer clic */
+    box-shadow: none;  /* Quita la sombra para efecto de presión */
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string> Subir Imagen</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>static/folder-upload.png</normaloff>static/folder-upload.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="1">
+                  <spacer name="horizontalSpacer_2">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Fixed</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>300</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+                  <widget class="QLabel" name="ImgDefecto">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(146, 226, 255);</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap>static/blog_placeholder.jpg</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="3">
+                  <widget class="QPushButton" name="BtnSalir">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>140</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton {
+    background-color: #6BA614;  /* Fondo más transparente */
+    border-radius: 2px;  /* Bordes redondeados */
+    padding: 5px 5px;  /* Espaciado interno */
+    font: bold 22px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+}
+
+QPushButton:hover {
+    background-color: #3A5A40;  /* Cambio de color al pasar el mouse */
+}
+
+QPushButton:pressed {
+    background-color: #2C4A34;  /* Cambio de color al hacer clic */
+    box-shadow: none;  /* Quita la sombra para efecto de presión */
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string> Salir</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>static/logout.png</normaloff>static/logout.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QFrame" name="framenavegacion">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>350</width>
+            <height>900</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+    font: bold 20px &quot;Georgia&quot;, serif;  /* Fuente aún más elegante y con mayor estilo */
+    background-color: #B1D989;  /* Fondo más transparente */
+    border: none;  /* Sin bordes en los lados */
+    border-radius: 5px;  /* Bordes más suaves */
+    color: #2b2b2b;  /* Color del texto */
+    padding: 5px 5px;  /* Espaciado más amplio */
+    letter-spacing: 1.5px;  /* Espaciado entre letras más elegante */
+    text-transform: capitalize;  /* Primera letra en mayúscula */
+    text-align: center;  /* Centrar el texto */
+  
+}
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>250</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+	background-color: rgb(255, 255, 255);
+    border: none;
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap>static/IconoTesisAc.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QToolButton" name="toolButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="whatsThis">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 26px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string> Nombre Común</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>static/tree.png</normaloff>static/tree.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="autoRaise">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="LabelNombre1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 20px &quot;Arial&quot;;  /* Fuente más legible y tamaño aumentado */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Centra el texto */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QToolButton" name="toolButton_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 26px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string> Nombre Cientifico</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>static/attribution-pencil.png</normaloff>static/attribution-pencil.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="LabelNombre2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 20px &quot;Arial&quot;;  /* Fuente más legible y tamaño aumentado */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Centra el texto */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;cipress&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QToolButton" name="toolButton_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 26px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string> Distribución Geografica</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>static/earth.png</normaloff>static/earth.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="LabelDistribucion">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 20px &quot;Arial&quot;;  /* Fuente más legible y tamaño aumentado */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Centra el texto */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QToolButton" name="toolButton_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 26px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string> Floración</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>static/massage.png</normaloff>static/massage.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="LabelFloracion">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 20px &quot;Arial&quot;;  /* Fuente más legible y tamaño aumentado */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Centra el texto */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QToolButton" name="toolButton_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>350</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="cursor">
+              <cursorShape>ArrowCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 26px &quot;Montserrat&quot;;  /* Fuente moderna */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Asegura que el texto esté centrado */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string> Familia</string>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>static/chart-tree.png</normaloff>static/chart-tree.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>32</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+            </widget>
+           </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QLabel" name="LabelFamiia">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>250</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QToolButton {
+    background-color: #6BA614;  /* Color de fondo */
+    border-radius: 5px;  /* Bordes redondeados */
+    padding: 5px;  /* Espaciado interno */
+    font: bold 20px &quot;Arial&quot;;  /* Fuente más legible y tamaño aumentado */
+    color: white;  /* Texto en blanco */
+    border: none;  /* Sin borde */
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);  /* Sombra sutil */
+    text-align: center;  /* Centra el texto */
+}
+
+QToolButton::icon {
+    qproperty-alignment: AlignCenter;  /* Centra el icono dentro del botón */
+}
+
+QToolButton::indicator {
+    qproperty-alignment: AlignCenter;  /* Centra cualquier indicador si aplica */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1449</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
