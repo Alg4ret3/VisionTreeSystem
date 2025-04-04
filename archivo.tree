@@ -1,0 +1,125 @@
+Listado de rutas de carpetas para el volumen Sergio
+El número de serie del volumen es 9290-A5F9
+D:.
++---data
+¦   +---processed
+¦   +---raw
+¦   +---testt_samples
+¦   +---train
+¦   +---val
++---Include
++---Lib
+¦   +---site-packages
+¦       +---pip
+¦       ¦   +---_internal
+¦       ¦   ¦   +---cli
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---commands
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---distributions
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---index
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---locations
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---metadata
+¦       ¦   ¦   ¦   +---importlib
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---models
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---network
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---operations
+¦       ¦   ¦   ¦   +---build
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---install
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---req
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---resolution
+¦       ¦   ¦   ¦   +---legacy
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---resolvelib
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---utils
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---vcs
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---__pycache__
+¦       ¦   +---_vendor
+¦       ¦   ¦   +---cachecontrol
+¦       ¦   ¦   ¦   +---caches
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---certifi
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---distlib
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---distro
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---idna
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---msgpack
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---packaging
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---pkg_resources
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---platformdirs
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---pygments
+¦       ¦   ¦   ¦   +---filters
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---formatters
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---lexers
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---styles
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---pyproject_hooks
+¦       ¦   ¦   ¦   +---_in_process
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---requests
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---resolvelib
+¦       ¦   ¦   ¦   +---compat
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---rich
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---tomli
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---truststore
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---urllib3
+¦       ¦   ¦   ¦   +---contrib
+¦       ¦   ¦   ¦   ¦   +---_securetransport
+¦       ¦   ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---packages
+¦       ¦   ¦   ¦   ¦   +---backports
+¦       ¦   ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---util
+¦       ¦   ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   ¦   +---__pycache__
+¦       ¦   ¦   +---__pycache__
+¦       ¦   +---__pycache__
+¦       +---pip-24.2.dist-info
++---logs
++---models
+¦   +---chechkpoints
++---notebooks
++---Scripts
++---src
++---tests
++---ui
+¦   +---static
+¦   +---__pycache__
++---utils
+    +---__pycache__

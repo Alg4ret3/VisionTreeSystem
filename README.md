@@ -25,10 +25,6 @@ El sistema se desarrolla en **Python** y emplea modelos de **visión por computa
   - Interfaz gráfica para facilitar el uso del sistema, desarrollada con **PyQt6**.
   - Funcionalidad para cargar imágenes y hacer predicciones en tiempo real.
 
-- **Generación de Reportes**:
-  - Exportación de resultados y análisis de predicciones.
-  - Generación de reportes en formato PDF.
-
 - **Modelo Entrenado**:
   - Guardado de modelos entrenados y pesos intermedios.
   - Capacidad de hacer predicciones con nuevos datos.
