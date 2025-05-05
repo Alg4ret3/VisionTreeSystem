@@ -1,5 +1,5 @@
 # Informe de Resultados de Pruebas del Modelo Detectron2  
-**Aprobado por:** Asesor Técnico Ing. Oscar Rodríguez
+# Aprobado por: Asesor Tecnico Ing Oscar Rodriguez
 
 ## 1. Introducción
 
