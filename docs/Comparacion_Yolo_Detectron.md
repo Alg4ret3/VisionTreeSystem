@@ -1,4 +1,4 @@
-# Informe de Comparativa Final entre YOLOv5 y Detectron2
+# Informe de Comparativa Final entre YOLOv8 y Detectron2
 # Aprobado por: Asesor Técnico Ing. Oscar Rodríguez
 
 ## 1. Introducción
