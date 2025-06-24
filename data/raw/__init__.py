@@ -1,1 +1,0 @@
-# Imágenes originales sin etiquetar
