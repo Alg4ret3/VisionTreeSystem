@@ -1,0 +1,18 @@
+# FastAPI y herramientas relacionadas
+fastapi
+uvicorn
+python-multipart
+requests
+
+# OpenCV para inferencia sin interfaz gráfica
+opencv-python-headless
+
+# Numpy compatible con Detectron2 actual
+numpy<2.0
+
+# PyTorch y TorchVision versión CPU-friendly
+torch==2.0.1
+torchvision==0.15.2
+torchaudio==2.0.2
+
+# detectron2  --> Instalación vía: pip install git+https://github.com/facebookresearch/detectron2.git
