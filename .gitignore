@@ -1,0 +1,30 @@
+# ignorar entornos virtuales
+venv/
+.env/
+*.env/
+
+# ignorar modelos de machine learning
+*.pth
+*.pt
+*.h5
+*.ckpt
+*.onnx
+*.tflite
+*.joblib
+*.pkl
+
+# Ignorar carpetas de imágenes
+raw_images/
+
+# ignroar carpetas de salida de inferencia
+inference_outputs/
+
+#ignorar carpeta de evaluacion de imagenes
+validation_images/
+
+# Ignorar carpetas de anotaciones XML
+annotations_xml/
+
+#ignorar pesos de modelos
+model_weights/
+model_weights2/
