@@ -1,8 +1,8 @@
-# Carpeta Detectron2
+# Módulo Detectron2
 
-Este Carpeta contiene el primero paso  de detección de objetos utilizando la librería Detectron2. Su propósito es convertir anotaciones en formato Pascal VOC (XML) al formato COCO (JSON), entrenar un modelo basado en esos datos, y generar salidas de inferencia evaluables. Todo está organizado en una estructura de carpetas clara y modular.
+Este módulo contiene el primero paso  de detección de objetos utilizando la librería Detectron2. Su propósito es convertir anotaciones en formato Pascal VOC (XML) al formato COCO (JSON), entrenar un modelo basado en esos datos, y generar salidas de inferencia evaluables. Todo está organizado en una estructura de carpetas clara y modular.
 
-La carpeta principal, `DETECTRON2`, está dividida en dos secciones clave: `DATA` y `SCRIPTS`.  
+el módulo principal, `DETECTRON2`, está dividida en dos secciones clave: `DATA` y `SCRIPTS`.  
 - `DATA` contiene los datos crudos: imágenes, anotaciones XML, conjuntos de validación y resultados de inferencia.  
 - `SCRIPTS` contiene los scripts que permiten convertir, entrenar y gestionar el modelo.
 
