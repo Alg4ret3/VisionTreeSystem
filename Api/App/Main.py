@@ -78,14 +78,16 @@ async def lifespan(app: FastAPI):
 
 # === Instancia principal de la API ===
 app = FastAPI(
-    title="Detectron2 Object Detection API",
-    description="API para detección de objetos usando Detectron2 y modelo .pth",
+    title="TreeVisionAPI: Detección Inteligente de Especies Arbóreas",
+    description="API robusta de visión por computador basada en Detectron2, diseñada para identificar automáticamente especies de árboles como Ciprés, Pino, Palo Santo y Arrayán a partir de imágenes. Ideal para proyectos ecológicos, monitoreo forestal y aplicaciones educativas.",
     lifespan=lifespan
 )
+
 
 # === Endpoint de salud (para verificar disponibilidad del modelo) ===
 @app.get("/health")
 async def health_check():
+    """Verifica si la Api y el modelo estan cargados correctamente."""
     if predictor is not None:
         return {"status": "ok", "message": "API y modelo están operativos"}
     raise HTTPException(status_code=503, detail="Modelo no cargado correctamente")
@@ -93,6 +95,7 @@ async def health_check():
 # === Endpoint principal para detección ===
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
+    """Realiza la detecion de objetos (arboles) de una imagen."""
     if predictor is None:
         raise HTTPException(status_code=503, detail="El modelo no está listo aún")
 
