@@ -11,7 +11,7 @@ from detectron2.data import MetadataCatalog
 # CONFIGURACIÓN DE RUTAS
 # ===============================
 # Ruta del modelo ya entrenado
-MODEL_PATH = r"E:\ML\Detectron2\Scripts\model_weights2\model_final.pth"
+MODEL_PATH = r"E:\ML\Detectron2\Scripts\model_weights2\TreeVisionModel.pth"
 
 # Carpeta donde están las imágenes de validación que quiero evaluar
 IMAGE_FOLDER = r"E:\ML\Detectron2\Data\validation_images"
