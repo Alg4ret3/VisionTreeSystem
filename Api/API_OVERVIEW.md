@@ -22,7 +22,7 @@ El módulo `Api`, está organizada para contener todos los archivos esenciales p
 
 ## Estado del despliegue
 
-Actualmente, la API se encuentra funcional y desplegada. Sin embargo, se está a la espera de validación por parte del asesor técnico para confirmar si este despliegue cumple con los requisitos del proyecto o si deberá integrarse con una interfaz de usuario (móvil o web) que consuma dicha API.
+Actualmente, la API se encuentra funcional y desplegada. El asesor técnico ya aprobó su estado actual y ha confirmado que se debe implementar una interfaz web que consuma dicha API.
 
 ## Recomendaciones
 
