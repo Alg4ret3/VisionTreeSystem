@@ -20,7 +20,7 @@ with open(archivo_txt, 'r', encoding='utf-8') as file:
             scores_por_especie[especie].append(score)
 
 # Creamos una carpeta de salida para guardar los gráficos generados
-carpeta_salida = 'graficos_especies'
+carpeta_salida = 'detection_score_trends'
 os.makedirs(carpeta_salida, exist_ok=True)
 
 
