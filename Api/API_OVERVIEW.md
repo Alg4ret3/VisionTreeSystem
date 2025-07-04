@@ -6,13 +6,13 @@ El módulo `Api`, está organizada para contener todos los archivos esenciales p
 
 ## Estructura del Proyecto
 
-| Carpeta / Archivo     | Descripción                                                                                      |
-|----------------------|--------------------------------------------------------------------------------------------------|
-| `app/`               | Carpeta que contiene el código principal de la API.                                              |
-    | `app/main.py`        | Archivo principal donde se define la instancia de FastAPI, se configura el modelo y los endpoints.|
-| `Dockerfile`         | Define la imagen Docker con las dependencias necesarias, instrucciones de instalación y ejecución.|
-| `requirements.txt`   | Lista de dependencias Python necesarias para ejecutar la API.                                    |
-| `API_OVERVIEW.md`    | Este documento explicativo sobre la estructura y el propósito del proyecto.                      |
+| Carpeta / Archivo     | Descripción                                                                                          |
+|----------------------|------------------------------------------------------------------------------------------------------|
+| `app/`               | Directorio principal que contiene el código fuente de la API.                                        |
+| ┗ `main.py`          | Archivo principal que inicializa la instancia de FastAPI, configura el modelo y define los endpoints.|
+| `Dockerfile`         | Archivo de configuración para construir la imagen Docker, con instrucciones de instalación y ejecución.|
+| `requirements.txt`   | Archivo que lista todas las dependencias necesarias para ejecutar la API con Python.                 |
+| `API_OVERVIEW.md`    | Documento que describe la estructura, propósito y funcionamiento general del proyecto.               |
 
 ## Cambios recientes
 
