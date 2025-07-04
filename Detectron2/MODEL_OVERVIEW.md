@@ -10,21 +10,26 @@ A continuación se presenta una tabla que resume la función de cada carpeta y a
 
 ## Estructura del Proyecto
 
-| Carpeta / Archivo             | Descripción                                                                 |
-|------------------------------|-----------------------------------------------------------------------------|
-| `DATA/`                      | Carpeta base que contiene los datos necesarios para el entrenamiento.       |
-    | `DATA/ANOTATIONS-XML/`    | Anotaciones en formato Pascal VOC (`.xml`) correspondientes a las imágenes.|
-    | `DATA/RAW IMAGES/`        | Imágenes originales sin procesar utilizadas para entrenamiento.            |
-    | `DATA/VALIDACIÓN IMAGES/` | Imágenes utilizadas para validar el modelo después del entrenamiento. |
-    | `DATA/INFERENCE OUTPUTS/` | Carpeta donde se almacenan las salidas generadas por el modelo tras la inferencia. |
-    | `DATA/INFERENCE ANALYSIS/` | Carpeta donde se almacenan las scripts para graficar y visualizar los resultados luego de evaluar el modelo. |
-| `SCRIPTS/`                   | Carpeta principal que contiene scripts y subcarpetas organizadas.          |   
-    | `SCRIPTS/MODEL_WEIGHTS2/`    | Carpeta donde se guarda el modelo entrenado (`model_final.pth`), checkpoints y métricas (`metrics.json`). |
-    | `SCRIPTS/convert_to_coco.py` | Script encargado de convertir las anotaciones `.xml` y las imágenes a un dataset en formato COCO (`.json`). |
-    | `SCRIPTS/train_detectron.py` | Script de entrenamiento: registra el dataset, configura los parámetros y guarda el modelo entrenado. |
-    | `SCRIPTS/evaluate_model.py`  | Script de evaluacion: realiza inferencia sobre imágenes usando el modelo final, dibuja las detecciones con colores por clase si el score es ≥ 0.75, y guarda los resultados visuales y un resumen en un archivo .txt. |
+| Carpeta / Archivo                      | Descripción                                                                                                  |
+|----------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `DATA/`                                | Carpeta principal que contiene todos los datos utilizados durante el entrenamiento, validación e inferencia. |
+| ┣ `ANOTATIONS-XML/`                    | Anotaciones en formato Pascal VOC (`.xml`) correspondientes a cada imagen.                                   |
+| ┣ `RAW IMAGES/`                        | Imágenes originales sin procesar empleadas como dataset de entrenamiento.                                    |
+| ┣ `VALIDACIÓN IMAGES/`                 | Imágenes específicas para la evaluación del rendimiento del modelo una vez entrenado.                        |
+| ┣ `INFERENCE OUTPUTS/`                 | Contiene las salidas generadas tras ejecutar el modelo, incluyendo visualizaciones y archivo resumen `.txt`. |
+| ┗ `INFERENCE ANALYSIS/`                | Carpeta destinada a scripts y visualizaciones post-inferencia para analizar el comportamiento del modelo.    |
+| ┃ ┣ `score_visualizations/`            | Contiene el script `score_trend_by_species.py` y la carpeta de gráficos por especie con evolución temporal.  |
+| ┃ ┃ ┣ `score_trend_by_species.py`      | Script que genera gráficos de línea mostrando la variación del score por imagen para cada especie.           |
+| ┃ ┣ `score_distribution_analysis/`     | Contiene el script `score_histogram_by_species.py` y los histogramas de distribución de scores.              |
+| ┃ ┃ ┗ `score_histogram_by_species.py`  | Script que genera histogramas por especie, agrupando imágenes según rangos de score.                         |
 
-| `MODEL_OVERVIEW.md`                  | Documento que describe el propósito de la carpeta, su estructura y uso.     |
+| `SCRIPTS/`                             | Carpeta que contiene todos los scripts del pipeline de entrenamiento y evaluación del modelo.                |
+| ┣ `MODEL_WEIGHTS2/`                    | Carpeta que almacena el modelo entrenado (`model_final.pth`), checkpoints intermedios y métricas (`metrics.json`). |
+| ┣ `convert_to_coco.py`                 | Script que transforma anotaciones Pascal VOC (`.xml`) a formato COCO (`.json`).                              |
+| ┣ `train_detectron.py`                 | Script de entrenamiento que registra el dataset, configura hiperparámetros y guarda el modelo final.         |
+| ┗ `evaluate_model.py`                  | Script que realiza inferencia sobre imágenes nuevas, genera visualizaciones y guarda resultados `.txt`.      |
+
+| `MODEL_OVERVIEW.md`                    | Documento que describe la estructura y propósito general del proyecto y del modelo entrenado.                |
 
 ## Uso general
 
