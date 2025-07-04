@@ -22,13 +22,11 @@ A continuación se presenta una tabla que resume la función de cada carpeta y a
 | ┃ ┃ ┣ `score_trend_by_species.py`      | Script que genera gráficos de línea mostrando la variación del score por imagen para cada especie.           |
 | ┃ ┣ `score_distribution_analysis/`     | Contiene el script `score_histogram_by_species.py` y los histogramas de distribución de scores.              |
 | ┃ ┃ ┗ `score_histogram_by_species.py`  | Script que genera histogramas por especie, agrupando imágenes según rangos de score.                         |
-
 | `SCRIPTS/`                             | Carpeta que contiene todos los scripts del pipeline de entrenamiento y evaluación del modelo.                |
 | ┣ `MODEL_WEIGHTS2/`                    | Carpeta que almacena el modelo entrenado (`model_final.pth`), checkpoints intermedios y métricas (`metrics.json`). |
 | ┣ `convert_to_coco.py`                 | Script que transforma anotaciones Pascal VOC (`.xml`) a formato COCO (`.json`).                              |
 | ┣ `train_detectron.py`                 | Script de entrenamiento que registra el dataset, configura hiperparámetros y guarda el modelo final.         |
 | ┗ `evaluate_model.py`                  | Script que realiza inferencia sobre imágenes nuevas, genera visualizaciones y guarda resultados `.txt`.      |
-
 | `MODEL_OVERVIEW.md`                    | Documento que describe la estructura y propósito general del proyecto y del modelo entrenado.                |
 
 ## Uso general
