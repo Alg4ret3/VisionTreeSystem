@@ -10,7 +10,7 @@ export default function Welcome() {
     // Contenedor principal con imagen de fondo
     <div
       className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/welcome/Background.PNG')" }} // Imagen de fondo desde public/
+      style={{ backgroundImage: "url('/welcome/Background.png')" }} // Imagen de fondo desde public/
     >
       {/* Capa oscura encima de la imagen para mejorar contraste */}
       <div className="absolute inset-0 backdrop-brightness-60 backdrop-blur-xs" />
