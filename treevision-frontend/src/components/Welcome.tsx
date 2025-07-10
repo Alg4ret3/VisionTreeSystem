@@ -2,7 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react' // Icono de flecha derecha de lucide-react
 import { Typewriter } from 'react-simple-typewriter'
-
+import Image from 'next/image'
 export default function Welcome() {
   const router = useRouter() // Hook para navegar entre páginas
 
@@ -21,7 +21,7 @@ export default function Welcome() {
         <div className="bg-blanco bg-opacity-90 max-w-lg w-full sm:max-w-md rounded-3xl shadow-xl p-6 sm:p-8 text-center">
     
           {/* Logo en la parte superior */}
-          <img
+          <Image
             src="/welcome/Treevision.svg"
             alt="TreeVision Logo"
             className="w-150 h- 50 mx-auto  animate-[fadeInUp_0.8s_ease-out_forwards]"
