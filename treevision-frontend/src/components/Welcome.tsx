@@ -24,6 +24,8 @@ export default function Welcome() {
           <Image
             src="/welcome/Treevision.svg"
             alt="TreeVision Logo"
+            width={150}
+            height={50}
             className="w-150 h- 50 mx-auto  animate-[fadeInUp_0.8s_ease-out_forwards]"
           />
 
@@ -59,7 +61,7 @@ export default function Welcome() {
           {/* Botón para ir a la página del modelo */}
           <div className="flex justify-center animate-[fadeInUp_1.4s_ease-out_forwards]">
             <button
-              onClick={() => router.push('/modelo')} // Redirige a la ruta /modelo
+              onClick={() => router.push('/modelo')} // Redirige a la ruta 
               className="group mt-6 px-5 py-2.5 bg-[#2394C8] text-white text-base font-semibold rounded-full
                         flex items-center justify-center gap-2
                         cursor-pointer transition-all duration-500 ease-in-out

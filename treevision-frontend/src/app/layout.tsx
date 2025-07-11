@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import LayoutWrapper from "@/components/LayoutWrapper"; // Agrega esta línea
 
-// Cargar la fuente Poppins desde next/font/google
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "600", "700"], 
-  variable: "--font-poppins",   
+  weight: ["400", "600", "700"],
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${poppins.variable} font-sans antialiased`}>
-        {children}
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );
