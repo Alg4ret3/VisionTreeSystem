@@ -1,5 +1,5 @@
 import Link from 'next/link'; // Componente de Next.js para navegación interna sin recarga.
-import { FaGithub, FaFacebook, FaTwitter, FaWhatsapp, FaLinkedin } from 'react-icons/fa'; // Iconos de redes sociales.
+import { FaGithub,  FaWhatsapp, FaLinkedin } from 'react-icons/fa'; // Iconos de redes sociales.
 
 export default function Footer() {
   const year = new Date().getFullYear(); // Obtiene el año actual dinámicamente.
