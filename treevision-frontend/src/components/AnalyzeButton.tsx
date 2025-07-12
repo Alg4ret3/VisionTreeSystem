@@ -60,14 +60,13 @@ export default function AnalyzeButton({
         RAYS.map(({ tx, ty, rot }, i) => (
           <span
             key={i}
-            style={{
-              // @ts-expect-error
+            style={
+              {
               "--tx": `${tx}px`,
-              // @ts-expect-error
               "--ty": `${ty}px`,
-              // @ts-expect-error
               "--rot": rot,
-            }}
+             } as React.CSSProperties
+            }
             className="ray absolute inset-0 flex justify-center items-center pointer-events-none"
           >
             <svg
