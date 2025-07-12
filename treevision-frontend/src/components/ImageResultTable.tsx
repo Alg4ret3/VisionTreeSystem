@@ -78,6 +78,9 @@ export default function ImageResultTable({ result }: Props) {
   const hasScore = !isNaN(scoreNum);
   const isLowScore = !hasScore || scoreNum < 80;
   const showWarning = !especie || isLowScore;
+  
+  // Estado para controlar el ítem abierto en modo móvil
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   // Si no hay especie o la confianza es baja, mostrar mensaje de advertencia
   if (showWarning) {
@@ -112,8 +115,6 @@ export default function ImageResultTable({ result }: Props) {
   const rows = Object.entries(sheet).map(([label, value]) => ({ label, value }));
   rows.push({ label: "Score", value: `${scoreNum.toFixed(1)}%` });
 
-  // Estado para controlar el ítem abierto en modo móvil
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
     <div className="overflow-hidden rounded-xl shadow-md ring-1 ring-gray-200 w-full max-w-xl mx-auto animate-fade-in">

@@ -14,7 +14,7 @@ export default function PageModelo() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<{
+  const [result, setResult] = useState<{ 
     especie?: string;
     nombre?: string;
     descripcion?: string;
@@ -59,7 +59,7 @@ export default function PageModelo() {
         habitat: "—",
         score: data.scores?.[0] ? `${(data.scores[0] * 100).toFixed(1)}%` : "—",
       });
-    } catch (err) {
+    } catch  {
       alert("Hubo un error analizando la imagen");
     } finally {
       setIsLoading(false);

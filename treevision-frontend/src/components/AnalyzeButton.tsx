@@ -61,11 +61,11 @@ export default function AnalyzeButton({
           <span
             key={i}
             style={{
-              //@ts-ignore
+              // @ts-expect-error
               "--tx": `${tx}px`,
-              //@ts-ignore
+              // @ts-expect-error
               "--ty": `${ty}px`,
-              //@ts-ignore
+              // @ts-expect-error
               "--rot": rot,
             }}
             className="ray absolute inset-0 flex justify-center items-center pointer-events-none"
