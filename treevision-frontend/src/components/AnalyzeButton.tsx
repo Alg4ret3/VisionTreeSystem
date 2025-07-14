@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { FaEye } from 'react-icons/fa';
+
 
 interface AnalyzeButtonProps {
   /** Desactiva el botón (sin hover, sin rebote, sin clics) */
@@ -38,21 +40,19 @@ export default function AnalyzeButton({
     onClick();            // ejecuta lógica principal
     setTimeout(() => setExplode(false), 800); // limpia rayos
   };
-
   return (
     <button
       type="button"
       onClick={handleClick}
       disabled={disabled}
       className={clsx(
-        "relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full border-b-[5px] md:transition-all",
-        "bg-[#023859] text-white border-[#2394C8]",
+        'relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full border-b-[5px] transition-all',
+        'bg-[#023859] text-white ',
         !disabled &&
-          "cursor-pointer animate-bounce md:animate-none motion-safe:animate-bounce " +
-            "md:hover:brightness-110 md:hover:-translate-y-[1px] md:hover:border-b-[6px] " +
-            "md:hover:shadow-xl md:hover:shadow-[#2394C8] md:active:border-b-[2px] " +
-            "md:active:brightness-90 md:active:translate-y-[2px]",
-        disabled && "cursor-not-allowed bg-[#6ABF57] border-b-0 md:shadow-none"
+          'cursor-pointer animate-bounce motion-safe:animate-bounce ' +
+            'hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] ' +
+            'active:border-b-[2px] active:brightness-90 active:translate-y-[2px]',
+        disabled && !isLoading && 'cursor-not-allowed bg-gray-400 border-b-0'
       )}
     >
       {/* RAYOS eléctricos estilo ciberpunk */}
@@ -81,19 +81,15 @@ export default function AnalyzeButton({
 
       {/* Spinner de carga o texto del botón */}
       {isLoading ? (
-        <svg
-          className="animate-spin h-5 w-5"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 11-8 8H0z" />
-        </svg>
+        <div className="loading-bar">
+          <span />
+        </div>
       ) : (
-        label
+        <>
+        {label}
+        <FaEye  className="text-white text-base" />
+        </>
       )}
-
       {/* CSS para la animación de rayos */}
       <style jsx>{`
         .ray {
@@ -114,6 +110,34 @@ export default function AnalyzeButton({
           }
         }
       `}</style>
+              <style jsx>{`
+            .loading-bar {
+              width: 40px;
+              height: 4px;
+              overflow: hidden;
+              background: #ffffff40;
+              border-radius: 4px;
+              position: relative;
+            }
+            .loading-bar span {
+              position: absolute;
+              height: 100%;
+              width: 40%;
+              background: white;
+              animation: slide 1s infinite ease-in-out;
+            }
+            @keyframes slide {
+              0% {
+                left: -40%;
+              }
+              50% {
+                left: 100%;
+              }
+              100% {
+                left: 100%;
+              }
+            }
+          `}</style>
     </button>
   );
 }

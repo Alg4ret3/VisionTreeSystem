@@ -100,7 +100,7 @@ export default function ImageResultTable({ result }: Props) {
             {!especie ? (
               <>No se detectó una especie válida. Por favor sube una imagen más clara o con el árbol completo.</>
             ) : (
-              <>Confianza insuficiente. Intenta con otra foto o mejor iluminación.</>
+              <>Intenta con otra foto o mejor iluminación.</>
             )}
           </span>
         </div>
