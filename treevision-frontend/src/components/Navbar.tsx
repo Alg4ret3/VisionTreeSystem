@@ -23,7 +23,7 @@ export default function Navbar() {
       {/* Contenedor principal del navbar */}
       <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
         {/* Logo con enlace a inicio */}
-        <Link href="/Model" onClick={handleNavigate} className="flex items-center gap-2">
+        <Link href="/" onClick={handleNavigate} className="flex items-center gap-2">
           <Image src="/PagePrincipal/TreeVisionWhite.svg" alt="TreeVision Logo" width={220} height={40} priority />
         </Link>
 
@@ -69,12 +69,12 @@ function NavItem({ href, icon: Icon, text, active }: { href: string; icon: typeo
     <li>
       <Link
         href={href}
-        className={`relative flex items-center gap-1 transition-colors duration-300 group ${active ? 'text-[#2394C8]' : 'hover:text-[#2394C8]'}`}
+        className={`relative flex items-center gap-1 transition-colors duration-300 group ${active ? 'text-secundario' : 'hover:text-secundario'}`}
       >
         <Icon size={16} /> {text}
         {/* Línea animada debajo del texto */}
         <span
-          className={`absolute -bottom-1 left-0 h-0.5 w-full bg-[#2394C8] origin-left transition-transform duration-300 ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
+          className={`absolute -bottom-1 left-0 h-0.5 w-full bg-secundario origin-left transition-transform duration-300 ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
         />
       </Link>
     </li>
@@ -88,16 +88,16 @@ function NavItemMobile({ href, icon: Icon, text, active }: { href: string; icon:
       <Link
         href={href}
         className={`relative group flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-300 shadow-sm
-          ${active ? 'bg-[#2394C8]/15 text-[#2394C8]' : 'bg-white text-[#000000] hover:bg-[#2394C8]/10 hover:text-[#2394C8]'}`}
+          ${active ? 'bg-secundario/15 text-secundario' : 'bg-white text-[#000000] hover:bg-secundario/10 hover:text-secundario'}`}
       >
-        <div className="flex items-center justify-center w-6 h-6">
+        <div className="flex items-center justify-center w-6 h-6"> 
           <Icon size={18} />
         </div>
         <span className="font-medium">{text}</span>
 
         {/* Línea animada debajo del texto (solo para móvil también) */}
         <span
-          className={`absolute -bottom-1 left-4 h-0.5 w-[calc(100%-32px)] bg-[#2394C8] origin-left transition-transform duration-300
+          className={`absolute -bottom-1 left-4 h-0.5 w-[calc(100%-32px)] bg-secundario origin-left transition-transform duration-300
             ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
         />
       </Link>

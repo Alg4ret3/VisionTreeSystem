@@ -46,16 +46,22 @@ export default function AnalyzeButton({
       onClick={handleClick}
       disabled={disabled}
       className={clsx(
-        'relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full border-b-[5px] transition-all',
-        'bg-[#023859] text-white ',
-        !disabled &&
-          'cursor-pointer animate-bounce motion-safe:animate-bounce ' +
-            'hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] ' +
-            'active:border-b-[2px] active:brightness-90 active:translate-y-[2px]',
-        disabled && !isLoading && 'cursor-not-allowed bg-gray-400 border-b-0'
+        'relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full transition-all text-white',
+        !disabled && !isLoading && [
+          'bg-primario border-b-[5px]',
+          'cursor-pointer animate-bounce motion-safe:animate-bounce',
+          'hover:bg-primario/80 hover:-translate-y-[1px] hover:border-b-[6px]',
+          'active:border-b-[2px] active:brightness-90 active:translate-y-[2px]',
+        ],
+        isLoading && [
+          'bg-primario border-b-0 cursor-wait',
+        ],
+        disabled && !isLoading && [
+          'bg-gray-400 border-b-0 cursor-not-allowed',
+        ]
       )}
     >
-      {/* RAYOS eléctricos estilo ciberpunk */}
+      {/* RAYOS eléctricos   */}
       {explode &&
         RAYS.map(({ tx, ty, rot }, i) => (
           <span
@@ -70,7 +76,7 @@ export default function AnalyzeButton({
             className="ray absolute inset-0 flex justify-center items-center pointer-events-none"
           >
             <svg
-              className="w-1 h-8 text-cyan-400 drop-shadow-[0_0_6px_#00ffff]"
+              className="w-1 h-8 text-[#00FF66] drop-shadow-[0_0_6px_#00FF66]"
               viewBox="0 0 2 16"
               fill="currentColor"
             >

@@ -34,7 +34,7 @@ export default function Welcome() {
               <span className="text-black text-center mb-4 text-base max-w-prose mx-auto">
                 Bienvenido a{' '}
               </span>
-              <span className="text-xl sm:text-2xl font-extrabold text-[#2394C8] animate-glow">
+              <span className="text-xl sm:text-2xl font-extrabold text-secundario animate-glow">
                 <Typewriter
                   words={['TreeVision AI']}
                   loop={0} // infinito
@@ -50,7 +50,7 @@ export default function Welcome() {
           </p>
           {/* Lista numerada de pasos */}
           <div className="text-left text-black mb-6 animate-[fadeInUp_1.2s_ease-out_forwards]">
-            <p className="font-extrabold text-[#2394C8]">Pasos para usar TreeVision AI:</p>
+            <p className="font-extrabold text-secundario">Pasos para usar TreeVision AI:</p>
             <ol className="list-decimal ml-6 mt-2">
               <li>Toma una foto del árbol.</li>
               <li>El modelo analiza automáticamente la imagen.</li>
@@ -62,11 +62,11 @@ export default function Welcome() {
           <div className="flex justify-center animate-[fadeInUp_1.4s_ease-out_forwards]">
             <button
               onClick={() => router.push('/modelo')} // Redirige a la ruta 
-              className="group mt-6 px-5 py-2.5 bg-[#2394C8] text-white text-base font-semibold rounded-full
+              className="group mt-6 px-5 py-2.5 bg-secundario text-white text-base font-semibold rounded-full
                         flex items-center justify-center gap-2
                         cursor-pointer transition-all duration-500 ease-in-out
                         animate-bounce hover:animate-none focus:animate-none
-                        hover:bg-[#03577a] hover:scale-[1.04] hover:shadow-lg"
+                        hover:bg-primario hover:scale-[1.04] hover:shadow-lg" 
             >
               Usar el Modelo
               <ArrowRight

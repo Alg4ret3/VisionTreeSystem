@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-import { ChevronDown } from "lucide-react"; // Ícono de flecha para el acordeón en móvil
 
 // Estructura de los datos esperados del resultado de predicción
 interface ResultData {
@@ -79,8 +77,6 @@ export default function ImageResultTable({ result }: Props) {
   const isLowScore = !hasScore || scoreNum < 80;
   const showWarning = !especie || isLowScore;
   
-  // Estado para controlar el ítem abierto en modo móvil
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   // Si no hay especie o la confianza es baja, mostrar mensaje de advertencia
   if (showWarning) {
@@ -118,39 +114,42 @@ export default function ImageResultTable({ result }: Props) {
 
   return (
     <div className="overflow-hidden rounded-xl shadow-md ring-1 ring-gray-200 w-full max-w-xl mx-auto animate-fade-in">
-      {/* Vista para escritorio (tabla completa) */}
-      <table className="hidden md:table w-full text-sm">
-        <tbody className="divide-y divide-gray-200">
-          {rows.map((row, idx) => (
-            <tr key={row.label} className={idx % 2 ? "bg-white" : "bg-gray-50"}>
-              <td className="py-3 px-4 font-semibold text-gray-700">{row.label}</td>
-              <td className="py-3 px-4 text-gray-600">{row.value}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      {/* Vista para móvil (acordeón por fila) */}
-      <ul className="md:hidden divide-y divide-gray-200 text-sm">
-        {rows.map((row, idx) => (
-          <li key={row.label} className="bg-white">
-            <button
-              className="flex w-full items-center justify-between py-3 px-4 hover:bg-teal-50 transition"
-              onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
+      <ul className="space-y-3 p-4">
+        {rows.map((row, i) => (
+          <li
+            key={row.label}
+            className="
+              rounded-xl
+              border border-[#D6E8FA]
+              bg-white
+              shadow-sm
+              p-4
+              transition
+              hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
+              duration-200
+            "
+          >
+            <p
+              className="
+                text-primario   /* azul corporativo oscuro */
+                font-semibold tracking-wide
+                mb-1.5
+              "
             >
-              <span className="font-semibold text-gray-700">{row.label}</span>
-              {/* Flecha que rota si el ítem está abierto */}
-              <ChevronDown
-                className={`h-4 w-4 transform transition-transform ${openIdx === idx ? "rotate-180" : "rotate-0"}`}
-              />
-            </button>
-            {/* Contenido expandido */}
-            {openIdx === idx && (
-              <p className="px-4 pb-3 text-gray-600 animate-fade-in">{row.value}</p>
-            )}
+              {row.label}
+            </p>
+
+            <p className="text-primario/80 break-words">{row.value}</p>
+
+            <div
+              className={`h-1 mt-4 rounded-full ${
+                i % 2 === 0 ? "bg-secundario/70" : "bg-secundario/40"
+              }`}
+            />
           </li>
         ))}
       </ul>
     </div>
+
   );
 }

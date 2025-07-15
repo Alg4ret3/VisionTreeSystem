@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import Image from "next/image";
 import { analizarImagen } from "@/utils/api";
 import ImageResultTable from "@/components/ImageResultTable";
@@ -15,6 +15,11 @@ export default function PageModelo() {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
+  const resultRef = useRef<HTMLDivElement>(null);
+  const stepsRef =useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    stepsRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, []);
   const [result, setResult] = useState<{
     especie?: string;
     nombre?: string;
@@ -50,6 +55,7 @@ export default function PageModelo() {
 
   const handleAnalyze = async () => {
     if (!file) return;
+    setResult({});
     setIsLoading(true);
     try {
       const data = await analizarImagen(file);
@@ -64,6 +70,7 @@ export default function PageModelo() {
       alert("Hubo un error analizando la imagen");
     } finally {
       setIsLoading(false);
+      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });  
     }
   };
 
@@ -82,16 +89,16 @@ export default function PageModelo() {
             <h2
               className="
                 text-center font-extrabold tracking-tight
-                text-[#023859]            /* azul marino corporativo */
+                text-primario      
                 text-2xl sm:text-3xl md:text-4xl  /* más grande en pantallas amplias */
-                leading-snug
+                leading-snug secundario
                 "
             >
               Sube una
-              <span className="text-[#2394C8]"> Imagen</span>
+              <span className="text-secundario"> Imagen</span>
             </h2>
             {/* Subrayado  */}
-            <div className="mx-auto mt-2 h-1 w-20 bg-[#2394C8] rounded-full" />
+            <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
           {/* Preview */}
           <div className="w-56 h-56 border-2 rounded-lg flex items-center justify-center overflow-hidden relative">
@@ -116,7 +123,7 @@ export default function PageModelo() {
               className="hidden"
               onChange={handleFileChange}
             />
-            <span className="block bg-[#2394C8] hover:bg-sky-800 text-white rounded-full px-4 py-2 mt-2 transition">
+            <span className="block bg-secundario hover:bg-primario text-white rounded-full px-4 py-2 mt-2 transition">
               Seleccionar imagen
             </span>
           </label>
@@ -131,7 +138,7 @@ export default function PageModelo() {
             <div className="w-full max-w-xs">
               <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2 overflow-hidden">
                 <div
-                  className="bg-[#2394C8] h-2.5 transition-all"
+                  className="bg-secundario h-2.5 transition-all"
                   style={{ width: `${uploadProgress}%` }}
                 />
               </div>
@@ -140,35 +147,36 @@ export default function PageModelo() {
               </p>
             </div>
           )}
-          {/* Botón Analizar (componente reutilizable) */}
+          {/* Botón Analizar*/}
           <AnalyzeButton
             disabled={disabled}
             isLoading={isLoading}
             onClick={handleAnalyze}
           />
         </div>
-
         {/* Columna derecha – Resultados */}
-        <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full">
+        <div 
+        ref={resultRef}
+        className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full">
           <div className="max-w-6xl mx-auto py-4 px-4">
             <h2 className="
                 text-center font-extrabold tracking-tight
-                text-[#023859]            /* azul marino corporativo */
-                text-2xl sm:text-3xl md:text-4xl  /* más grande en pantallas amplias */
+                text-primario           
+                text-2xl sm:text-3xl md:text-4xl  
                 leading-snug
                 ">
                 Prediccion del modelo  
-                <span className="text-[#2394C8]"> TreeVision&nbsp;AI</span>
+                <span className="text-secundario"> TreeVision&nbsp;AI</span>
             </h2>
             {/* Subrayado  */}
-            <div className="mx-auto mt-2 h-1 w-20 bg-[#2394C8] rounded-full" />
+            <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
           <ImageResultTable result={result} />
         </div>
       </section>
 
       {/* Sección de pasos */}
-      <div className="px-4 pt-10">
+      <div ref={stepsRef}className="px-4 pt-10">
         <StepsSection />
       </div>
     </main>
