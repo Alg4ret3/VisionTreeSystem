@@ -14,13 +14,13 @@ const steps = [
   {
     step: 1,
     title: "Toma una foto clara del árbol que quieras identificar.",
-    desc: "Asegúrate de que la imagen esté enfocada y muestre completamente el árbol.",
+    desc: "Asegúrate de que la imagen esté bien enfocada y muestre el árbol completo para obtener mejores resultados.",
     icon: <MdImageSearch size={34} className="text-secundario" />,
   },
   {
     step: 2,
-    title: "Sube la imagen al sistema desde tu dispositivo.",
-    desc: "Puedes arrastrarla al área designada o hacer clic para buscarla en tus archivos.",
+    title: "Selecciona o toma la imagen desde tu dispositivo.",
+    desc: "Puedes arrastrar la imagen al área indicada, hacer clic para buscarla en tus archivos o tomar una foto con la cámara.",
     icon: <MdUpload size={34} className="text-secundario" />,
   },
   {
@@ -32,19 +32,19 @@ const steps = [
   {
     step: 4,
     title: "Espera unos segundos mientras se procesa.",
-    desc: "El sistema analiza características del árbol y consulta información relacionada.",
+    desc: "Nuestro modelo examina la imagen para detectar patrones y clasificar la especie del árbol.",
     icon: <MdAccessTime size={34} className="text-secundario" />,
   },
   {
     step: 5,
     title: "Revisa los resultados.",
-    desc: "Verás el nombre de la especie detectada, su descripción, hábitat, etc.",
+    desc: "Verás el nombre de la especie identificada, una breve descripción, información del hábitat y el nivel de confianza del modelo.",
     icon: <MdDone size={34} className="text-secundario" />,
   },
   {
     step: 6,
-    title: "Comparte la información.",
-    desc: "Puedes compartir los resultados con  tus amigos.",
+    title: "Comparte los resultados con otros.",
+    desc: "Difunde el conocimiento sobre las especies que identificaste compartiendo la información con tus amigos o comunidad.",
     icon: <MdShare size={34} className="text-secundario" />,
   },
 ] as const;
@@ -61,7 +61,7 @@ export default function StepsSection() {
             text-2xl sm:text-3xl md:text-4xl  
             leading-snug
             "
-        > 
+        >
           Pasos para usar el modelo&nbsp;
           <span className="text-secundario">TreeVision&nbsp;AI</span>
         </h2>
@@ -89,10 +89,8 @@ export default function StepsSection() {
                 {item.title}
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed tracking-wide  max-w-xs mx-auto">
-                 {item.desc}
+                {item.desc}
               </p>
-
-              
             </div>
           </div>
         ))}

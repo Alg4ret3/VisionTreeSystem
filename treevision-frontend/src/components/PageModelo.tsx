@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useRef, useEffect, ChangeEvent } from "react";
-import Image from "next/image";
 import { analizarImagen } from "@/utils/api";
 import ImageResultTable from "@/components/ImageResultTable";
 import AnalyzeButton from "@/components/AnalyzeButton";
 import StepsSection from "@/components/StepsSection";
+import ImageUploader from "@/components/ImageUploader";
 
 export default function PageModelo() {
   // -----------------------------
@@ -16,7 +16,7 @@ export default function PageModelo() {
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
-  const stepsRef =useRef<HTMLDivElement>(null);
+  const stepsRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     stepsRef.current?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -70,7 +70,7 @@ export default function PageModelo() {
       alert("Hubo un error analizando la imagen");
     } finally {
       setIsLoading(false);
-      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });  
+      resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -83,8 +83,9 @@ export default function PageModelo() {
     <main className="min-h-screen bg-[#F3F7FF] flex flex-col items-center gap-12 py-10 px-4">
       {/* Sección principal */}
       <section className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
-        {/* Columna izquierda – Upload */}
+        {/* Columna izquierda */}
         <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center gap-4 w-full">
+          {/* Titulo*/}
           <div className="max-w-6xl mx-auto py-4 px-4">
             <h2
               className="
@@ -100,83 +101,47 @@ export default function PageModelo() {
             {/* Subrayado  */}
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
-          {/* Preview */}
-          <div className="w-56 h-56 border-2 rounded-lg flex items-center justify-center overflow-hidden relative">
-            {previewUrl ? (
-              <Image
-                src={previewUrl}
-                alt="Preview"
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <span className="text-gray-400 text-sm text-center px-4">
-                Arrastra o selecciona una imagen
-              </span>
-            )}
-          </div>
-          {/* Input */}
-          <label className="w-full max-w-xs cursor-pointer text-center">
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileChange}
-            />
-            <span className="block bg-secundario hover:bg-primario text-white rounded-full px-4 py-2 mt-2 transition">
-              Seleccionar imagen
-            </span>
-          </label>
-          {/* Nombre del archivo */}
-          {file && (
-            <p className="text-gray-500 text-sm truncate max-w-xs">
-              {file.name}
-            </p>
-          )}
-          {/* Barra de progreso */}
-          {file && (
-            <div className="w-full max-w-xs">
-              <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2 overflow-hidden">
-                <div
-                  className="bg-secundario h-2.5 transition-all"
-                  style={{ width: `${uploadProgress}%` }}
-                />
-              </div>
-              <p className="text-xs text-right mt-1 font-medium text-gray-600">
-                {uploadProgress}%
-              </p>
-            </div>
-          )}
-          {/* Botón Analizar*/}
+          {/*Componente para subir la imagen*/}
+          <ImageUploader
+            file={file}
+            previewUrl={previewUrl}
+            uploadProgress={uploadProgress}
+            onFileChange={handleFileChange}
+          />
+          {/*Componente para analizar la imagen*/}
           <AnalyzeButton
             disabled={disabled}
             isLoading={isLoading}
             onClick={handleAnalyze}
           />
         </div>
-        {/* Columna derecha – Resultados */}
-        <div 
-        ref={resultRef}
-        className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full">
+        {/* Columna derecha*/}
+        <div
+          ref={resultRef}
+          className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full"
+        >
+          {/* Titulo*/}
           <div className="max-w-6xl mx-auto py-4 px-4">
-            <h2 className="
+            <h2
+              className="
                 text-center font-extrabold tracking-tight
                 text-primario           
                 text-2xl sm:text-3xl md:text-4xl  
                 leading-snug
-                ">
-                Prediccion del modelo  
-                <span className="text-secundario"> TreeVision&nbsp;AI</span>
+                "
+            >
+              Prediccion del modelo
+              <span className="text-secundario"> TreeVision&nbsp;AI</span>
             </h2>
             {/* Subrayado  */}
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
+          {/*Componente para mostrar el resultado de la predicción*/}
           <ImageResultTable result={result} />
         </div>
       </section>
-
-      {/* Sección de pasos */}
-      <div ref={stepsRef}className="px-4 pt-10">
+      {/* componente de pasos */}
+      <div ref={stepsRef} className="px-4 pt-10">
         <StepsSection />
       </div>
     </main>
