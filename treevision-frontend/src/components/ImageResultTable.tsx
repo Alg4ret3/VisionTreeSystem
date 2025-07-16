@@ -83,7 +83,6 @@ export default function ImageResultTable({ result }: Props) {
   const isLowScore = !hasScore || scoreNum < 80;
   const showWarning = !especie || isLowScore;
 
-  // Mostrar advertencia si no hay especie o score bajo
   if (showWarning) {
     return (
       <motion.div
@@ -98,11 +97,7 @@ export default function ImageResultTable({ result }: Props) {
           transition={{ duration: 0.4 }}
           className="flex items-center gap-2 bg-orange-50 text-orange-700 border border-orange-200 shadow-sm rounded-lg px-4 py-3 max-w-md"
         >
-          <svg
-            className="h-5 w-5 flex-shrink-0"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
+          <svg className="h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path
               fillRule="evenodd"
               d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l6.333 11.266c.75 1.334-.213 2.999-1.742 2.999H3.666c-1.53 0-2.492-1.665-1.742-2.999L8.257 3.1zM11 13a1 1 0 10-2 0 1 1 0 002 0zm-1-2a.75.75 0 01-.75-.75v-3.5a.75.75 0 011.5 0v3.5A.75.75 0 0110 11z"
@@ -110,52 +105,35 @@ export default function ImageResultTable({ result }: Props) {
             />
           </svg>
           <span className="text-sm font-medium leading-snug">
-            {!especie ? (
-              <>No se detectó una especie válida. Intenta con una imagen más clara o completa.</>
-            ) : (
-              <>Prueba con otra foto o mejor iluminación.</>
-            )}
+            {!especie
+              ? "No se detectó una especie válida. Intenta con una imagen más clara o completa."
+              : "Prueba con otra foto o mejor iluminación."}
           </span>
         </motion.div>
       </motion.div>
     );
   }
 
-  // Mostrar tabla si hay especie y confianza suficiente
   const sheet = TECH_SHEETS[especie] ?? { "Especie Detectada": especie };
   const rows = Object.entries(sheet).map(([label, value]) => ({ label, value }));
-  rows.push({ label: "Score", value: `${scoreNum.toFixed(1)}%` });
+  rows.push({ label: "Seguridad en el resultado", value: `${scoreNum.toFixed(1)}%` });
 
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6 }}
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: false, amount: 0.3 }}
       className="overflow-hidden rounded-xl shadow-md ring-1 ring-gray-200 w-full max-w-xl mx-auto"
     >
-      <motion.ul
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1,
-            },
-          },
-        }}
-        className="space-y-3 p-4"
-      >
+      <ul className="space-y-3 p-4">
         {rows.map((row, i) => (
           <motion.li
             key={row.label}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.4 }}
+            initial={{ opacity: 0, x: i % 2 === 0 ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: false, amount: 0.4 }}
             whileHover={{ scale: 1.01 }}
             className="rounded-xl border border-[#D6E8FA] bg-white shadow-sm p-4 transition duration-200 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
           >
@@ -170,7 +148,7 @@ export default function ImageResultTable({ result }: Props) {
             />
           </motion.li>
         ))}
-      </motion.ul>
+      </ul>
     </motion.div>
   );
 }
