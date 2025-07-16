@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import clsx from "clsx";
-import { FaEye } from 'react-icons/fa';
+"use client";
 
+import React from "react";
+import clsx from "clsx";
+import { FaEye } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface AnalyzeButtonProps {
   /** Desactiva el botón (sin hover, sin rebote, sin clics) */
@@ -20,60 +22,61 @@ export default function AnalyzeButton({
   onClick,
   label = "Analizar Imagen",
 }: AnalyzeButtonProps) {
-  const [explode, setExplode] = useState(false);
-
   /** Coordenadas y rotaciones para 8 rayos */
   const RAYS = [
-    { tx: 0,   ty: -40, rot: "270deg" },   // arriba
-    { tx: 28,  ty: -28, rot: "315deg" },   // arriba-derecha
-    { tx: 40,  ty: 0,   rot: "0deg" },     // derecha
-    { tx: 28,  ty: 28,  rot: "45deg" },    // abajo-derecha
-    { tx: 0,   ty: 40,  rot: "90deg" },    // abajo
-    { tx: -28, ty: 28,  rot: "135deg" },   // abajo-izquierda
-    { tx: -40, ty: 0,   rot: "180deg" },   // izquierda
-    { tx: -28, ty: -28, rot: "225deg" },   // arriba-izquierda
+    { tx: 0, ty: -40, rot: "270deg" },
+    { tx: 28, ty: -28, rot: "315deg" },
+    { tx: 40, ty: 0, rot: "0deg" },
+    { tx: 28, ty: 28, rot: "45deg" },
+    { tx: 0, ty: 40, rot: "90deg" },
+    { tx: -28, ty: 28, rot: "135deg" },
+    { tx: -40, ty: 0, rot: "180deg" },
+    { tx: -28, ty: -28, rot: "225deg" },
   ];
 
   const handleClick = () => {
-    if (disabled) return;
-    setExplode(true);     // activa explosión
-    onClick();            // ejecuta lógica principal
-    setTimeout(() => setExplode(false), 800); // limpia rayos
+    if (!disabled && !isLoading) {
+      onClick();
+    }
   };
+
   return (
     <button
       type="button"
       onClick={handleClick}
       disabled={disabled}
       className={clsx(
-        'relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full transition-all text-white',
+        "relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full transition-all text-white overflow-hidden",
         !disabled && !isLoading && [
-          'bg-primario border-b-[5px]',
-          'cursor-pointer animate-bounce motion-safe:animate-bounce',
-          'hover:bg-primario/80 hover:-translate-y-[1px] hover:border-b-[6px]',
-          'active:border-b-[2px] active:brightness-90 active:translate-y-[2px]',
+          "bg-primario border-b-[5px]",
+          "cursor-pointer animate-bounce motion-safe:animate-bounce",
+          "hover:bg-primario/80 hover:-translate-y-[1px] hover:border-b-[6px]",
+          "active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
         ],
-        isLoading && [
-          'bg-primario border-b-0 cursor-wait',
-        ],
-        disabled && !isLoading && [
-          'bg-gray-400 border-b-0 cursor-not-allowed',
-        ]
+        isLoading && ["bg-primario border-b-0 cursor-wait"],
+        disabled && !isLoading && ["bg-gray-400 border-b-0 cursor-not-allowed"]
       )}
     >
-      {/* RAYOS eléctricos   */}
-      {explode &&
+      {/* Rayos animados mientras carga */}
+      {isLoading &&
         RAYS.map(({ tx, ty, rot }, i) => (
-          <span
+          <motion.span
             key={i}
             style={
               {
-              "--tx": `${tx}px`,
-              "--ty": `${ty}px`,
-              "--rot": rot,
-             } as React.CSSProperties
+                "--tx": `${tx}px`,
+                "--ty": `${ty}px`,
+                "--rot": rot,
+              } as React.CSSProperties
             }
             className="ray absolute inset-0 flex justify-center items-center pointer-events-none"
+            animate={{ opacity: [0, 1, 0], scaleY: [0, 1.2, 0.4] }}
+            transition={{
+              duration: 0.8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.05,
+            }}
           >
             <svg
               className="w-1 h-8 text-[#00FF66] drop-shadow-[0_0_6px_#00FF66]"
@@ -82,68 +85,50 @@ export default function AnalyzeButton({
             >
               <rect x="0" y="0" width="2" height="16" rx="1" />
             </svg>
-          </span>
+          </motion.span>
         ))}
 
-      {/* Spinner de carga o texto del botón */}
+      {/* Spinner de carga o texto + ícono */}
       {isLoading ? (
         <div className="loading-bar">
           <span />
         </div>
       ) : (
         <>
-        {label}
-        <FaEye  className="text-white text-base" />
+          {label}
+          <FaEye className="text-white text-base" />
         </>
       )}
-      {/* CSS para la animación de rayos */}
+
+      {/* Estilos personalizados */}
       <style jsx>{`
-        .ray {
-          animation: burst 0.6s ease-out forwards;
+        .loading-bar {
+          width: 40px;
+          height: 4px;
+          overflow: hidden;
+          background: #ffffff40;
+          border-radius: 4px;
+          position: relative;
         }
-        @keyframes burst {
+        .loading-bar span {
+          position: absolute;
+          height: 100%;
+          width: 40%;
+          background: white;
+          animation: slide 1s infinite ease-in-out;
+        }
+        @keyframes slide {
           0% {
-            transform: translate(0, 0) rotate(var(--rot)) scaleY(0);
-            opacity: 1;
+            left: -40%;
           }
-          60% {
-            transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scaleY(1.2);
-            opacity: 1;
+          50% {
+            left: 100%;
           }
           100% {
-            transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scaleY(0.4);
-            opacity: 0;
+            left: 100%;
           }
         }
       `}</style>
-              <style jsx>{`
-            .loading-bar {
-              width: 40px;
-              height: 4px;
-              overflow: hidden;
-              background: #ffffff40;
-              border-radius: 4px;
-              position: relative;
-            }
-            .loading-bar span {
-              position: absolute;
-              height: 100%;
-              width: 40%;
-              background: white;
-              animation: slide 1s infinite ease-in-out;
-            }
-            @keyframes slide {
-              0% {
-                left: -40%;
-              }
-              50% {
-                left: 100%;
-              }
-              100% {
-                left: 100%;
-              }
-            }
-          `}</style>
     </button>
   );
 }

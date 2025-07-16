@@ -1,83 +1,129 @@
-"use client"; // Necesario para usar el hook useRouter (funciona solo del lado del cliente)
+"use client";
+
 import { useRouter } from "next/navigation";
-import { ArrowRight } from "lucide-react"; // Icono de flecha derecha de lucide-react
+import { ArrowRight } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 export default function Welcome() {
-  const router = useRouter(); // Hook para navegar entre páginas
+  const router = useRouter(); // Hook de Next.js para navegación entre rutas
+
+  // Función para redirigir a la página del modelo
+  const handleStart = () => {
+    router.push("/modelo");
+  };
+
+
+  // Definición de variantes para animación de entrada con Framer Motion
+  const cardVariants = {
+    initial: { opacity: 0, scale: 0.8, y: 30 },
+    animate: { opacity: 1, scale: 1, y: 0 },
+  };
 
   return (
-    // Contenedor principal con imagen de fondo
+    // Contenedor principal con imagen de fondo y altura de pantalla completa
     <div
       className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/welcome/Background.png')" }} // Imagen de fondo desde public/
+      style={{ backgroundImage: "url('/welcome/Background.png')" }}
     >
-      {/* Capa oscura encima de la imagen para mejorar contraste */}
+      {/* Capa oscura para mejorar el contraste del contenido */}
       <div className="absolute inset-0 backdrop-brightness-60 backdrop-blur-xs" />
 
-      {/* Contenido principal centrado */}
+      {/* Contenido central del componente */}
       <main className="relative z-10 flex items-center justify-center min-h-screen px-4 py-8">
-        {/* Tarjeta blanca con sombra y borde redondeado */}
-        <div className="bg-blanco bg-opacity-90 max-w-lg w-full sm:max-w-md rounded-3xl shadow-xl p-6 sm:p-8 text-center">
-          {/* Logo en la parte superior */}
+        {/* Tarjeta animada con Framer Motion */}
+        <motion.div
+          variants={cardVariants}
+          initial="initial"
+          animate="animate"
+          whileHover={{ scale: 1.02 }}
+          className="bg-gradient-to-br from-blanco/95 to-blanco/95 
+                     backdrop-blur-lg border border-white/30 
+                     rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.15)] 
+                     max-w-lg w-full sm:max-w-md p-8 sm:p-10 text-center"
+        >
+          {/* Logo de la aplicación */}
           <Image
             src="/welcome/Treevision.svg"
             alt="TreeVision Logo"
             width={150}
             height={50}
-            className="w-150 h- 50 mx-auto  animate-[fadeInUp_0.8s_ease-out_forwards]"
+            className="w-150 mx-auto animate-[fadeInUp_0.8s_ease-out_forwards]"
           />
 
-          {/* Párrafo de bienvenida */}
-          <p className="text-black text-center mb-0 text-base max-w-prose mx-auto">
-            <span className="text-black text-center mb-4 text-base max-w-prose mx-auto">
-              Bienvenido a{" "}
-            </span>
+          {/* Encabezado con máquina de escribir animada */}
+          <p className="text-black text-center mb-0 text-base max-w-prose mx-auto leading-tight">
+            <span className="text-black">Bienvenido a </span>
             <span className="text-xl sm:text-2xl font-extrabold text-secundario animate-glow">
               <Typewriter
                 words={["TreeVision AI"]}
-                loop={0} // infinito
+                loop={0}
                 cursor
                 cursorStyle="|"
                 typeSpeed={100}
-                deleteSpeed={60}
-                delaySpeed={1500}
+                deleteSpeed={90}
+                delaySpeed={500}
               />
             </span>
-            <br />
-            Conecta con la naturaleza a través de la inteligencia artificial.
-            TreeVision AI es una herramienta innovadora que te permite
-            identificar especies de árboles simplemente tomando una fotografía.
-            Gracias al poder del aprendizaje automático, puedes descubrir la
-            riqueza natural que te rodea en cuestión de segundos.
           </p>
-          {/* Lista numerada de pasos */}
-          <div className="text-left text-black mb-6 animate-[fadeInUp_1.2s_ease-out_forwards]">
-            <p className="font-extrabold text-secundario">
-              Pasos para usar TreeVision AI:
+
+          {/* Párrafos explicativos del proyecto */}
+          <div className="text-black text-center text-base max-w-prose mx-auto leading-snug mt-2 space-y-4">
+            <p>
+              Es tu conexión con la naturaleza a través del poder de la
+              inteligencia artificial. Con solo tomar una fotografía, puedes
+              descubrir qué especie de árbol estás observando, de forma rápida,
+              visual y educativa.
             </p>
-            <ol className="list-decimal ml-6 mt-2">
-              <li>Toma una foto del árbol.</li>
-              <li>El modelo analiza automáticamente la imagen.</li>
-              <li>Te muestra el nombre de la especie y más información.</li>
-            </ol>
+
+            <p>
+              Este modelo está diseñado exclusivamente para identificar{" "}
+              <span className="font-semibold">cuatro especies nativas</span> del
+              <span className="font-semibold text-secundario">
+                {" "}
+                Centro Ambiental Chimayoy
+              </span>
+              , en el sur de Colombia. Aunque su alcance es específico, su
+              propósito es claro: acercarte a la biodiversidad local de una
+              manera sencilla y significativa.
+            </p>
+
+            <span className="inline-block text-sm text-primario font-semibold">
+              ¡Descubre, aprende y conecta con tu entorno natural hoy mismo!
+            </span>
           </div>
 
-          {/* Botón para ir a la página del modelo */}
-          <div className="flex justify-center animate-[fadeInUp_1.4s_ease-out_forwards]">
-            <button
-              onClick={() => router.push("/modelo")} // Redirige a la ruta
-              className="group mt-6 px-5 py-2.5 bg-secundario text-white text-base font-semibold rounded-full
-                        flex items-center justify-center gap-2
-                        cursor-pointer transition-all duration-500 ease-in-out
-                        animate-bounce
-                        hover:bg-primario hover:shadow-lg"
+          {/* Botón animado con efecto de rebote infinito */}
+          <motion.div
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="flex justify-center"
+          >
+            {/* Botón interactivo con ícono y efecto ping decorativo */}
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleStart}
+              className="group relative mt-2 px-5 py-2.5 bg-secundario text-white text-base font-semibold rounded-full
+                         flex items-center justify-center gap-2
+                         cursor-pointer transition-all duration-500 ease-in-out
+                         hover:bg-primario hover:shadow-lg"
             >
+              {/* Efecto visual decorativo (estrella que parpadea) */}
+              <span className="absolute -top-1 right-0 animate-ping text-white text-sm">
+                ✦
+              </span>
               Usar el Modelo
+              {/* Ícono de flecha hacia la derecha */}
               <ArrowRight className="w-5 h-5 transition-transform duration-500 ease-in-out group-hover:translate-x-1.5 group-hover:scale-105" />
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </motion.div>
+        </motion.div>
       </main>
     </div>
   );

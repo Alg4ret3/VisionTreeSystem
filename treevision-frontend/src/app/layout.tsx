@@ -12,6 +12,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "TreeVision AI",
   description: "Plataforma de identificación de árboles con inteligencia artificial.",
+  icons:{
+    icon: "/icons/favicon.svg",
+  }
 };
 
 export default function RootLayout({
