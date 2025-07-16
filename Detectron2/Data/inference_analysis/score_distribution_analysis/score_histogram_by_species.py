@@ -4,13 +4,13 @@ from collections import defaultdict
 import numpy as np
 import os
 
-# Ruta al archivo con los resultados
-archivo_txt = '../../inference_outputs/global_results.txt'  # ajusta según ubicación real
+# Ruta al archivo de resultados
+archivo_txt = '../../inference_outputs/global_results.txt'
 
-# Diccionario para almacenar scores por especie
+# Diccionario para almacenar los scores por especie
 scores_por_especie = defaultdict(list)
 
-# Leer el archivo y extraer los scores
+# Leer el archivo y extraer los datos
 with open(archivo_txt, 'r', encoding='utf-8') as file:
     for linea in file:
         match = re.search(r'- ([\w\s]+) \| Score: ([0-9.]+)', linea)
@@ -19,7 +19,7 @@ with open(archivo_txt, 'r', encoding='utf-8') as file:
             score = float(match.group(2))
             scores_por_especie[especie].append(score)
 
-# Crear carpeta para guardar los histogramas
+# Crear carpeta de salida si no existe
 carpeta_salida = 'histograms_by_species'
 os.makedirs(carpeta_salida, exist_ok=True)
 
@@ -31,22 +31,27 @@ colores_especies = {
     'Palo Santo': 'blue'
 }
 
-# Crear un histograma por especie
-for especie, scores in scores_por_especie.items():
-    plt.figure(figsize=(8, 5))
-    
-    color_histograma = colores_especies.get(especie, 'gray')
-    plt.hist(scores, bins=10, range=(0.0, 1.0), color=color_histograma, edgecolor='black')
+# Número de subgráficos = número de especies
+n = len(scores_por_especie)
+fig, axs = plt.subplots(n, 1, figsize=(8, 4 * n))
 
-    plt.title(f'{especie} - Distribución de Scores')
-    plt.xlabel('Score de Confianza')
-    plt.ylabel('Cantidad de Imágenes')
-    plt.grid(True, linestyle='--', alpha=0.6)
-    plt.tight_layout()
+# Asegurarse de que axs sea iterable
+if n == 1:
+    axs = [axs]
 
-    # Guardar imagen
-    nombre_archivo = f"{carpeta_salida}/{especie.replace(' ', '_')}.png"
-    plt.savefig(nombre_archivo)
-    plt.close()
+# Crear los subgráficos
+for ax, (especie, scores) in zip(axs, scores_por_especie.items()):
+    color = colores_especies.get(especie, 'gray')
+    ax.hist(scores, bins=10, range=(0.0, 1.0), color=color, edgecolor='black')
+    ax.set_title(f'{especie} - Distribución de Scores')
+    ax.set_xlabel('Score de Confianza')
+    ax.set_ylabel('Cantidad de Imágenes')
+    ax.grid(True, linestyle='--', alpha=0.5)
 
-print(f"Histogramas generados")
+# Ajustar diseño y guardar
+plt.tight_layout()
+ruta_salida = os.path.join(carpeta_salida, 'histograma_todas_las_especies.png')
+plt.savefig(ruta_salida)
+plt.close()
+
+print(f"Histograma guardado.")

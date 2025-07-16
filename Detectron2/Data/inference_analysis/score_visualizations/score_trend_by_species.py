@@ -19,20 +19,26 @@ with open(archivo_txt, 'r', encoding='utf-8') as file:
             score = float(match.group(2))
             scores_por_especie[especie].append(score)
 
-# Creamos una carpeta de salida para guardar los gráficos generados
+# Crear carpeta de salida
 carpeta_salida = 'detection_score_trends'
 os.makedirs(carpeta_salida, exist_ok=True)
 
-
+# Colores personalizados
 colores_especies = {
-    'Arrayan': 'purple',     
-    'Cipres': 'red',          
-    'Pino': 'gold',         
-    'Palo Santo': 'blue'     
+    'Arrayan': 'purple',
+    'Cipres': 'red',
+    'Pino': 'gold',
+    'Palo Santo': 'blue'
 }
 
-# Generamos una gráfica para cada especie
-for especie, scores in scores_por_especie.items():
+# Crear subplots
+n = len(scores_por_especie)
+fig, axs = plt.subplots(n, 1, figsize=(10, 4 * n))
+
+if n == 1:
+    axs = [axs]  # Asegurar iterabilidad si hay solo una especie
+
+for ax, (especie, scores) in zip(axs, scores_por_especie.items()):
     x = list(range(1, len(scores) + 1))
     y = scores
 
@@ -41,27 +47,21 @@ for especie, scores in scores_por_especie.items():
     minimo = min(y)
     maximo = max(y)
 
-    plt.figure(figsize=(8, 5))
+    color = colores_especies.get(especie, 'gray')
 
-    # Uso el color asignado según la especie
-    color_linea = colores_especies.get(especie, 'gray')  # Por si hay alguna especie nueva no prevista
-    plt.plot(x, y, marker='o', linestyle='-', color=color_linea, label='Score')
+    ax.plot(x, y, marker='o', linestyle='-', color=color, label='Score')
+    ax.axhline(media, color='black', linestyle='--', label=f'Media: {media:.2f}')
+    ax.set_title(f'{especie} - Score por Imagen\nMin: {minimo:.2f}, Max: {maximo:.2f}, STD: {std_dev:.2f}')
+    ax.set_xlabel('Número de Imagen')
+    ax.set_ylabel('Score de Confianza')
+    ax.set_ylim(0, 1.05)
+    ax.grid(True)
+    ax.legend()
 
-    # Línea horizontal para indicar la media
-    plt.axhline(media, color='black', linestyle='--', label=f'Media: {media:.2f}')
+# Ajustar y guardar
+plt.tight_layout()
+ruta_salida = os.path.join(carpeta_salida, 'score_por_imagen_todas_las_especies.png')
+plt.savefig(ruta_salida)
+plt.close()
 
-    # Título y etiquetas
-    plt.title(f'{especie} - Score por Imagen\nMin: {minimo:.2f}, Max: {maximo:.2f}, STD: {std_dev:.2f}')
-    plt.xlabel('Número de Imagen')
-    plt.ylabel('Score de Confianza')
-    plt.ylim(0, 1.05)
-    plt.grid(True)
-    plt.legend()
-    plt.tight_layout()
-
-    # Guardamos cada gráfico con el nombre de la especie
-    nombre_archivo = f"{carpeta_salida}/{especie.replace(' ', '_')}.png"
-    plt.savefig(nombre_archivo)
-    plt.close()
-
-print("Gráficos generados")
+print(f" Gráfico  guardado.")

@@ -38,9 +38,9 @@ def train_model():
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")  # Modelo preentrenado
     cfg.SOLVER.IMS_PER_BATCH = 2
     cfg.SOLVER.BASE_LR = 0.00025
-    cfg.SOLVER.MAX_ITER = 6000  #  número de iteraciones
+    cfg.SOLVER.MAX_ITER = 5000  #  número de iteraciones
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128
-    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.5  # Umbral para detección
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # Umbral para detección
     
     # Directorio donde guardar los resultados del modelo entrenado
     cfg.OUTPUT_DIR = "./model_weights2"
