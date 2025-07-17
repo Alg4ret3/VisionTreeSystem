@@ -1,47 +1,70 @@
 "use client";
 
-import React, { useState, useRef, useEffect, ChangeEvent } from "react";
+import React, { useState, useRef, useCallback, ChangeEvent } from "react";
 import { analizarImagen } from "@/utils/api";
 import ImageResultTable from "@/components/ImageResultTable";
 import AnalyzeButton from "@/components/AnalyzeButton";
 import StepsSection from "@/components/StepsSection";
 import ImageUploader from "@/components/ImageUploader";
+import { motion } from "framer-motion";
 
 export default function PageModelo() {
   // -----------------------------
   // Estados locales
   // -----------------------------
-  const [file, setFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [uploadProgress, setUploadProgress] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState(false);
+  const [file, setFile] = useState<File | null>(null); // Imagen seleccionada
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // URL para previsualizar la imagen
+  const [uploadProgress, setUploadProgress] = useState<number>(0); // Progreso simulado de carga
+  const [isLoading, setIsLoading] = useState(false); // Estado de carga
+  const [highlight, setHighlight] = useState(false); // Activar animación
+
+  // Referencias para hacer scroll
   const resultRef = useRef<HTMLDivElement>(null);
-  const stepsRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    stepsRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
-  const [result, setResult] = useState<{
-    especie?: string;
-    nombre?: string;
-    descripcion?: string;
-    habitat?: string;
-    score?: string;
-  }>({});
+  const pasosRef = useRef<HTMLDivElement>(null);
+
+  // Resultado de la predicción inicializado con valores vacíos
+  const [result, setResult] = useState({
+    especie: "",
+    nombre: "",
+    descripcion: "",
+    habitat: "",
+    score: "",
+  });
 
   // -----------------------------
-  // Handlers
+  // Función para activar la animación y hacer scroll al div
+  // -----------------------------
+  const triggerHighlight = useCallback(() => {
+    // Hacer scroll hacia el div
+    pasosRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // Activar animación y desactivarla luego de 1.5s
+    setHighlight(true);
+    setTimeout(() => setHighlight(false), 1500);
+  }, []);
+
+  // -----------------------------
+  // Manejar cambio de archivo
   // -----------------------------
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.files?.[0];
     if (!selected) return;
 
-    // Reset UI
     setFile(selected);
     setPreviewUrl(URL.createObjectURL(selected));
-    setResult({});
+
+    // Reiniciar resultado a estado vacío (✅ corrección aquí)
+    setResult({
+      especie: "",
+      nombre: "",
+      descripcion: "",
+      habitat: "",
+      score: "",
+    });
+
     setUploadProgress(0);
 
-    // Barra de progreso simulada (100 % tras 0,5 s)
+    // Simular progreso de carga
     const interval = setInterval(() => {
       setUploadProgress((p) => {
         if (p >= 100) {
@@ -53,12 +76,27 @@ export default function PageModelo() {
     }, 100);
   };
 
+  // -----------------------------
+  // Analizar imagen y mostrar resultado
+  // -----------------------------
   const handleAnalyze = async () => {
     if (!file) return;
-    setResult({});
+
+    // Resetear resultado antes de nueva predicción
+    setResult({
+      especie: "",
+      nombre: "",
+      descripcion: "",
+      habitat: "",
+      score: "",
+    });
+
     setIsLoading(true);
+
     try {
       const data = await analizarImagen(file);
+
+      // Establecer los resultados del modelo
       setResult({
         especie: data.class_names?.[0] || "—",
         nombre: data.class_names?.[0] || "—",
@@ -77,72 +115,84 @@ export default function PageModelo() {
   const disabled = !file || uploadProgress < 100 || isLoading;
 
   // -----------------------------
-  // Render
+  // Renderizado
   // -----------------------------
   return (
     <main className="min-h-screen bg-[#F3F7FF] flex flex-col items-center gap-12 py-10 px-4">
       {/* Sección principal */}
       <section className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
-        {/* Columna izquierda */}
-        <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center gap-4 w-full">
-          {/* Titulo*/}
+        {/* Columna izquierda: uploader */}
+        <motion.div
+          id="pasos"
+          ref={pasosRef}
+          className="bg-white rounded-lg shadow-lg scroll-mt-32 p-6 flex flex-col items-center gap-4 w-full"
+          animate={
+            highlight
+              ? {
+                  backgroundColor: [
+                    "#ffffff",
+                    "#bbf7d0", // Verde suave
+                    "#ffffff",
+                    "#bbf7d0",
+                    "#ffffff",
+                  ],
+                }
+              : {
+                  backgroundColor: "#ffffff",
+                }
+          }
+          transition={{
+            duration: 1.5,
+            times: [0, 0.2, 0.5, 0.8, 1],
+            ease: "easeInOut",
+          }}
+        >
+          {/* Título */}
           <div className="max-w-6xl mx-auto py-4 px-4">
-            <h2
-              className="
-                text-center font-extrabold tracking-tight
-                text-primario      
-                text-2xl sm:text-3xl md:text-4xl  /* más grande en pantallas amplias */
-                leading-snug secundario
-                "
-            >
-              Sube una
-              <span className="text-secundario"> Imagen</span>
+            <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug secundario">
+              Sube una <span className="text-secundario">Imagen</span>
             </h2>
-            {/* Subrayado  */}
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
-          {/*Componente para subir la imagen*/}
+
+          {/* Componente para subir imagen */}
           <ImageUploader
             file={file}
             previewUrl={previewUrl}
             uploadProgress={uploadProgress}
             onFileChange={handleFileChange}
           />
-          {/*Componente para analizar la imagen*/}
+
+          {/* Botón para analizar imagen */}
           <AnalyzeButton
             disabled={disabled}
             isLoading={isLoading}
             onClick={handleAnalyze}
           />
-        </div>
-        {/* Columna derecha*/}
+        </motion.div>
+
+        {/* Columna derecha: resultados */}
         <div
           ref={resultRef}
           className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full"
         >
-          {/* Titulo*/}
           <div className="max-w-6xl mx-auto py-4 px-4">
-            <h2
-              className="
-                text-center font-extrabold tracking-tight
-                text-primario           
-                text-2xl sm:text-3xl md:text-4xl  
-                leading-snug
-                "
-            >
-              Prediccion del modelo
-              <span className="text-secundario"> TreeVision&nbsp;AI</span>
+            <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
+              Predicción del modelo{" "}
+              <span className="text-secundario">TreeVision AI</span>
             </h2>
-            {/* Subrayado  */}
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
-          {/*Componente para mostrar el resultado de la predicción*/}
+
+          {/* Tabla de resultados */}
           <ImageResultTable result={result} />
         </div>
       </section>
-      {/* componente de pasos */}
-      <div ref={stepsRef} className="px-4 pt-10">
-        <StepsSection />
+
+      {/* Sección de pasos (en la parte inferior) */}
+      <div className="px-4 pt-10">
+        {/* triggerHighlight se pasa como prop para que StepsSection lo use al hacer clic */}
+        <StepsSection onStepClick={triggerHighlight} />
       </div>
     </main>
   );

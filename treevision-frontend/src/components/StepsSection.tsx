@@ -11,6 +11,7 @@ import {
 } from "react-icons/md";
 import { motion } from "framer-motion";
 
+// Lista de pasos con íconos y texto
 const steps = [
   {
     step: 1,
@@ -26,7 +27,7 @@ const steps = [
   },
   {
     step: 3,
-    title: 'Haz clic en el boton "Analizar imagen".',
+    title: 'Haz clic en el botón "Analizar imagen".',
     desc: "El modelo comenzará a procesar la foto usando visión por computadora e IA.",
     icon: <MdPlayCircle size={34} className="text-secundario" />,
   },
@@ -50,7 +51,11 @@ const steps = [
   },
 ] as const;
 
-export default function StepsSection() {
+type Props = {
+  onStepClick?: () => void;
+};
+
+export default function StepsSection({ onStepClick }: Props) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 40 }}
@@ -64,12 +69,10 @@ export default function StepsSection() {
         initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: false, amount: 0.1 }}
         className="max-w-6xl mx-auto py-4 px-4"
       >
         <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
-          Pasos para usar el modelo&nbsp;
-          <span className="text-secundario">TreeVision&nbsp;AI</span>
+          Pasos para usar el modelo <span className="text-secundario">TreeVision&nbsp;AI</span>
         </h2>
         <motion.div
           initial={{ scaleX: 0 }}
@@ -79,50 +82,46 @@ export default function StepsSection() {
         />
       </motion.div>
 
-      {/* Grid de tarjetas */}
+      {/* Tarjetas de pasos */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-12">
         {steps.map((item) => (
-          <motion.div
+          <button
             key={item.step}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: item.step * 0.1 }}
-            viewport={{ once: false, amount: 0.1 }}
-            whileHover={{ scale: 1.03 }}
-            className="relative bg-secundario/10 border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 group"
+            onClick={onStepClick}
+            className="text-left"
           >
-            {/* Círculo con número animado */}
             <motion.div
-              className="absolute -top-5 left-1/2 -translate-x-1/2"
-              animate={{ y: [0, -4, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.8,
-                ease: "easeInOut",
-              }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: item.step * 0.1 }}
+              whileHover={{ scale: 1.03 }}
+              viewport={{ once: false, amount: 0.1 }}
+              className="relative bg-secundario/10 border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 group"
             >
               <motion.div
-                className="w-12 h-12 bg-secundario text-white flex items-center justify-center text-xl font-bold rounded-full shadow-lg ring-4 ring-white"
-                whileHover={{ scale: 1.2, rotate: 10 }}
-                transition={{ type: "spring", stiffness: 400 }}
+                className="absolute -top-5 left-1/2 -translate-x-1/2"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
               >
-                {item.step}
+                <motion.div
+                  className="w-12 h-12 bg-secundario text-white flex items-center justify-center text-xl font-bold rounded-full shadow-lg ring-4 ring-white"
+                  whileHover={{ scale: 1.2, rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  {item.step}
+                </motion.div>
               </motion.div>
+              <div className="mt-8 flex justify-center">{item.icon}</div>
+              <div className="mt-3 text-center px-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-secundario inline-block pb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-700 leading-relaxed tracking-wide max-w-xs mx-auto">
+                  {item.desc}
+                </p>
+              </div>
             </motion.div>
-
-            {/* Ícono representativo */}
-            <div className="mt-8 flex justify-center">{item.icon}</div>
-
-            {/* Texto */}
-            <div className="mt-3 text-center px-2">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-secundario inline-block pb-1">
-                {item.title}
-              </h3>
-              <p className="text-sm text-gray-700 leading-relaxed tracking-wide max-w-xs mx-auto">
-                {item.desc}
-              </p>
-            </div>
-          </motion.div>
+          </button>
         ))}
       </div>
     </motion.section>
