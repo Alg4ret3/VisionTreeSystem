@@ -53,7 +53,7 @@ export default function PageModelo() {
     setFile(selected);
     setPreviewUrl(URL.createObjectURL(selected));
 
-    // Reiniciar resultado a estado vacío (✅ corrección aquí)
+    // Reiniciar resultado a estado vacío
     setResult({
       especie: "",
       nombre: "",
