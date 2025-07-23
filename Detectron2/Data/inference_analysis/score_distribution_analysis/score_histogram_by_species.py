@@ -25,7 +25,7 @@ os.makedirs(carpeta_salida, exist_ok=True)
 
 # Colores personalizados por especie
 colores_especies = {
-    'Arrayan': 'purple',
+    'Laurel Blanco': 'purple',
     'Cipres': 'red',
     'Pino': 'gold',
     'Palo Santo': 'blue'
@@ -42,11 +42,15 @@ if n == 1:
 # Crear los subgráficos
 for ax, (especie, scores) in zip(axs, scores_por_especie.items()):
     color = colores_especies.get(especie, 'gray')
-    ax.hist(scores, bins=10, range=(0.0, 1.0), color=color, edgecolor='black')
+    bins = np.arange(0.0, 1.05, 0.05)
+    ax.hist(scores, bins=bins, color=color, edgecolor='black')
+
+    ax.axvline(0.75, color='orange', linestyle=':', linewidth=2, label='Score mínimo aceptado (0.75)')
     ax.set_title(f'{especie} - Distribución de Scores')
     ax.set_xlabel('Score de Confianza')
     ax.set_ylabel('Cantidad de Imágenes')
     ax.grid(True, linestyle='--', alpha=0.5)
+    ax.legend()
 
 # Ajustar diseño y guardar
 plt.tight_layout()

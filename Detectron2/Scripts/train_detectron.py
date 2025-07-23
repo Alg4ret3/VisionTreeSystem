@@ -6,18 +6,18 @@ from detectron2.config import get_cfg
 from detectron2 import model_zoo
 
 def register_coco_dataset():
-    # Registro del dataset COCO bajo el nombre personalizado 'tree_detection'
+    # Registro del dataset COCO bajo el nombre personalizado 'tree_detection2'
     register_coco_instances(
-        "tree_detection",  # Nuevo nombre del dataset
+        "tree_detection2",  # Nuevo nombre del dataset
         {},
         r"E:\ML\Detectron2\Scripts\model_dataset_coco.json",  # Carpeta con del dataset en formato COCO
         r"E:\ML\Detectron2\Data\raw_images"  # Carpeta con las imágenes
     )
     
     # Establezco las clases manualmente
-    MetadataCatalog.get("tree_detection").set(thing_classes=["Cipres", "PaloSanto", "Pino", "Arrayan"])
+    MetadataCatalog.get("tree_detection2").set(thing_classes=["Cipres", "PaloSanto", "Pino", "LaurelBlanco"])
     print("Dataset registrado correctamente.")
-    print("Clases en el dataset:", MetadataCatalog.get("tree_detection").thing_classes)
+    print("Clases en el dataset:", MetadataCatalog.get("tree_detection2").thing_classes)
 
 def train_model():
     # Crear un objeto de configuración para el entrenamiento
@@ -30,7 +30,7 @@ def train_model():
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 4  # El número de clases en el dataset
     
     # Ruta al archivo que contiene el dataset
-    cfg.DATASETS.TRAIN = ("tree_detection",)
+    cfg.DATASETS.TRAIN = ("tree_detection2",)
     cfg.DATASETS.TEST = ()  # No usar conjunto de prueba por ahora
     
     # Configurar los parámetros de entrenamiento
@@ -43,7 +43,7 @@ def train_model():
     cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.7  # Umbral para detección
     
     # Directorio donde guardar los resultados del modelo entrenado
-    cfg.OUTPUT_DIR = "./model_weights2"
+    cfg.OUTPUT_DIR = "./model_weights3"
     os.makedirs(cfg.OUTPUT_DIR, exist_ok=True)
     
     # Entrenador para el modelo

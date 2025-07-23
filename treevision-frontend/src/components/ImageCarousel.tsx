@@ -86,7 +86,7 @@ export default function ImageCarousel() {
             open={!!selectedImage}
             onClose={() => setSelectedImage(null)}
             // Fondo borroso y translúcido detrás del modal
-            className="fixed inset-0 z-50 flex items-center justify-center bg-emerald-200/30 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/60 backdrop-blur-sm"
           >
             {/* Fondo clickeable para cerrar en móviles */}
             <div

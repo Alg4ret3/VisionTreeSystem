@@ -25,7 +25,7 @@ El Carpeta está compuesto por dos subcomponentes principales:
 - **Objetivo:** Observar si el modelo mantiene scores consistentes por especie a través de múltiples imágenes.
 - **Salida:** Imágenes `.png` por especie, mostrando cómo varía el score de confianza imagen por imagen.
 - **Colores usados por especie:**
-  - Arrayan → morado
+  - Laurel Blanco → morado
   - Cipres → rojo
   - Pino → amarillo
   - Palo Santo → azul

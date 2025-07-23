@@ -11,7 +11,7 @@ from detectron2.data import MetadataCatalog
 # CONFIGURACIÓN DE RUTAS
 # ===============================
 # Ruta del modelo ya entrenado
-MODEL_PATH = r"E:\ML\Detectron2\Scripts\model_weights2\TreeVisionModel.pth"
+MODEL_PATH = r"E:\ML\Detectron2\Scripts\model_weights3\TreeVisionModel.pth"
 
 # Carpeta donde están las imágenes de validación que quiero evaluar
 IMAGE_FOLDER = r"E:\ML\Detectron2\Data\validation_images"
@@ -24,7 +24,7 @@ os.makedirs(RESULTS_FOLDER, exist_ok=True)  # Me aseguro que exista la carpeta d
 # DEFINICIÓN DE CLASES Y COLORES
 # ===============================
 # Nombres de las clases que entrené
-CLASS_NAMES = ["Cipres", "Palo Santo", "Pino", "Arrayan"]
+CLASS_NAMES = ["Cipres", "Palo Santo", "Pino", "Laurel Blanco"]
 DATASET_NAME = "inference_only_dataset"
 
 # Colores fuertes para cada clase, definidos en formato BGR para OpenCV
@@ -32,7 +32,7 @@ CLASS_COLORS = {
     0: (0, 0, 255),       # Rojo fuerte para Cipres
     1: (255, 0, 0),       # Azul fuerte para Palo Santo
     2: (0, 255, 255),     # Amarillo fuerte para Pino
-    3: (128, 0, 128)      # Morado fuerte para Arrayan 
+    3: (128, 0, 128)      # Morado fuerte para LaurelBlanco" 
 }
 
 # Inicializo contadores para nombrar cada imagen con su clase y número (por ejemplo, CIPRES_0, CIPRES_1, etc.)

@@ -25,7 +25,7 @@ os.makedirs(carpeta_salida, exist_ok=True)
 
 # Colores personalizados
 colores_especies = {
-    'Arrayan': 'purple',
+    'Laurel Blanco': 'purple',
     'Cipres': 'red',
     'Pino': 'gold',
     'Palo Santo': 'blue'
@@ -50,6 +50,7 @@ for ax, (especie, scores) in zip(axs, scores_por_especie.items()):
     color = colores_especies.get(especie, 'gray')
 
     ax.plot(x, y, marker='o', linestyle='-', color=color, label='Score')
+    ax.axhline(0.75, color='orange', linestyle=':', linewidth=2, label='Score minimo aceptado 0.75')
     ax.axhline(media, color='black', linestyle='--', label=f'Media: {media:.2f}')
     ax.set_title(f'{especie} - Score por Imagen\nMin: {minimo:.2f}, Max: {maximo:.2f}, STD: {std_dev:.2f}')
     ax.set_xlabel('Número de Imagen')

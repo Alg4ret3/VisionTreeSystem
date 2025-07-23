@@ -29,9 +29,9 @@ const TECH_SHEETS: Record<string, Record<string, string>> = {
     Usos: "Madera, setos cortaviento, ornamental, simbología funeraria.",
     "Estado de Conservación": "Preocupación Menor (LC) – IUCN",
   },
-  Arrayán: {
+  "Laurel Blanco": {
     "Nombre Científico": "Luma apiculata",
-    "Nombre Común": "Arrayán, Palo Colorado, Temu",
+    "Nombre Común": "Laurel , Palo Colorado, Temu",
     Descripción:
       "Árbol de corteza canela lisa que se desprende en placas delgadas; hojas perennes pequeñas y aromáticas.",
     Hábitat:
@@ -80,7 +80,7 @@ export default function ImageResultTable({ result }: Props) {
   const rawScore = result.score?.replace("%", "") ?? "";
   const scoreNum = parseFloat(rawScore);
   const hasScore = !isNaN(scoreNum);
-  const isLowScore = !hasScore || scoreNum < 80;
+  const isLowScore = !hasScore || scoreNum < 75;
   const showWarning = !especie || isLowScore;
 
   if (showWarning) {

@@ -14,7 +14,7 @@ from detectron2 import model_zoo
 from detectron2.data import MetadataCatalog
 from contextlib import asynccontextmanager  # Para manejar ciclo de vida con FastAPI
 # === Clases entrenadas en el modelo personalizado ===
-CLASS_NAMES = ["Ciprés", "Palo Santo", "Pino", "Arrayán"]
+CLASS_NAMES = ["Ciprés", "Palo Santo", "Pino", "Laurel Blanco"]
 
 # === Ruta del modelo dentro del contenedor Docker ===
 MODEL_FILENAME = "TreeVisionModel.pth"
@@ -27,7 +27,7 @@ predictor = None
 def descargar_modelo():
     if not os.path.exists(MODEL_PTH_PATH):
         print(f"Descargando modelo desde Hugging Face...")
-        url = "https://huggingface.co/Alg4ret3/TreeVisionModel/resolve/main/TreeVisionModel.pth"
+        url = "https://huggingface.co/Alg4ret3/TreeVisionML/resolve/main/TreeVisionModel.pth"
         
         try:
             os.makedirs(os.path.dirname(MODEL_PTH_PATH), exist_ok=True)
@@ -79,7 +79,7 @@ async def lifespan(app: FastAPI):
 # === Instancia principal de la API ===
 app = FastAPI(
     title="TreeVisionAPI: Detección Inteligente de Especies Arbóreas",
-    description="API robusta de visión por computador basada en Detectron2, diseñada para identificar automáticamente especies de árboles como Ciprés, Pino, Palo Santo y Arrayán a partir de imágenes. Ideal para proyectos ecológicos, monitoreo forestal y aplicaciones educativas.",
+    description="API robusta de visión por computador basada en Detectron2, diseñada para identificar automáticamente especies de árboles como Ciprés, Pino, Palo Santo y Laurel Blanco a partir de imágenes. Ideal para proyectos ecológicos, monitoreo forestal y aplicaciones educativas.",
     lifespan=lifespan
 )
 
