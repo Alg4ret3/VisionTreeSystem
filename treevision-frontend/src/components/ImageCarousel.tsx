@@ -12,34 +12,35 @@ const images = [
   {
     src: "/PageExplorer/CasaDelArte.jpeg",
     title: "Casa del Arte",
-    description: "Un centro cultural que celebra la expresión artística..."
+    description: "Espacio cultural y comunitario dedicado a la expresión artística y el aprendizaje colectivo. Aquí se promueven talleres, exposiciones y actividades que fortalecen la identidad local y el vínculo con la naturaleza."
   },
   {
     src: "/PageExplorer/Image1.jpeg",
     title: "Kiosco",
-    description: "Recorre paisajes llenos de vida mientras conectas..."
+    description: "Lugar ideal para compartir momentos en familia o con amigos. Perfecto para disfrutar de un picnic rodeado de naturaleza, descansar tras una caminata o simplemente contemplar el entorno."
   },
   {
     src: "/PageExplorer/Img2.jpeg",
-    title: "Jardín de la memoria",
-    description: "Un oasis verde con cientos de especies vegetales..."
+    title: "Jardín de la Memoria",
+    description: "Espacio simbólico que honra la memoria de las víctimas del conflicto armado en Colombia. Un jardín de paz y reflexión, rodeado de flora nativa que representa la vida, la resistencia y la esperanza."
   },
   {
     src: "/PageExplorer/Lago.jpeg",
-    title: "Lago del duende",
-    description: "Relájate junto al agua en un entorno sereno..."
+    title: "Lago del Duende",
+    description: "En medio del sendero natural se encuentra el encantador Lago del Duende, un espejo de agua rodeado de vegetación que invita al descanso, la contemplación y la conexión con las leyendas ancestrales del territorio."
   },
   {
     src: "/PageExplorer/MIrador.jpeg",
     title: "Mirador Panorámico",
-    description: "Una vista espectacular desde las alturas..."
+    description: "Desde este punto elevado podrás apreciar una vista impresionante del Parque Ambiental Chimayoy. Una oportunidad para contemplar la riqueza del paisaje y todo lo que este espacio natural ofrece."
   },
   {
     src: "/PageExplorer/VIvero.jpeg",
     title: "Vivero Educativo",
-    description: "Aprende sobre plantas nativas y cómo cuidarlas..."
+    description: "Un espacio donde se cuidan y adaptan especies vegetales nativas, y en ocasiones también fauna que llega desde otras regiones. Aquí se promueve la educación ambiental y el respeto por la vida."
   }
 ];
+
 
 // Componente principal que muestra la galería
 export default function ImageCarousel() {
@@ -101,8 +102,8 @@ export default function ImageCarousel() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="relative z-10 bg-emerald-50 rounded-xl p-6 max-w-xl w-[90%] mx-auto shadow-2xl"
-            >
+              className="relative z-10 bg-blanco rounded-xl p-6 max-w-xl w-[90%] mx-auto shadow-2xl ">
+            
               {/* Botón de cierre */}
               <button
                 onClick={() => setSelectedImage(null)}

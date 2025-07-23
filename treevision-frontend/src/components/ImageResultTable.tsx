@@ -16,63 +16,47 @@ interface Props {
 const TECH_SHEETS: Record<string, Record<string, string>> = {
   Ciprés: {
     "Nombre Científico": "Cupressus sempervirens",
-    "Nombre Común": "Ciprés Mediterráneo",
-    Descripción:
-      "Conífera perenne de porte columnar o piramidal, follaje denso verde oscuro y corteza gris. Resistente a la sequía.",
-    Hábitat: "Regiones mediterráneas con suelos bien drenados y veranos secos.",
-    Distribución:
-      "Sur de Europa, Asia Menor y Norte de África; extensamente cultivado en climas templados.",
-    "Altura Promedio": "20‑30 m (máx. 35 m)",
-    Longevidad: "Hasta 1.000 años en condiciones óptimas",
-    Hoja: "Acículas escuamiformes adpresas al ramillo, 2‑5 mm.",
-    Fruto: "Gálbulas globosas de 2‑3 cm que maduran en 2 temporadas.",
-    Usos: "Madera, setos cortaviento, ornamental, simbología funeraria.",
-    "Estado de Conservación": "Preocupación Menor (LC) – IUCN",
+    "Nombre Común": "Ciprés",
+    "Altura": "Puede alcanzar hasta 30 metros.",
+    "Uso": "Apreciado por su valor ornamental y utilizado en procesos de reforestación.",
+    "Hoja": "Hojas pequeñas, escuamiformes, perennes y de color verde intenso.",
+    "Floración": "Presenta brotes pequeños en el extremo de las ramas.",
+    "Fruto": "Pequeñas piñas leñosas llamadas conos, no son comestibles.",
+    "Cuidados": "Es una especie resistente que no requiere cuidados especiales.",
   },
-  "Laurel Blanco": {
-    "Nombre Científico": "Luma apiculata",
-    "Nombre Común": "Laurel , Palo Colorado, Temu",
-    Descripción:
-      "Árbol de corteza canela lisa que se desprende en placas delgadas; hojas perennes pequeñas y aromáticas.",
-    Hábitat:
-      "Bosques templados y húmedos, a orillas de cursos de agua y lagos.",
-    Distribución: "Zona sur de Chile y Argentina (Patagonia).",
-    "Altura Promedio": "10‑15 m (máx. 20 m)",
-    Longevidad: "Siglos (crecimiento lento)",
-    Hoja: "Ovaladas, 1‑2 cm, ápice mucronado, margen entero.",
-    Fruto: "Baya globosa negra‑purpúrea, comestible, Ø 1 cm.",
-    Usos: "Ornamental, apícola (floración melífera), madera dura para tallas.",
-    "Estado de Conservación": "Preocupación Menor (LC) – IUCN",
+   Pino: {
+    "Nombre Científico": "Pinus",
+    "Nombre Común": "Pino",
+    "Altura": "Puede alcanzar hasta 60 metros de altura y un DAP (diámetro a la altura del pecho) de 100 cm.",
+    "Descripción General": "Árbol de gran porte, con tronco cónico, recto y robusto. Presenta una copa alargada de forma cónica y crecimiento monopódico (con un solo eje principal).",
+    "Corteza" : "Externa De color café y con grietas profundas \nInterna De tonalidad crema rosáceo, segrega una resina transparente característica.",
+    "Hojas": "Aciculares (en forma de aguja), agrupadas en fascículos de tres hojas.",
+    "Floración": "Masculinas Pequeñas estructuras con estambres dispuestos en forma de peine \nFemeninas Ubicadas en conos o estróbilos, responsables de la formación del fruto.",
+    "Fruto": "Cono o estróbilo leñoso de gran tamaño, similar a una piña. Contiene semillas aladas que no son comestibles.",
   },
-  Pino: {
-    "Nombre Científico": "Pinus spp.",
-    "Nombre Común": "Pino (genérico)",
-    Descripción:
-      "Género de coníferas con acículas agrupadas en fascículos de 2‑5, conos leñosos y resina aromática.",
-    Hábitat: "Regiones templadas y frías, desde nivel del mar hasta 4.000 m.",
-    Distribución: "Hemisferio Norte (América, Europa, Asia, Norte de África).",
-    "Altura Promedio": "15‑45 m (depende de la especie)",
-    Longevidad: "200‑800 años; algunos (> 4.000 años).",
-    Hoja: "Acículas de 3‑35 cm según la especie, persistencia 2‑6 años.",
-    Fruto: "Piñas leñosas que liberan semillas aladas (piñones).",
-    Usos: "Madera, pulpa de papel, resina, alimentación (piñones), reforestación.",
-    "Estado de Conservación": "Varía por especie, la mayoría LC.",
-  },
+  
   "Palo Santo": {
     "Nombre Científico": "Bursera graveolens",
-    "Nombre Común": "Palo Santo, Holy Wood",
-    Descripción:
-      "Árbol aromático de corteza gris y madera rica en aceites esenciales de olor dulce y balsámico.",
-    Hábitat: "Bosques secos tropicales con estaciones marcadas.",
-    Distribución: "Costa pacífica de Ecuador, Perú y parte de Colombia.",
-    "Altura Promedio": "8‑10 m (máx. 12 m)",
-    Longevidad: "60‑90 años",
-    Hoja: "Compuesta imparipinnada de 5‑7 folíolos elípticos.",
-    Fruto:
-      "Drupa verde que al madurar se abre exponiendo una semilla negra cubierta de arilo rojo.",
-    Usos: "Incienso, aceites esenciales, medicina tradicional, artesanía.",
-    "Estado de Conservación": "Casi Amenazado (NT) – IUCN",
+    "Nombre Común": "Palo Santo",
+    "Altura": "Puede alcanzar entre 4 a 10 metros de altura y un DAP (diámetro a la altura del pecho) entre 20 a 50 cm, puede ser mayor en ejemplares viejos.",
+    "Origen y Tipo de Planta": "Nativo de regiones de Ecuador, Perú, Colombia y el norte de Sudamérica.\nEs un árbol mediano, caducifolio, que pierde sus hojas en época seca como mecanismo de adaptación climática.",
+    "Corteza": "Lisa a escamosa, de color gris o marrón claro. Muy aromática al cortarse.",
+    "Hojas": "Dispuestas de forma alterna sobre las ramas. Son hojas compuestas de tipo pinnado, formadas por entre 5 y 11 foliolos (pequeñas hojas unidas a un eje central), lo que le da una apariencia plumosa.",
+    "Floración": "Pequeñas, blanquecinas, agrupadas.",
+    "Fruto": "Drupa seca, verdosa al inicio y marrón al madurar."
   },
+    "Laurel Blanco": {
+    "Nombre Científico": "Ocotea sp",
+    "Nombre Común": "Laurel Blanco, Laurel de Montaña, Laurel Andino",
+    "Altura": "Puede alcanzar entre 10 y 25 metros de altura.",
+    "Descripción y Tipo de Planta": "Árbol nativo de follaje perenne o parcialmente caducifolio. Su tronco puede ser recto o ramificado, con corteza fisurada o partida, frecuentemente cubierta de musgos o líquenes. Presenta una copa densa, que puede ser redondeada o alargada.",
+    "Corteza": "Externa: De color café con grietas profundas.\n Interna: De tono crema rosáceo, segrega una resina transparente característica.",
+    "Hojas": "Simples, alternas, de forma elíptica a oblanceolada, de color verde brillante. Miden entre 5 y 15 cm de largo.",
+    "Floración": "Flores pequeñas, de color verdoso o blanquecino, agrupadas en panículas (ramilletes).",
+    "Fruto": "Tipo drupa, pequeño y redondeado, de apariencia similar a una aceituna.",
+
+  },
+  
 };
 
 export default function ImageResultTable({ result }: Props) {
