@@ -6,6 +6,8 @@ import ImageResultTable from "@/components/ImageResultTable";
 import AnalyzeButton from "@/components/AnalyzeButton";
 import StepsSection from "@/components/StepsSection";
 import ImageUploader from "@/components/ImageUploader";
+import NPSDashboard from "@/components/NpsDashboard";
+import NPSResponses from "@/components/NpsResponses";
 import { motion } from "framer-motion";
 
 export default function PageModelo() {
@@ -118,7 +120,7 @@ export default function PageModelo() {
   // Renderizado
   // -----------------------------
   return (
-    <main className="min-h-screen bg-[#F3F7FF] flex flex-col items-center gap-12 py-10 px-4">
+    <main className="min-h-screen bg-blanco flex flex-col items-center gap-12 py-10 px-4">
       {/* Sección principal */}
       <section className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
         {/* Columna izquierda: uploader */}
@@ -131,7 +133,7 @@ export default function PageModelo() {
               ? {
                   backgroundColor: [
                     "#ffffff",
-                    "#bbf7d0", // Verde suave
+                    "#bbf7d0",
                     "#ffffff",
                     "#bbf7d0",
                     "#ffffff",
@@ -185,14 +187,26 @@ export default function PageModelo() {
           </div>
 
           {/* Tabla de resultados */}
-          <ImageResultTable result={result} />
+          <div className="hidden md:block overflow-y-auto max-h-[430px] p-4 bg-white rounded-lg scroll-secundario">
+            <ImageResultTable result={result} />
+          </div>
+
+          {/* Solo móvil: tabla sin contenedor */}
+          <div className="md:hidden">
+            <ImageResultTable result={result} />
+          </div>
         </div>
       </section>
 
-      {/* Sección de pasos (en la parte inferior) */}
+      {/* Sección de pasos */}
       <div className="px-4 pt-10">
         {/* triggerHighlight se pasa como prop para que StepsSection lo use al hacer clic */}
         <StepsSection onStepClick={triggerHighlight} />
+      </div>
+      {/* Sección de NPS (en la parte inferior) */}
+      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
+        <NPSResponses />
+        <NPSDashboard />
       </div>
     </main>
   );
