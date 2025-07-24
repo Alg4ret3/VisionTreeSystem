@@ -7,7 +7,7 @@ from tqdm import tqdm
 # Defino rutas principales de imágenes, anotaciones y salida del JSON
 IMAGES_DIR = r"E:\ML\Detectron2\Data\raw_images"
 ANNOTATIONS_DIR = r"E:\ML\Detectron2\Data\annotations_xml"
-OUTPUT_JSON = "model_dataset_coco.json"
+OUTPUT_JSON = "model_dataset_coco2.json"
 
 # Variables globales necesarias para el formato COCO
 class_name_to_id = {}
