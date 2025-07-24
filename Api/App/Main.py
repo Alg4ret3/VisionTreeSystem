@@ -27,7 +27,7 @@ predictor = None
 def descargar_modelo():
     if not os.path.exists(MODEL_PTH_PATH):
         print(f"Descargando modelo desde Hugging Face...")
-        url = "https://huggingface.co/Alg4ret3/TreeVisionML/resolve/main/TreeVisionModel.pth"
+        url = "https://huggingface.co/Alg4ret3/TreeVisionModel_4/resolve/main/TreeVisionModel.pth"
         
         try:
             os.makedirs(os.path.dirname(MODEL_PTH_PATH), exist_ok=True)
