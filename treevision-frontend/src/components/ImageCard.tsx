@@ -49,9 +49,12 @@ export default function ImageCard({ img, index, onClick }: ImageCardProps) {
 
       {/* Texto descriptivo */}
       <div className="p-4">
-        <h3 className="text-lg font-bold text-primario mb-1">
-          {img.title}
-        </h3>
+          <div className="max-w-6xl mx-auto py-4 px-4">
+            <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug secundario">
+               <span className="text-primario"> {img.title}</span>
+            </h2>
+            <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
+          </div>
         <p className="text-sm text-gray-700 leading-snug">
           {img.description}
         </p>

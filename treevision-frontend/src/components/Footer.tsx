@@ -110,7 +110,7 @@ export default function Footer() {
           className="text-center font-poppins font-extralight text-gray-400 text-sm"
         >
           © {year} –{" "}
-          <span className="text-white font-normal">Tree‑Vision AI</span>
+          <span className="text-white font-normal">TreeVision AI</span>
         </motion.span>
       </div>
     </motion.footer>
