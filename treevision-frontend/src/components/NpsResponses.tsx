@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/utils/supabaseClient";
 import SubmitButton from "@/components/SubmitButton";
 
@@ -75,15 +75,16 @@ export default function NPSResponses() {
           ];
           return (
             <motion.button
-              key={`${num}-${score === num}`} // Fuerza re-render para animación
+              key={`${num}-${score === num}`}
               onClick={() => setScore(num)}
               whileTap={{ rotate: [0, 10, -10, 5, -5, 0] }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
-              className={`flex flex-col items-center justify-center w-12 h-14 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                score === num
-                  ? "ring-2 ring-offset-2 ring-secundario scale-110"
-                  : ""
-              } ${getScoreColor(num)}`}
+              className={`flex flex-col items-center justify-center w-12 h-14 rounded-lg text-sm font-semibold transition-all duration-700 ease-in-out transition-shadow 
+                ${
+                  score === num
+                    ? "ring-2 ring-offset-2 ring-secundario scale-110"
+                    : ""
+                } ${getScoreColor(num)}`}
             >
               <span className="text-xl">{emojis[num]}</span>
               <span className="text-xs font-bold">{num}</span>
@@ -119,15 +120,19 @@ export default function NPSResponses() {
       </div>
 
       {/*  Mensaje de agradecimiento animado */}
-      {submitted && (
-        <motion.p
-          className="mt-4 text-center text-green-600 text-sm font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          ¡Gracias por tu respuesta!
-        </motion.p>
-      )}
+      <AnimatePresence>
+        {submitted && (
+          <motion.p
+            className="mt-4 text-center text-green-600 text-sm font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -10 }} // ← animación de salida
+            transition={{ duration: 0.5 }} // ← duración de entrada/salida
+          >
+            ¡Gracias por tu respuesta!
+          </motion.p>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

@@ -187,7 +187,7 @@ export default function PageModelo() {
           </div>
 
           {/* Tabla de resultados */}
-          <div className="hidden md:block overflow-y-auto max-h-[430px] p-4 bg-white rounded-lg scroll-secundario">
+          <div className="hidden md:block overflow-y-auto max-h-[500px] p-4 bg-white rounded-lg scroll-secundario">
             <ImageResultTable result={result} />
           </div>
 

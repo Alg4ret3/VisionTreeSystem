@@ -25,11 +25,13 @@ const SubmitButton = ({
   const [confettiVisible, setConfettiVisible] = useState(false); // Controla si se ve el confetti
   const containerRef = useRef<HTMLDivElement>(null); // Referencia al contenedor para calcular su ancho
   const [width, setWidth] = useState(300); // Ancho del contenedor del confetti
+  const [height, setHeight] = useState(100); // Alto del contenedor del confetti
 
   // Efecto para capturar el ancho real del contenedor una vez montado
   useEffect(() => {
     if (containerRef.current) {
       setWidth(containerRef.current.offsetWidth);
+      setHeight(containerRef.current.offsetHeight); 
     }
   }, []);
 
@@ -56,7 +58,7 @@ const SubmitButton = ({
         <div className="absolute inset-0 pointer-events-none">
           <Confetti
             width={width}
-            height={100}
+            height={height}
             numberOfPieces={150}
             recycle={false}
             gravity={0.3}

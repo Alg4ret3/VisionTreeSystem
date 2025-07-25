@@ -2,15 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
-} from "recharts";
+import { BarChart, Bar, XAxis, ResponsiveContainer, Cell } from "recharts";
 import { supabase } from "@/utils/supabaseClient";
+import { LabelList } from "recharts";
 
 export default function NPSDashboard() {
   const [data, setData] = useState<{ score: number }[]>([]);
@@ -66,8 +60,8 @@ export default function NPSDashboard() {
         className="text-center mb-6"
       >
         <h2 className="text-[clamp(1.5rem,5vw,2.25rem)] font-extrabold tracking-tight text-primario">
-          Distribución de respuestas{" "}
-          <span className="text-secundario">NPS</span>
+          Nivel de satisfacción de clientes que usan{" "}
+          <span className="text-secundario">TreeVisionAI</span>
         </h2>
         <motion.div
           className="h-1 w-20 bg-secundario rounded-full mx-auto mt-2 origin-left"
@@ -82,15 +76,21 @@ export default function NPSDashboard() {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={chartData}>
             <XAxis dataKey="score" tick={{ fontSize: 12 }} stroke="#6b7280" />
-            <Tooltip
-              wrapperClassName="rounded-lg shadow-md"
-              contentStyle={{ fontSize: "14px", borderRadius: "10px" }}
-              labelStyle={{ fontWeight: "bold" }}
-            />
-            <Bar dataKey="count" radius={[6, 6, 0, 0]}>
+            <Bar
+              dataKey="count"
+              radius={[6, 6, 0, 0]}
+              isAnimationActive={true}
+              animationDuration={800}
+              animationBegin={200}
+            >
               {chartData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={getBarColor(entry.score)} />
               ))}
+              <LabelList
+                dataKey="count"
+                position="top"
+                style={{ fontSize: 12, fill: "#374151", fontWeight: "bold" }}
+              />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
