@@ -35,7 +35,7 @@ export default function ImageCard({ img, index, onClick }: ImageCardProps) {
       exit={{ opacity: 0, y: 40 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ scale: 1.04 }}
-      className="rounded-2xl overflow-hidden shadow-lg bg-white hover:bg-emerald-100 border transition-all cursor-pointer hover:shadow-xl"
+      className="rounded-2xl overflow-hidden shadow-lg bg-white hover:bg-emerald-50 border transition-all cursor-pointer hover:shadow-xl"
     >
       {/* Imagen principal */}
       <div className="relative w-full h-56">

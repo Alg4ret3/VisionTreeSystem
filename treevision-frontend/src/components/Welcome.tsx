@@ -25,7 +25,7 @@ export default function Welcome() {
     // Contenedor principal con imagen de fondo y altura de pantalla completa
     <div
       className="relative min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/welcome/Background.png')" }}
+      style={{ backgroundImage: "url('/welcome/Background.webp')" }}
     >
       {/* Capa oscura para mejorar el contraste del contenido */}
       <div className="absolute inset-0 backdrop-brightness-60 backdrop-blur-xs" />

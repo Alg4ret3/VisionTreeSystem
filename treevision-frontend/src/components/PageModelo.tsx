@@ -9,6 +9,8 @@ import ImageUploader from "@/components/ImageUploader";
 import NPSDashboard from "@/components/NpsDashboard";
 import NPSResponses from "@/components/NpsResponses";
 import { motion } from "framer-motion";
+import ImageCarousel from "@/components/ImageCarousel";
+import { useEffect } from "react";
 
 export default function PageModelo() {
   // -----------------------------
@@ -116,13 +118,20 @@ export default function PageModelo() {
 
   const disabled = !file || uploadProgress < 100 || isLoading;
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   // -----------------------------
   // Renderizado
   // -----------------------------
   return (
     <main className="min-h-screen bg-blanco flex flex-col items-center gap-12 py-10 px-4">
       {/* Sección principal */}
-      <section className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
+      <section
+        id="Principal"
+        className="w-full max-w-6xl grid md:grid-cols-2 gap-8 scroll-mt-28"
+      >
         {/* Columna izquierda: uploader */}
         <motion.div
           id="pasos"
@@ -203,8 +212,19 @@ export default function PageModelo() {
         {/* triggerHighlight se pasa como prop para que StepsSection lo use al hacer clic */}
         <StepsSection onStepClick={triggerHighlight} />
       </div>
+      {/* Sección de lugares turisticos */}
+      <div
+        id="lugares"
+        className="w-full max-w-6xl grid md:grid-cols-1 gap-8 scroll-mt-28"
+      >
+        <ImageCarousel bg-white />
+      </div>
+
       {/* Sección de NPS (en la parte inferior) */}
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8">
+      <div
+        id="calificacion-usuario"
+        className="w-full max-w-6xl grid md:grid-cols-2 gap-8 scroll-mt-28"
+      >
         <NPSResponses />
         <NPSDashboard />
       </div>
