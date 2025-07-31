@@ -223,7 +223,8 @@ export default function PageModelo() {
       {/* Sección de NPS (en la parte inferior) */}
       <div
         id="calificacion-usuario"
-        className="w-full max-w-6xl grid md:grid-cols-2 gap-8 scroll-mt-28"
+        className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 mt-0"
+        
       >
         <NPSResponses />
         <NPSDashboard />

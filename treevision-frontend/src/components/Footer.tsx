@@ -9,9 +9,9 @@ export default function Footer() {
 
   const links = [
     { href: "/", label: "Inicio" },
-    { href: "/modelo", label: "Modelo" },
-    { href: "/explorar", label: "Explorar" },
-    { href: "/sobre", label: "Proyecto" },
+    { href: "#Principal", label: "Identificar" },
+    { href: "#lugares", label: "Lugares" },
+    { href: "#calificacion-usuario", label: "Califícanos" },
   ];
 
   return (
