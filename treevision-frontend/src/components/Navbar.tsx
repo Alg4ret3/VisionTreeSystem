@@ -76,8 +76,8 @@ export default function Navbar() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Image
-              src="/PagePrincipal/TreeVisionWhite.svg"
-              alt="TreeVision Logo"
+              src="/PagePrincipal/VisionTreePasto.svg"
+              alt="VisionTreePasto Logo"
               width={220}
               height={40}
               priority

@@ -45,8 +45,8 @@ export default function Welcome() {
         >
           {/* Logo de la aplicación */}
           <Image
-            src="/welcome/Treevision.svg"
-            alt="TreeVision Logo"
+            src="/welcome/VisionTreePasto.svg"
+            alt="VisionTreePasto Logo"
             width={150}
             height={50}
             className="w-150 mx-auto animate-[fadeInUp_0.8s_ease-out_forwards]"
@@ -57,7 +57,7 @@ export default function Welcome() {
             <span className="text-black">Bienvenido a </span>
             <span className="text-xl sm:text-2xl font-extrabold text-secundario animate-glow">
               <Typewriter
-                words={["TreeVision AI"]}
+                words={["VisionTreePasto AI"]}
                 loop={0}
                 cursor
                 cursorStyle="|"

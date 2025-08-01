@@ -190,7 +190,7 @@ export default function PageModelo() {
           <div className="max-w-6xl mx-auto py-4 px-4">
             <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
               Predicción del modelo{" "}
-              <span className="text-secundario">TreeVision AI</span>
+              <span className="text-secundario">VisionTreePasto AI</span>
             </h2>
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>

@@ -7,7 +7,7 @@ import {
   MdPlayCircle,
   MdAccessTime,
   MdDone,
-  MdShare,
+  MdStarRate,
 } from "react-icons/md";
 import { motion } from "framer-motion";
 
@@ -44,11 +44,12 @@ const steps = [
     icon: <MdDone size={34} className="text-secundario" />,
   },
   {
-    step: 6,
-    title: "Comparte los resultados con otros.",
-    desc: "Difunde el conocimiento sobre las especies que identificaste compartiendo la información con tus amigos o comunidad.",
-    icon: <MdShare size={34} className="text-secundario" />,
-  },
+  step: 6,
+  title: "Califícanos.",
+  desc: "Dinos qué te pareció la identificación. Tu opinión nos ayuda a mejorar la precisión del modelo.",
+  icon: <MdStarRate size={34} className="text-secundario" />,
+}
+
 ] as const;
 
 type Props = {
@@ -72,7 +73,7 @@ export default function StepsSection({ onStepClick }: Props) {
         className="max-w-6xl mx-auto py-4 px-4"
       >
         <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
-          Pasos para usar el modelo <span className="text-secundario">TreeVision&nbsp;AI</span>
+          Pasos para usar el modelo <span className="text-secundario">VisionTreePasto&nbsp;AI</span>
         </h2>
         <motion.div
           initial={{ scaleX: 0 }}

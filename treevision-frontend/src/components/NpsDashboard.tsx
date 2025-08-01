@@ -61,7 +61,7 @@ export default function NPSDashboard() {
       >
         <h2 className="text-[clamp(1.5rem,5vw,2.25rem)] font-extrabold tracking-tight text-primario">
           Nivel de satisfacción de clientes que usan{" "}
-          <span className="text-secundario">TreeVisionAI</span>
+          <span className="text-secundario">VisionTreePasto AI</span>
         </h2>
         <motion.div
           className="h-1 w-20 bg-secundario rounded-full mx-auto mt-2 origin-left"

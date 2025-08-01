@@ -45,8 +45,8 @@ export default function NPSResponses() {
         className="text-center mb-6"
       >
         <h2 className="text-[clamp(1.5rem,5vw,2.25rem)] font-extrabold tracking-tight text-primario">
-          ¿Qué tan intuitivo y fácil de usar te pareció{" "}
-          <span className="text-secundario">TreeVision AI</span>?
+          ¿Qué tan fácil de usar te pareció {" "}
+          <span className="text-secundario">VisionTreePasto AI</span>?
         </h2>
 
         <motion.div
