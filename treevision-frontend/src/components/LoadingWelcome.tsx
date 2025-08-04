@@ -33,7 +33,7 @@ const LoadingScreen = () => {
             cx="32"
             cy="20"
             r="14"
-            fill="#66BB6A"
+            className="fill-secundario"
             animate={{ r: [13, 15, 13] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -51,7 +51,7 @@ const LoadingScreen = () => {
             cx="20"
             cy="26"
             r="7"
-            fill="#66BB6A"
+            className="fill-secundario"
             animate={{ cx: [20, 19, 21, 20], cy: [26, 25.5, 26.5, 26] }}
             transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -59,7 +59,7 @@ const LoadingScreen = () => {
             cx="44"
             cy="26"
             r="7"
-            fill="#66BB6A"
+            className="fill-secundario"
             animate={{ cx: [44, 45, 43, 44], cy: [26, 26.5, 25.5, 26] }}
             transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
           />
