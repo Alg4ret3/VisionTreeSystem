@@ -60,7 +60,7 @@ export default function Navbar() {
       <div className="absolute inset-0 bg-black/60 backdrop-brightness-50" />
 
       {/* Contenedor del navbar */}
-      <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
+      <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-1">
         {/* Logo principal */}
         <Link
           href="/"

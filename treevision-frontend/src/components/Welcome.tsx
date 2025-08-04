@@ -1,19 +1,30 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import LoadingScreen from "@/components/LoadingWelcome";
+
 
 export default function Welcome() {
   const router = useRouter(); // Hook de Next.js para navegación entre rutas
-
   // Función para redirigir a la página del modelo
   const handleStart = () => {
     router.push("/modelo");
   };
 
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/welcome/Background.webp";
+    img.onload = () => setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) return <LoadingScreen />;
 
   // Definición de variantes para animación de entrada con Framer Motion
   const cardVariants = {
