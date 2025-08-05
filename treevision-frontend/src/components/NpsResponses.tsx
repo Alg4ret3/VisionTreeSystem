@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/utils/supabaseClient";
 import SubmitButton from "@/components/SubmitButton";
+import Lottie from "lottie-react";
+import treeAnimation from "@/../public/animations/tree.json"; 
 
 //  Asigna colores según el score NPS
 const getScoreColor = (score: number) => {
@@ -45,7 +47,7 @@ export default function NPSResponses() {
         className="text-center mb-6"
       >
         <h2 className="text-[clamp(1.5rem,5vw,2.25rem)] font-extrabold tracking-tight text-primario">
-          ¿Qué tan fácil de usar te pareció {" "}
+          ¿Qué tan fácil de usar te pareció{" "}
           <span className="text-secundario">VisionTreePasto AI</span>?
         </h2>
 
@@ -58,7 +60,9 @@ export default function NPSResponses() {
       </motion.div>
 
       {/*  Botones de puntuación NPS del 0 al 10 */}
-      <div className="grid grid-cols-4 sm:grid-cols-11 gap-4 sm:gap-3 mb-6 justify-items-center">
+      <div className="grid grid-cols-5 gap-4 mb-6 justify-items-center">
+
+
         {[...Array(11).keys()].map((num) => {
           const emojis = [
             "😡",
@@ -108,7 +112,7 @@ export default function NPSResponses() {
         </p>
       </div>
 
-      {/*  Botón de enviar, más grande y centrado */}
+      {/*  Botón de enviar */}
       <div className="flex justify-center">
         <SubmitButton
           onClick={handleSubmit}
@@ -117,6 +121,14 @@ export default function NPSResponses() {
         >
           {submitted ? "Enviado" : "Enviar"}
         </SubmitButton>
+      </div>
+      <div className="mt-6 flex justify-center">
+        <Lottie
+          animationData={treeAnimation}
+          loop
+          autoplay
+          className="w-50 h-50" 
+        />
       </div>
 
       {/*  Mensaje de agradecimiento animado */}

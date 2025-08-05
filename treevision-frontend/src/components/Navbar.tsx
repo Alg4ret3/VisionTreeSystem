@@ -1,45 +1,51 @@
-"use client"; // Este componente se ejecuta en el cliente
+"use client"; // Indico que este componente se ejecuta en el cliente (Next.js)
 
+// Importación de dependencias
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Home, Leaf, Map, ThumbsUp, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Home, Leaf, Map, ThumbsUp, Menu, X } from "lucide-react"; // Íconos para la navegación
+import { motion, AnimatePresence } from "framer-motion"; // Animaciones
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null); // Estado para manejar sección activa
+  // Estados principales
+  const [open, setOpen] = useState(false); // Maneja si el menú móvil está abierto o cerrado
+  const [activeSection, setActiveSection] = useState<string | null>(null); // Guarda la sección activa según el scroll
 
-  const handleNavigate = () => setOpen(false); // Cierra el menú móvil
+  // Función para cerrar el menú cuando se navega
+  const handleNavigate = () => setOpen(false);
 
-  const bgImage = "bg-[url('/PagePrincipal/Background.webp')] bg-cover bg-center";
+  // Clases para el fondo del header
+  const bgImage =
+    "bg-[url('/PagePrincipal/Background.webp')] bg-cover bg-center";
   const headerClass = `${bgImage} text-white`;
 
-  // Efecto que detecta la sección visible con IntersectionObserver
+  // Detecta la sección activa con IntersectionObserver
   useEffect(() => {
-    const sectionIds = ["Principal", "lugares", "calificacion-usuario"];
+    const sectionIds = ["Principal", "lugares", "calificacion-usuario"]; // IDs de las secciones que queremos observar
 
+    // Configuro el observer
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
+            setActiveSection(`#${entry.target.id}`); // Guardo el ID activo
             break;
           }
         }
       },
       {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.6, // 60% visible para activar
+        threshold: 0.6, // Activo cuando la sección es visible en un 60%
       }
     );
 
+    // Observo cada sección
     sectionIds.forEach((id) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
 
+    // Limpio el observer al desmontar
     return () => {
       sectionIds.forEach((id) => {
         const section = document.getElementById(id);
@@ -49,24 +55,24 @@ export default function Navbar() {
   }, []);
 
   return (
-    // Navbar principal animado al montar
+    // Header principal con animación al cargar
     <motion.header
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`sticky top-0 z-50 shadow-md relative transition-colors duration-300 ${headerClass}`}
     >
-      {/* Capa oscura encima del fondo para mejor contraste */}
+      {/* Capa oscura encima del fondo para mejorar contraste */}
       <div className="absolute inset-0 bg-black/60 backdrop-brightness-50" />
 
       {/* Contenedor del navbar */}
       <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-1">
-        {/* Logo principal */}
+        {/* Logo del proyecto */}
         <Link
           href="/"
           onClick={() => {
             handleNavigate();
-            setActiveSection("/");
+            setActiveSection("/"); // Resetea la sección activa
           }}
           className="flex items-center gap-2"
         >
@@ -85,7 +91,7 @@ export default function Navbar() {
           </motion.div>
         </Link>
 
-        {/* Botón hamburguesa animado (solo visible en móvil) */}
+        {/* Botón hamburguesa (solo móvil) */}
         <motion.button
           onClick={() => setOpen(!open)}
           aria-label="Abrir menú"
@@ -96,7 +102,7 @@ export default function Navbar() {
           {open ? <X size={24} /> : <Menu size={24} />}
         </motion.button>
 
-        {/* Enlaces para escritorio */}
+        {/* Menú para escritorio */}
         <ul className="hidden sm:flex items-center gap-8 text-lg font-poppins font-extralight">
           <NavItem
             href="/"
@@ -129,7 +135,7 @@ export default function Navbar() {
         </ul>
       </nav>
 
-      {/* Menú móvil con animación de entrada y salida */}
+      {/* Menú móvil animado con Framer Motion */}
       <AnimatePresence>
         {open && (
           <motion.ul
@@ -175,8 +181,7 @@ export default function Navbar() {
   );
 }
 
-/* ───────── Subcomponentes ───────── */
-
+// Ítem para escritorio
 function NavItem({
   href,
   icon: Icon,
@@ -201,6 +206,7 @@ function NavItem({
           }`}
         >
           <Icon size={16} /> {text}
+          {/* Subrayado animado */}
           <motion.span
             layoutId="underline"
             className={`absolute -bottom-1 left-0 h-0.5 w-full bg-secundario origin-left transition-transform duration-300 ${
@@ -213,6 +219,7 @@ function NavItem({
   );
 }
 
+// Ítem para móvil
 function NavItemMobile({
   href,
   icon: Icon,
@@ -241,6 +248,7 @@ function NavItemMobile({
           <Icon size={18} />
         </div>
         <span className="font-medium">{text}</span>
+        {/* Subrayado animado */}
         <motion.span
           layoutId="underline-mobile"
           className={`absolute -bottom-1 left-4 h-0.5 w-[calc(100%-32px)] bg-secundario origin-left transition-transform duration-300 ${

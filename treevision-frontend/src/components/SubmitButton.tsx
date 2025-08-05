@@ -1,88 +1,99 @@
-"use client"; // Activa el modo cliente de Next.js para usar hooks y eventos del lado del cliente
+"use client";
+// Indico que este componente se ejecuta en el cliente
 
-// Importación de hooks y librerías necesarias
+
+// Importo los hooks y librerías que voy a usar
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion"; // Animaciones para el botón
-import { FaCheck } from "react-icons/fa"; // Ícono de check (✔)
-import Confetti from "react-confetti"; // Librería para mostrar confetti
+import { motion } from "framer-motion"; // Para darle animaciones al botón
+import { FaCheck } from "react-icons/fa"; // Este es el ícono del check (✔)
+import Confetti from "react-confetti"; // Esta librería me permite mostrar confetti
 
-// Tipado de las props que acepta el botón
+// Aquí defino las propiedades que le puedo pasar al botón
 interface FancySubmitButtonProps {
-  onClick: () => void; // Función que se ejecuta al dar click
-  disabled?: boolean; // (opcional) Si está deshabilitado
-  children?: React.ReactNode;
-  className?: string; // (opcional) Clases adicionales
+  onClick: () => void; // Esta es la función que se ejecuta cuando doy clic
+  disabled?: boolean; // Esto es opcional, sirve para desactivar el botón
+  children?: React.ReactNode; // Aquí puedo pasarle contenido personalizado al botón
+  className?: string; // Si quiero agregar clases extra, lo hago aquí
 }
 
-// Componente funcional principal
+// Aquí creo el componente principal del botón
 const SubmitButton = ({
   onClick,
   disabled,
   children,
   className,
 }: FancySubmitButtonProps) => {
-  const [clicked, setClicked] = useState(false); // Marca si ya se hizo clic (para mostrar el check y evitar múltiples envíos)
-  const [confettiVisible, setConfettiVisible] = useState(false); // Controla si se ve el confetti
-  const containerRef = useRef<HTMLDivElement>(null); // Referencia al contenedor para calcular su ancho
-  const [width, setWidth] = useState(300); // Ancho del contenedor del confetti
-  const [height, setHeight] = useState(100); // Alto del contenedor del confetti
+  // Estado para saber si ya di clic, así muestro el check y evito más envíos
+  const [clicked, setClicked] = useState(false);
 
-  // Efecto para capturar el ancho real del contenedor una vez montado
+  // Estado para saber si el confetti está activo o no
+  const [confettiVisible, setConfettiVisible] = useState(false);
+
+  // Creo una referencia para saber el tamaño del contenedor del botón
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Guardo el ancho y alto del contenedor, para que el confetti ocupe ese espacio
+  const [width, setWidth] = useState(300);
+  const [height, setHeight] = useState(100);
+
+  // Cuando el componente se monta, calculo el tamaño real del contenedor
   useEffect(() => {
     if (containerRef.current) {
       setWidth(containerRef.current.offsetWidth);
-      setHeight(containerRef.current.offsetHeight); 
+      setHeight(containerRef.current.offsetHeight);
     }
   }, []);
 
-  // Función que maneja el clic del botón
+  // Aquí manejo lo que pasa cuando doy clic en el botón
   const handleClick = () => {
-    setClicked(true); // Marca como enviado (desactiva botón y muestra check)
-    setConfettiVisible(true); // Activa confetti
-    onClick(); // Llama la función que viene por props (por ejemplo, enviar datos)
+    setClicked(true); // Cambio el estado para que el botón muestre "Enviado"
+    setConfettiVisible(true); // Activo el confetti
+    onClick(); // Ejecuto la función que me pasan por props (ej: enviar datos)
 
-    // Oculta el confetti después de 2.5 segundos
+    // Después de 2.5 segundos, apago el confetti
     setTimeout(() => {
       setConfettiVisible(false);
     }, 2500);
   };
 
   return (
-    // Contenedor del botón y el confetti
+    // Este div es el contenedor general del botón y el confetti
     <div
       ref={containerRef}
       className="relative w-full h-[100px] overflow-hidden"
     >
-      {/* Confetti que se muestra de forma absoluta sobre el botón */}
+      {/* Aquí muestro el confetti solo si confettiVisible está en true */}
       {confettiVisible && (
         <div className="absolute inset-0 pointer-events-none">
           <Confetti
             width={width}
             height={height}
-            numberOfPieces={150}
-            recycle={false}
-            gravity={0.3}
+            numberOfPieces={150} // Cantidad de pedacitos de confetti
+            recycle={false} // Para que no se repita
+            gravity={0.3} // Velocidad con la que cae
           />
         </div>
       )}
 
-      {/* Botón animado con Framer Motion */}
+      {/* Aquí pongo el botón centrado */}
       <div className="flex justify-center mt-4">
         {/* Botón animado con Framer Motion */}
         <motion.button
           type="button"
           onClick={handleClick}
-          disabled={disabled || clicked} // Desactivado si ya se envió o por props
+          disabled={disabled || clicked} // Si está deshabilitado o ya hice clic
           className={`w-52 bg-secundario text-white py-3 px-6 rounded-xl font-semibold shadow-md transition duration-300 ease-in-out hover:shadow-xl hover:bg-secundario/90 disabled:opacity-50 text-lg ${
             className ?? ""
           }`}
-          whileTap={{ scale: 0.95 }} // Efecto al presionar
+          whileTap={{ scale: 0.95 }} // Pequeño efecto al presionar
         >
+          {/* Si ya hice clic, muestro el check y el texto "Enviado" */}
           {clicked ? (
             <>
               <FaCheck className="inline mr-2 text-xl" /> Enviado
             </>
           ) : (
+            // Si no, muestro el texto que viene por props o el que pongo por defecto
             children ?? "Enviar"
           )}
         </motion.button>
@@ -91,5 +102,5 @@ const SubmitButton = ({
   );
 };
 
-// Exportación del componente como default
+// Exporto el componente para poder usarlo en otros archivos
 export default SubmitButton;

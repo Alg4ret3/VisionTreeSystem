@@ -1,17 +1,20 @@
-// src/components/ImageUploader.tsx
 "use client";
+
+// Indica que este componente se ejecuta del lado del cliente
 
 import React, { ChangeEvent } from "react";
 import Image from "next/image";
-import { FaCamera } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import { FaCamera } from "react-icons/fa"; // Ícono de cámara para UI
+import { motion, AnimatePresence } from "framer-motion"; // Animaciones
 
+// Definimos el tipado de las props que recibe el componente
 interface ImageUploaderProps {
-  file: File | null;
-  previewUrl: string | null;
-  uploadProgress: number;
-  onFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  file: File | null;                // Archivo seleccionado (puede ser null)
+  previewUrl: string | null;        // URL generada para previsualizar la imagen
+  uploadProgress: number;           // Progreso de carga simulado (0 - 100)
+  onFileChange: (e: ChangeEvent<HTMLInputElement>) => void; // Función para manejar el cambio de archivo
 }
+
 
 export default function ImageUploader({
   file,

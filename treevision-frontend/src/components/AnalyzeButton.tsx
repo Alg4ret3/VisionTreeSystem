@@ -6,13 +6,13 @@ import { FaEye } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 interface AnalyzeButtonProps {
-  /** Desactiva el botón (sin hover, sin rebote, sin clics) */
+  /* Desactiva el botón (sin hover, sin rebote, sin clics) */
   disabled: boolean;
-  /** Muestra el spinner cuando la petición está en curso */
+  /* Muestra el spinner cuando la petición está en curso */
   isLoading: boolean;
-  /** Función que se ejecuta al hacer clic (solo si !disabled) */
+  /* Función que se ejecuta al hacer clic (solo si !disabled) */
   onClick: () => void;
-  /** Texto del botón (por defecto "Analizar Imagen") */
+  /* Texto del botón (por defecto "Analizar Imagen") */
   label?: string;
 }
 
@@ -22,7 +22,7 @@ export default function AnalyzeButton({
   onClick,
   label = "Analizar Imagen",
 }: AnalyzeButtonProps) {
-  /** Coordenadas y rotaciones para 8 rayos */
+  /* Coordenadas y rotaciones para 8 rayos */
   const RAYS = [
     { tx: 0, ty: -40, rot: "270deg" },
     { tx: 28, ty: -28, rot: "315deg" },
@@ -47,12 +47,13 @@ export default function AnalyzeButton({
       disabled={disabled}
       className={clsx(
         "relative flex items-center gap-2 px-6 py-3 mt-2 rounded-full transition-all text-white overflow-hidden",
-        !disabled && !isLoading && [
-          "bg-primario border-b-[5px]",
-          "cursor-pointer animate-bounce motion-safe:animate-bounce",
-          "hover:bg-primario/80 hover:-translate-y-[1px] hover:border-b-[6px]",
-          "active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
-        ],
+        !disabled &&
+          !isLoading && [
+            "bg-primario border-b-[5px]",
+            "cursor-pointer animate-bounce motion-safe:animate-bounce",
+            "hover:bg-primario/80 hover:-translate-y-[1px] hover:border-b-[6px]",
+            "active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
+          ],
         isLoading && ["bg-primario border-b-0 cursor-wait"],
         disabled && !isLoading && ["bg-gray-400 border-b-0 cursor-not-allowed"]
       )}

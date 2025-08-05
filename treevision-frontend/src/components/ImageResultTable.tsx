@@ -1,15 +1,16 @@
-"use client";
+"use client"; 
+// Indica que este componente se renderiza en el cliente, necesario para usar hooks o animaciones
 
-import { motion } from "framer-motion";
-
-// Tipado para los props del componente
+import { motion } from "framer-motion"; 
+// Importa Framer Motion para añadir animaciones declarativas a elementos
 interface ResultData {
-  especie?: string;
-  score?: string;
+  especie?: string; // Nombre de la especie detectada (opcional porque puede estar vacío al inicio)
+  score?: string;   // Nivel de confianza del modelo (opcional)
 }
 
+// Define el tipo de las props que recibirá el componente
 interface Props {
-  result: ResultData;
+  result: ResultData; // Objeto con la información de predicción
 }
 
 // Diccionario con fichas técnicas de las especies detectables

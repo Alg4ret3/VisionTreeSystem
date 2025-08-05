@@ -54,9 +54,7 @@ export default function Footer() {
               >
                 {link.label}
               </Link>
-              {i < links.length - 1 && (
-                <span className="text-gray-500">|</span>
-              )}
+              {i < links.length - 1 && <span className="text-gray-500">|</span>}
             </motion.span>
           ))}
         </motion.nav>

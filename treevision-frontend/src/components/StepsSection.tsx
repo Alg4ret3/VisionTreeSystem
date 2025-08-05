@@ -1,5 +1,7 @@
 "use client";
+// Indico que este componente se ejecuta en el cliente
 
+// Importo React y las librerías necesarias
 import React from "react";
 import {
   MdImageSearch,
@@ -8,10 +10,10 @@ import {
   MdAccessTime,
   MdDone,
   MdStarRate,
-} from "react-icons/md";
-import { motion } from "framer-motion";
+} from "react-icons/md"; // Estos son los íconos que uso para los pasos
+import { motion } from "framer-motion"; // Esto lo uso para animaciones
 
-// Lista de pasos con íconos y texto
+// Aquí defino los pasos que quiero mostrar, cada uno con un título, descripción e ícono
 const steps = [
   {
     step: 1,
@@ -44,20 +46,22 @@ const steps = [
     icon: <MdDone size={34} className="text-secundario" />,
   },
   {
-  step: 6,
-  title: "Califícanos.",
-  desc: "Dinos qué te pareció la identificación. Tu opinión nos ayuda a mejorar la precisión del modelo.",
-  icon: <MdStarRate size={34} className="text-secundario" />,
-}
-
+    step: 6,
+    title: "Califícanos.",
+    desc: "Dinos qué te pareció la identificación. Tu opinión nos ayuda a mejorar la precisión del modelo.",
+    icon: <MdStarRate size={34} className="text-secundario" />,
+  },
 ] as const;
 
+// Aquí defino que el componente puede recibir una función opcional para manejar clics en los pasos
 type Props = {
   onStepClick?: () => void;
 };
 
+// Componente principal que muestra los pasos
 export default function StepsSection({ onStepClick }: Props) {
   return (
+    // Contenedor general con animación de entrada
     <motion.section
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +69,7 @@ export default function StepsSection({ onStepClick }: Props) {
       viewport={{ once: false, amount: 0.1 }}
       className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full"
     >
-      {/* Encabezado */}
+      {/* Encabezado de la sección */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -73,8 +77,10 @@ export default function StepsSection({ onStepClick }: Props) {
         className="max-w-6xl mx-auto py-4 px-4"
       >
         <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
-          Pasos para usar el modelo <span className="text-secundario">VisionTreePasto&nbsp;AI</span>
+          Pasos para usar el modelo{" "}
+          <span className="text-secundario">VisionTreePasto&nbsp;AI</span>
         </h2>
+        {/* Línea decorativa debajo del título */}
         <motion.div
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
@@ -83,14 +89,11 @@ export default function StepsSection({ onStepClick }: Props) {
         />
       </motion.div>
 
-      {/* Tarjetas de pasos */}
+      {/* Aquí muestro cada paso en forma de tarjeta */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-4 py-12">
         {steps.map((item) => (
-          <button
-            key={item.step}
-            onClick={onStepClick}
-            className="text-left"
-          >
+          <button key={item.step} onClick={onStepClick} className="text-left">
+            {/* Tarjeta animada */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -99,10 +102,15 @@ export default function StepsSection({ onStepClick }: Props) {
               viewport={{ once: false, amount: 0.1 }}
               className="relative bg-secundario/10 border border-gray-200 rounded-3xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 group"
             >
+              {/* Número del paso animado */}
               <motion.div
                 className="absolute -top-5 left-1/2 -translate-x-1/2"
                 animate={{ y: [0, -4, 0] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.8,
+                  ease: "easeInOut",
+                }}
               >
                 <motion.div
                   className="w-12 h-12 bg-secundario text-white flex items-center justify-center text-xl font-bold rounded-full shadow-lg ring-4 ring-white"
@@ -112,7 +120,11 @@ export default function StepsSection({ onStepClick }: Props) {
                   {item.step}
                 </motion.div>
               </motion.div>
+
+              {/* Ícono del paso */}
               <div className="mt-8 flex justify-center">{item.icon}</div>
+
+              {/* Texto del paso */}
               <div className="mt-3 text-center px-2">
                 <h3 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-secundario inline-block pb-1">
                   {item.title}

@@ -1,32 +1,34 @@
 "use client";
+// Indico que este componente se ejecuta en el cliente
 
+// Importo React y los hooks que necesito
 import React, { useState, useRef, useCallback, ChangeEvent } from "react";
+// Importo la función que analiza la imagen (llama a la API)
 import { analizarImagen } from "@/utils/api";
+// Importo componentes que voy a usar en esta página
 import ImageResultTable from "@/components/ImageResultTable";
 import AnalyzeButton from "@/components/AnalyzeButton";
 import StepsSection from "@/components/StepsSection";
 import ImageUploader from "@/components/ImageUploader";
 import NPSDashboard from "@/components/NpsDashboard";
 import NPSResponses from "@/components/NpsResponses";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // Esto es para animaciones
 import ImageCarousel from "@/components/ImageCarousel";
 import { useEffect } from "react";
 
 export default function PageModelo() {
-  // -----------------------------
-  // Estados locales
-  // -----------------------------
-  const [file, setFile] = useState<File | null>(null); // Imagen seleccionada
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // URL para previsualizar la imagen
-  const [uploadProgress, setUploadProgress] = useState<number>(0); // Progreso simulado de carga
-  const [isLoading, setIsLoading] = useState(false); // Estado de carga
-  const [highlight, setHighlight] = useState(false); // Activar animación
+  // Aquí defino los estados que necesito para manejar datos y la interfaz
+  const [file, setFile] = useState<File | null>(null); // Imagen que selecciona el usuario
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null); // Para mostrar la imagen antes de analizar
+  const [uploadProgress, setUploadProgress] = useState<number>(0); // Simulo el progreso de carga
+  const [isLoading, setIsLoading] = useState(false); // Para saber si el modelo está procesando
+  const [highlight, setHighlight] = useState(false); // Para activar una animación cuando el usuario interactúa
 
-  // Referencias para hacer scroll
+  // Referencias para hacer scroll a secciones específicas
   const resultRef = useRef<HTMLDivElement>(null);
   const pasosRef = useRef<HTMLDivElement>(null);
 
-  // Resultado de la predicción inicializado con valores vacíos
+  // Aquí guardo los resultados del modelo (vacíos al inicio)
   const [result, setResult] = useState({
     especie: "",
     nombre: "",
@@ -35,21 +37,14 @@ export default function PageModelo() {
     score: "",
   });
 
-  // -----------------------------
-  // Función para activar la animación y hacer scroll al div
-  // -----------------------------
+  // Esta función activa la animación en los pasos y hace scroll hasta ellos
   const triggerHighlight = useCallback(() => {
-    // Hacer scroll hacia el div
     pasosRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    // Activar animación y desactivarla luego de 1.5s
     setHighlight(true);
-    setTimeout(() => setHighlight(false), 1500);
+    setTimeout(() => setHighlight(false), 1500); // Después de 1.5 segundos la apago
   }, []);
 
-  // -----------------------------
-  // Manejar cambio de archivo
-  // -----------------------------
+  // Cuando el usuario elige una imagen, la guardo y genero una vista previa
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selected = e.target.files?.[0];
     if (!selected) return;
@@ -57,7 +52,7 @@ export default function PageModelo() {
     setFile(selected);
     setPreviewUrl(URL.createObjectURL(selected));
 
-    // Reiniciar resultado a estado vacío
+    // Reinicio los resultados porque hay una nueva imagen
     setResult({
       especie: "",
       nombre: "",
@@ -68,7 +63,7 @@ export default function PageModelo() {
 
     setUploadProgress(0);
 
-    // Simular progreso de carga
+    // Aquí simulo que la imagen se va cargando poco a poco
     const interval = setInterval(() => {
       setUploadProgress((p) => {
         if (p >= 100) {
@@ -80,13 +75,11 @@ export default function PageModelo() {
     }, 100);
   };
 
-  // -----------------------------
-  // Analizar imagen y mostrar resultado
-  // -----------------------------
+  // Esta función llama al modelo para analizar la imagen
   const handleAnalyze = async () => {
     if (!file) return;
 
-    // Resetear resultado antes de nueva predicción
+    // Reinicio los resultados antes de analizar
     setResult({
       especie: "",
       nombre: "",
@@ -95,12 +88,13 @@ export default function PageModelo() {
       score: "",
     });
 
-    setIsLoading(true);
+    setIsLoading(true); // Activo el estado de carga
 
     try {
+      // Llamo a la función que conecta con la API
       const data = await analizarImagen(file);
 
-      // Establecer los resultados del modelo
+      // Actualizo el resultado con lo que devuelve el modelo
       setResult({
         especie: data.class_names?.[0] || "—",
         nombre: data.class_names?.[0] || "—",
@@ -111,28 +105,28 @@ export default function PageModelo() {
     } catch {
       alert("Hubo un error analizando la imagen");
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // Desactivo el estado de carga
       resultRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
+  // El botón de analizar solo funciona si hay imagen y la carga terminó
   const disabled = !file || uploadProgress < 100 || isLoading;
 
+  // Al cargar la página, la llevo al inicio
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, []);
 
-  // -----------------------------
-  // Renderizado
-  // -----------------------------
+  // Aquí dibujo todo en pantalla
   return (
     <main className="min-h-screen bg-blanco flex flex-col items-center gap-12 py-10 px-4">
-      {/* Sección principal */}
+      {/* Sección principal con el uploader y los resultados */}
       <section
         id="Principal"
         className="w-full max-w-6xl grid md:grid-cols-2 gap-8 scroll-mt-28"
       >
-        {/* Columna izquierda: uploader */}
+        {/* Columna izquierda: subir imagen */}
         <motion.div
           id="pasos"
           ref={pasosRef}
@@ -158,7 +152,7 @@ export default function PageModelo() {
             ease: "easeInOut",
           }}
         >
-          {/* Título */}
+          {/* Título de la sección */}
           <div className="max-w-6xl mx-auto py-4 px-4">
             <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug secundario">
               Sube una <span className="text-secundario">Imagen</span>
@@ -166,7 +160,7 @@ export default function PageModelo() {
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
 
-          {/* Componente para subir imagen */}
+          {/* Componente para elegir la imagen */}
           <ImageUploader
             file={file}
             previewUrl={previewUrl}
@@ -174,7 +168,7 @@ export default function PageModelo() {
             onFileChange={handleFileChange}
           />
 
-          {/* Botón para analizar imagen */}
+          {/* Botón que analiza la imagen */}
           <AnalyzeButton
             disabled={disabled}
             isLoading={isLoading}
@@ -187,6 +181,7 @@ export default function PageModelo() {
           ref={resultRef}
           className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full"
         >
+          {/* Título */}
           <div className="max-w-6xl mx-auto py-4 px-4">
             <h2 className="text-center font-extrabold tracking-tight text-primario text-2xl sm:text-3xl md:text-4xl leading-snug">
               Predicción del modelo{" "}
@@ -195,24 +190,24 @@ export default function PageModelo() {
             <div className="mx-auto mt-2 h-1 w-20 bg-secundario rounded-full" />
           </div>
 
-          {/* Tabla de resultados */}
+          {/* Tabla para ver el resultado */}
           <div className="hidden md:block overflow-y-auto max-h-[500px] p-4 bg-white rounded-lg scroll-secundario">
             <ImageResultTable result={result} />
           </div>
 
-          {/* Solo móvil: tabla sin contenedor */}
+          {/* Para móvil, la tabla sin scroll */}
           <div className="md:hidden">
             <ImageResultTable result={result} />
           </div>
         </div>
       </section>
 
-      {/* Sección de pasos */}
+      {/* Sección de pasos para guiar al usuario */}
       <div className="px-4 pt-10">
-        {/* triggerHighlight se pasa como prop para que StepsSection lo use al hacer clic */}
         <StepsSection onStepClick={triggerHighlight} />
       </div>
-      {/* Sección de lugares turisticos */}
+
+      {/* Carrusel de lugares turísticos */}
       <div
         id="lugares"
         className="w-full max-w-6xl grid md:grid-cols-1 gap-8 scroll-mt-28"
@@ -220,11 +215,10 @@ export default function PageModelo() {
         <ImageCarousel bg-white />
       </div>
 
-      {/* Sección de NPS (en la parte inferior) */}
+      {/* Encuesta NPS para saber qué le pareció al usuario */}
       <div
         id="calificacion-usuario"
         className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 mt-0"
-        
       >
         <NPSResponses />
         <NPSDashboard />

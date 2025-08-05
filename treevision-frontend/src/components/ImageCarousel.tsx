@@ -11,19 +11,19 @@ const images = [
     src: "/PageExplorer/CasaDelArte.webp",
     title: "Casa del Arte",
     description:
-      "Espacio cultural y comunitario dedicado a la expresión artística y el aprendizaje colectivo. Aquí se promueven talleres, exposiciones y actividades que fortalecen la identidad local y el vínculo con la naturaleza.",
+      "Espacio cultural y comunitario dedicado a la expresión artística y el aprendizaje colectivo, aquí se promueven talleres, exposiciones y actividades que fortalecen la identidad local y el vínculo con la naturaleza.",
   },
   {
     src: "/PageExplorer/Image1.webp",
     title: "Kiosco",
     description:
-      "Lugar ideal para compartir momentos en familia o con amigos. Perfecto para disfrutar de un picnic rodeado de naturaleza, descansar tras una caminata o simplemente contemplar el entorno.",
+      "Lugar ideal para compartir momentos en familia o con amigos, perfecto para disfrutar de un picnic rodeado de naturaleza, descansar tras una caminata o simplemente contemplar el entorno.",
   },
   {
     src: "/PageExplorer/Img2.webp",
     title: "Jardín de la Memoria",
     description:
-      "Espacio simbólico que honra la memoria de las víctimas del conflicto armado en Colombia. Un jardín de paz y reflexión, rodeado de flora nativa que representa la vida, la resistencia y la esperanza.",
+      "Espacio simbólico que honra la memoria de las víctimas del conflicto armado en Colombia, un jardín de paz y reflexión, rodeado de flora nativa que representa la vida, la resistencia y la esperanza.",
   },
   {
     src: "/PageExplorer/Lago.webp",
@@ -35,19 +35,18 @@ const images = [
     src: "/PageExplorer/MIrador.webp",
     title: "Mirador Panorámico",
     description:
-      "Desde este punto elevado podrás apreciar una vista impresionante del Parque Ambiental Chimayoy. Una oportunidad para contemplar la riqueza del paisaje y todo lo que este espacio natural ofrece.",
+      "Desde este punto elevado podrás apreciar una vista impresionante del Parque Ambiental Chimayoy, una oportunidad para contemplar la riqueza del paisaje y todo lo que este espacio natural ofrece.",
   },
   {
     src: "/PageExplorer/VIvero.webp",
     title: "Vivero Educativo",
     description:
-      "Un espacio donde se cuidan y adaptan especies vegetales nativas, y en ocasiones también fauna que llega desde otras regiones. Aquí se promueve la educación ambiental y el respeto por la vida.",
+      "Un espacio donde se cuidan y adaptan especies vegetales nativas, y en ocasiones también fauna que llega desde otras regiones, aquí se promueve la educación ambiental y el respeto por la vida.",
   },
 ];
 
 export default function ImageCarousel() {
   const [isMobile, setIsMobile] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Detectar móvil
@@ -58,31 +57,6 @@ export default function ImageCarousel() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Detectar scroll para saber qué imagen está visible
-  useEffect(() => {
-    if (!isMobile || !containerRef.current) return;
-
-    const container = containerRef.current;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Number(entry.target.getAttribute("data-index"));
-            setActiveIndex(index);
-          }
-        });
-      },
-      {
-        root: container,
-        threshold: 0.6,
-      }
-    );
-
-    const children = container.querySelectorAll(".snap-item");
-    children.forEach((child) => observer.observe(child));
-
-    return () => observer.disconnect();
-  }, [isMobile]);
 
 
   return (
@@ -92,7 +66,6 @@ export default function ImageCarousel() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 w-full"
-
     >
       {/* Título */}
       <motion.div
@@ -115,13 +88,13 @@ export default function ImageCarousel() {
         <div className="relative">
           <div
             ref={containerRef}
-            className="h-[85vh] overflow-y-scroll snap-y snap-mandatory scroll-smooth px-4 space-y-6"
+            className="h-[70vh] overflow-y-scroll snap-y snap-mandatory scroll-smooth scroll-secundario"
           >
             {images.map((img, i) => (
               <motion.div
                 key={i}
                 data-index={i}
-                className="snap-item snap-start h-[85vh] flex items-center justify-center"
+                className="snap-start h-[65vh] flex items-start justify-center"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -131,21 +104,6 @@ export default function ImageCarousel() {
               </motion.div>
             ))}
           </div>
-
-          {/* Contador de progreso */}
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute top-5 right-5 px-3 py-1.5 rounded-xl shadow-lg backdrop-blur-md bg-secundario/90 text-white text-sm font-semibold flex items-center gap-1 z-10"
-          >
-            <span>
-              {activeIndex + 1}{" "}
-              <span className="opacity-70">/ {images.length}</span>
-            </span>
-          </motion.div>
-
-          
         </div>
       ) : (
         <motion.div
