@@ -28,7 +28,6 @@ Actualmente, la API se encuentra **totalmente funcional** y desplegada en Huggin
 ## Recomendaciones
 
 - Verifica que el modelo `.pth` esté disponible en la URL configurada y que sea compatible con el archivo de configuración `faster_rcnn_R_50_FPN_3x.yaml`.
-- Consulta la URL pública de Hugging Face Spaces para realizar pruebas:  
-   [`https://alg4ret3-treevisionapi.hf.space`](https://alg4ret3-visiontreepasto.hf.space/docs#)
+- Consulta la URL pública de Hugging Face Spaces para realizar pruebas: (https://alg4ret3-visiontreepasto.hf.space/docs#)
 
 
