@@ -14,20 +14,21 @@ El módulo `Api`, está organizada para contener todos los archivos esenciales p
 | `requirements.txt`   | Archivo que lista todas las dependencias necesarias para ejecutar la API con Python.                 |
 | `API_OVERVIEW.md`    | Documento que describe la estructura, propósito y funcionamiento general del proyecto.               |
 
+
 ## Cambios recientes
 
-- Se corrigió el nombre de la carpeta `App` a `app`, y del archivo `Main.py` a `main.py` para asegurar la correcta detección del módulo por parte de Uvicorn y evitar errores de importación.
-- Se añadieron los archivos `Dockerfile`, `requirements.txt` y `main.py`, los cuales conforman el núcleo del despliegue.
-- Se configuró y desplegó exitosamente la aplicación en **Hugging Face Spaces** bajo el nombre de **TreeVisionAPI**. Esto permite probar los endpoints REST `/predict/` y `/health` de manera pública.
+- Se modificó la nomenclatura del proyecto a **VisionTreePasto**, con el objetivo de reflejar mejor su enfoque territorial.
+- Se configuró y desplegó exitosamente la aplicación en **Hugging Face Spaces** bajo el nuevo nombre, esto permite probar los endpoints REST `/predict/` y `/health` de manera pública.
+- Se integró una **interfaz web funcional** que consume la API y permite realizar análisis de imágenes directamente desde el navegador.
 
 ## Estado del despliegue
 
-Actualmente, la API se encuentra funcional y desplegada. El asesor técnico ya aprobó su estado actual y ha confirmado que se debe implementar una interfaz web que consuma dicha API.
+Actualmente, la API se encuentra **totalmente funcional** y desplegada en Hugging Face Spaces con una interfaz web que la consume.
 
 ## Recomendaciones
 
-- Asegúrate de que `app/` y `main.py` estén correctamente nombrados en minúsculas.
 - Verifica que el modelo `.pth` esté disponible en la URL configurada y que sea compatible con el archivo de configuración `faster_rcnn_R_50_FPN_3x.yaml`.
 - Consulta la URL pública de Hugging Face Spaces para realizar pruebas:  
-   [`https://alg4ret3-treevisionapi.hf.space`](https://alg4ret3-treevisionapi.hf.space)
+   [`https://alg4ret3-treevisionapi.hf.space`](https://alg4ret3-visiontreepasto.hf.space/docs#)
+
 

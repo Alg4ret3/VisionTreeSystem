@@ -11,33 +11,37 @@ from torchvision import transforms, models
 import time  # Para medir el tiempo de entrenamiento
 
 # Diccionario para mapear los índices de clase a sus nombres reales
-class_names = {0: 'Cipres', 1: 'Palosanto', 2: 'Pino'}
+class_names = {0: "Cipres", 1: "Palosanto", 2: "Pino"}
+
 
 # Creo un Dataset personalizado para cargar imágenes y sus anotaciones desde un archivo JSON (formato COCO)
 class CustomDataset(Dataset):
     def __init__(self, data_path, annotations_path, transform=None):
         self.data_path = data_path
         self.annotations_path = annotations_path
-        self.transform = transform 
+        self.transform = transform
 
         # Cargo el JSON con las anotaciones
-        with open(self.annotations_path, 'r') as f:
+        with open(self.annotations_path, "r") as f:
             self.annotations = json.load(f)
 
         # Muestro las primeras imágenes para verificar que todo esté bien cargado
-        print("Primeras 2 imágenes en las anotaciones:", self.annotations["images"][:2])  
+        print("Primeras 2 imágenes en las anotaciones:", self.annotations["images"][:2])
 
         # Extraigo los nombres de archivo de las imágenes
-        self.image_files = [item['file_name'] for item in self.annotations["images"]]
+        self.image_files = [item["file_name"] for item in self.annotations["images"]]
 
         # Extraigo las anotaciones por imagen
-        self.targets = [item['annotations'] if 'annotations' in item else [] for item in self.annotations["images"]]
+        self.targets = [
+            item["annotations"] if "annotations" in item else []
+            for item in self.annotations["images"]
+        ]
 
         # Verifico cuántas clases diferentes hay
         all_classes = set()
         for annotation in self.targets:
             for ann in annotation:
-                all_classes.add(ann['category_id'])  
+                all_classes.add(ann["category_id"])
 
         self.num_classes = len(all_classes)
         print(f"Clases encontradas: {self.num_classes}")
@@ -53,14 +57,15 @@ class CustomDataset(Dataset):
 
         # Extraigo cajas y clases asociadas a esa imagen
         annotations = self.targets[idx]
-        boxes = np.array([ann['bbox'] for ann in annotations])
-        category_ids = np.array([ann['category_id'] for ann in annotations])
+        boxes = np.array([ann["bbox"] for ann in annotations])
+        category_ids = np.array([ann["category_id"] for ann in annotations])
 
         # Aplico transformaciones (redimensionar, normalizar, etc.)
         if self.transform:
             image = self.transform(image)
 
         return image, boxes, category_ids
+
 
 # Implemento una versión simplificada de EfficientDet usando ResNet50 como backbone
 class EfficientDet(nn.Module):
@@ -78,7 +83,9 @@ class EfficientDet(nn.Module):
 
     def forward(self, x):
         features = self.backbone(x)
-        features = features.view(features.size(0), -1)  # Aplano para pasar por capas lineales
+        features = features.view(
+            features.size(0), -1
+        )  # Aplano para pasar por capas lineales
         features = self.fpn(features.unsqueeze(-1).unsqueeze(-1))  # Ajusto dimensiones
 
         class_preds = self.class_head(features)
@@ -86,11 +93,13 @@ class EfficientDet(nn.Module):
 
         return class_preds, bbox_preds
 
+
 # Defino la función de pérdida combinada (clasificación + regresión)
 def loss_fn(class_preds, bbox_preds, class_labels, bbox_labels):
     class_loss = nn.CrossEntropyLoss()(class_preds, class_labels)
     bbox_loss = nn.L1Loss()(bbox_preds, bbox_labels)
     return class_loss + bbox_loss
+
 
 # Bucle de entrenamiento con control de errores por batch
 def train_loop(dataloader, model, optimizer, device):
@@ -100,7 +109,11 @@ def train_loop(dataloader, model, optimizer, device):
 
     for batch, (X, y_boxes, y_classes) in enumerate(dataloader):
         try:
-            X, y_boxes, y_classes = X.to(device), y_boxes.to(device), y_classes.to(device)
+            X, y_boxes, y_classes = (
+                X.to(device),
+                y_boxes.to(device),
+                y_classes.to(device),
+            )
 
             # Paso forward y cálculo de pérdida
             class_preds, bbox_preds = model(X)
@@ -119,11 +132,12 @@ def train_loop(dataloader, model, optimizer, device):
 
     return running_loss / len(dataloader)
 
+
 # Ejecuto el entrenamiento completo
 if __name__ == "__main__":
     # Parámetros y configuración inicial
-    data_path = 'E:/modelos/EfficientDet/modeloEfficientDet/imagenes'
-    annotations_path = 'E:/modelos/EfficientDet/modeloEfficientDet/dataset_coco.json'
+    data_path = "E:/modelos/EfficientDet/modeloEfficientDet/imagenes"
+    annotations_path = "E:/modelos/EfficientDet/modeloEfficientDet/dataset_coco.json"
     batch_size = 8
     learning_rate = 1e-3
     epochs = 50
@@ -132,12 +146,14 @@ if __name__ == "__main__":
     print(f"Using device: {device}")
 
     # Transformaciones que aplico a las imágenes antes de pasarlas al modelo
-    transform = transforms.Compose([
-        transforms.ToPILImage(),
-        transforms.Resize((512, 512)),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
+    transform = transforms.Compose(
+        [
+            transforms.ToPILImage(),
+            transforms.Resize((512, 512)),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ]
+    )
 
     # Dataset y DataLoader
     dataset = CustomDataset(data_path, annotations_path, transform=transform)

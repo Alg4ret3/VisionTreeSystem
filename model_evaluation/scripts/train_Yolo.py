@@ -2,19 +2,16 @@ from ultralytics import YOLO
 import os
 from pathlib import Path
 import time
-"-------------------------------------------------------------------------------------"
-"Comando para entrenar el modelo YOLOv8"
+
 # yolo train data=dataset.yaml model=yolov8n.pt epochs=50 imgsz=640 device=0 workers=0
-
-
 # Cargar el modelo entrenado
-model = YOLO('C:/Users/Sm/runs/detect/train3/weights/best.pt')
+model = YOLO("C:/Users/Sm/runs/detect/train3/weights/best.pt")
 
 # Obtener lista de imágenes
-image_paths = list(Path('E:/modelos/Yolo/value').glob('*.jpg'))
+image_paths = list(Path("E:/modelos/Yolo/value").glob("*.jpg"))
 
 # Directorio para guardar los resultados
-output_dir = Path('E:/modelos/Yolo/Results')
+output_dir = Path("E:/modelos/Yolo/Results")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 # Procesar cada imagen individualmente
