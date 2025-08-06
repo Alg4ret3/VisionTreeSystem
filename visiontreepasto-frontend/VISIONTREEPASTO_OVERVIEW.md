@@ -76,7 +76,7 @@ Este módulo corresponde a la interfaz de usuario del proyecto **VisionTreePasto
 1. **Clonar el repositorio:**  
    Ejecuta el siguiente comando para clonar el repositorio en tu máquina local:  
    git clone https://github.com/Alg4ret3/VisionTreeSystem.git
-2. **Naveha a la carpeta del frontend:**
+2. **Navega a la carpeta del frontend:**
    Ejecuta el siguiente comando:
    cd visiontreepasto-frontend
 3. **instalar dependencias:**
