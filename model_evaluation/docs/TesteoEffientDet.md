@@ -69,27 +69,26 @@ Para fortalecer la capacidad del modelo, se sugiere:
 Se realizaron múltiples evaluaciones del modelo sobre un conjunto de 18 imágenes en distintos lotes. Se observó lo siguiente:
 - **Inconsistencia en la detección**: El modelo no mantiene una consistencia en la clasificación; por ejemplo, las mismas imágenes en distintas corridas fueron clasificadas como **Ciprés**, **Pino** y **Palo Santo**, evidenciando una falta de robustez en las predicciones.
 - **Precisión baja y variable**: Las precisiones fluctúan entre 36% y 50% en promedio, lo cual es insuficiente para aplicaciones reales y evidencia debilidad en la capacidad del modelo para discriminar clases de manera efectiva.
-- **Problemas de seguridad/confianza**: La generación de múltiples warnings relacionados con parámetros obsoletos (como el uso de **pretrained** en lugar de **weights**) sugiere que la implementación actual no está completamente alineada con las mejores prácticas actuales de **torchvision**. Esto puede impactar la reproducibilidad y estabilidad a futuro.
+- **PLaurelmas de seguridad/confianza**: La generación de múltiples warnings relacionados con parámetros obsoletos (como el uso de **pretrained** en lugar de **weights**) sugiere que la implementación actual no está completamente alineada con las mejores prácticas actuales de **torchvision**. Esto puede impactar la reproducibilidad y estabilidad a futuro.
 
 ### Conclusión:
 El modelo actualmente no es confiable para producción, tanto por su inconsistencia en la detección como por las limitaciones en precisión. Se recomienda revisar la arquitectura, la calidad del dataset y actualizar el código para cumplir con las nuevas especificaciones de las librerías utilizadas.
 
-# Estructura del Proyecto EfficientDet
+### 📂 Estructura del Proyecto EfficientDet
 
-| Carpeta/Archivo              | Descripción                                                                 |
-|------------------------------|-----------------------------------------------------------------------------|
-| 📂 **checkpoints**            | Carpeta que contiene los puntos de control (checkpoints) del modelo durante el entrenamiento. |
-| 📂 **config**                 | Carpeta que contiene la configuración del proyecto.                         |
-| ┣ 📜 **config.yaml**          | Archivo de configuración principal en formato YAML, con parámetros de entrenamiento. |
-| 📂 **Dataset**                | Carpeta que contiene los conjuntos de datos utilizados para entrenar y evaluar el modelo. |
-| ┣ 📂 **Cipres**               | Datos específicos de imágenes de árboles de Ciprés.                          |
-| ┣ 📂 **PaloSanto**            | Datos específicos de imágenes de árboles de Palo Santo.                     |
-| ┣ 📂 **Pino**                 | Datos específicos de imágenes de árboles de Pino.                           |
-| ┣ 📂 **Roble**                | Datos específicos de imágenes de árboles de Roble.                          |
-| 📂 **training**               | Carpeta con los scripts utilizados para entrenar y evaluar el modelo.      |
-| ┣ 📜 **efficendet.py**        | Script que define la arquitectura y funcionamiento del modelo EfficientDet.|
-| ┣ 📜 **evaluate.py**          | Script para evaluar el modelo entrenado y obtener métricas de rendimiento. |
-| ┣ 📜 **train.py**             | Script para entrenar el modelo EfficientDet con los datos proporcionados.  |
-| ┣ 📜 **Modelefficendet.pth**  | Archivo con los pesos finales del modelo entrenado.                         |
-| 📂 **results**                | Carpeta que almacena los resultados generados tras la evaluación del modelo, como métricas y gráficos. |
-| 📂 **value**                  | Carpeta con valores y configuraciones adicionales para el entrenamiento y evaluación. |
+| Carpeta / Archivo          | Descripción                                                                                     |
+|---------------------------|-------------------------------------------------------------------------------------------------|
+| `checkpoints/`            | Contiene los puntos de control generados durante el entrenamiento del modelo.                   |
+| `config/`                 | Carpeta con archivos de configuración del proyecto.                                              |
+| ┗ `config.yaml`           | Archivo principal con parámetros de entrenamiento en formato YAML.                              |
+| `Dataset/`                | Carpeta con los conjuntos de datos utilizados para entrenar y evaluar el modelo.                |
+| ┣ `Cipres/`               | Imágenes correspondientes a la clase Ciprés.                                                    |
+| ┣ `PaloSanto/`            | Imágenes correspondientes a la clase Palo Santo.                                                |
+| ┣ `Pino/`                 | Imágenes correspondientes a la clase Pino.                                                      |
+| `training/`               | Scripts principales utilizados para entrenar y evaluar el modelo EfficientDet.                  |
+| ┣ `efficendet.py`         | Define la arquitectura y el funcionamiento del modelo EfficientDet.                             |
+| ┣ `train.py`              | Script para entrenar el modelo con los datos definidos.                                         |
+| ┣ `evaluate.py`           | Script para evaluar el modelo entrenado y generar métricas de rendimiento.                      |
+| ┗ `Modelefficendet.pth`   | Archivo que contiene los pesos finales del modelo entrenado.                                    |
+| `results/`                | Carpeta que almacena las métricas, gráficas y otros resultados generados tras la evaluación.     |
+| `value/`                  | Carpeta con configuraciones o valores adicionales usados durante el entrenamiento y evaluación.  |

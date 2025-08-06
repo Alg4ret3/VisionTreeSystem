@@ -42,6 +42,4 @@ La integración de **Detectron2** con la cámara resultó en un desempeño notab
   
 - **Detectron2** ha sido seleccionado como el modelo definitivo para la clasificación automática de árboles, gracias a su mejor desempeño tanto en pruebas de inferencia como en condiciones en tiempo real.
 
-## 5. Recomendaciones
-- **Detectron2** es el modelo recomendado para implementación en producción.
-- Para futuras mejoras, se sugiere seguir optimizando el código y explorar el uso de **entrenamiento distribuido** para mejorar los tiempos de procesamiento.
+- **Detectron2** es el modelo recomendado para implementar en producción.

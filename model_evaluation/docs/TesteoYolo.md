@@ -59,17 +59,17 @@ El tiempo necesario para que el modelo aprenda a diferenciar correctamente las c
 
 Para mejorar el rendimiento general, se recomienda realizar un nuevo ciclo de entrenamiento, centrado principalmente en la clase de **Palo Santo**, y considerar la ampliación del conjunto de datos con más ejemplos representativos de cada clase.
 
-# Estructura del Proyecto YOLO
+### 📂 Estructura del Proyecto YOLO
 
-| Carpeta/Archivo      | Descripción                                                                 |
-|----------------------|-----------------------------------------------------------------------------|
-| 📂 **Dataset**        | Carpeta que contiene los datos de entrenamiento.                            |
-| ┣ 📂 **Cipres**       | Subcarpeta con imágenes y etiquetas para la clase 'Cipres'.                |
-| ┣ 📂 **PaloSanto**    | Subcarpeta con imágenes y etiquetas para la clase 'Palo Santo'.             |
-| ┣ 📂 **Pino**         | Subcarpeta con imágenes y etiquetas para la clase 'Pino'.                  |
-| 📂 **Val**            | Carpeta para los datos de validación, utilizados para evaluar el modelo.   |
-| 📂 **Result**         | Carpeta donde se almacenan los resultados de las pruebas y predicciones.   |
-| 📜 **dataset.yaml**   | Archivo de configuración con rutas de imágenes y clases.                   |
-| 📜 **testeo.py**      | Script para probar o evaluar el modelo entrenado en datos no vistos.       |
-| 📜 **yolo11.pt**      | Archivo con los pesos del modelo entrenado versión 11.                     |
-| 📜 **yolo8.pt**       | Archivo con los pesos del modelo entrenado versión 8.                      |
+| Carpeta / Archivo        | Descripción                                                                                     |
+|---------------------------|-------------------------------------------------------------------------------------------------|
+| `Dataset/`               | Carpeta que contiene los datos de entrenamiento.                                               |
+| ┣ `Cipres/`              | Imágenes y etiquetas correspondientes a la clase Ciprés.                                       |
+| ┣ `PaloSanto/`           | Imágenes y etiquetas correspondientes a la clase Palo Santo.                                   |
+| ┣ `Pino/`                | Imágenes y etiquetas correspondientes a la clase Pino.                                         |
+| `Val/`                   | Carpeta que contiene los datos de validación para evaluar el modelo.                            |
+| `Result/`                | Carpeta donde se almacenan los resultados generados durante las pruebas y predicciones.         |
+| `dataset.yaml`           | Archivo de configuración con rutas a las imágenes y definición de clases.                       |
+| `testeo.py`              | Script utilizado para probar o evaluar el modelo entrenado en datos no vistos.                  |
+| `yolo11.pt`              | Archivo que contiene los pesos entrenados del modelo YOLO versión 11.                            |
+| `yolo8.pt`               | Archivo que contiene los pesos entrenados del modelo YOLO versión 8.                              |

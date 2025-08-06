@@ -69,21 +69,23 @@ El modelo mostró un desempeño excelente en términos de velocidad de entrenami
 
 # Estructura del Proyecto DETECTRON2
 
-| Carpeta/Archivo      | Descripción                                                                 |
-|----------------------|-----------------------------------------------------------------------------|
-| 📂 **config**         | Carpeta que contiene la configuración del proyecto.                         |
-| ┣ 📜 **detectron2.yml** | Archivo de configuración principal del modelo DETECTRON2.                   |
-| 📂 **data**           | Carpeta que contiene los datos de entrenamiento y validación.              |
-| ┣ 📂 **imagenes**     | Carpeta con las imágenes normales del dataset.                              |
-| ┣ 📂 **imagenes.xml** | Carpeta con las imágenes etiquetadas en formato XML.                        |
-| 📂 **resultados**     | Carpeta donde se almacenan los resultados del modelo entrenado.            |
-| 📂 **scripts**        | Carpeta con los scripts utilizados para entrenar y evaluar el modelo.       |
-| ┣ 📜 **model-final.pth** | Archivo con los pesos finales del modelo entrenado.                        |
-| ┣ 📜 **dataset.coco.js**  | Archivo en formato JavaScript que contiene la información del dataset en formato COCO. |
-| ┣ 📜 **dataset.coco.json** | Archivo en formato JSON que contiene la información del dataset en formato COCO. |
-| ┣ 📜 **inference.py**    | Script para hacer inferencias con el modelo entrenado.                     |
-| ┣ 📜 **prueba.py**        | Script para realizar pruebas o evaluaciones del modelo.                    |
-| ┣ 📜 **register.py**      | Script para registrar el dataset en el modelo.                             |
-| ┣ 📜 **testmodel.detectron.py** | Script para evaluar el modelo con los datos de prueba.              |
-| ┣ 📜 **trainmodel.py**    | Script para entrenar el modelo.                                            |
-| 📂 **value**         | Carpeta con las imágenes de evaluación para validar el modelo.             |
+### 📂 Estructura del Proyecto Detectron2
+
+| Carpeta / Archivo              | Descripción                                                                                     |
+|--------------------------------|-------------------------------------------------------------------------------------------------|
+| `config/`                      | Carpeta que contiene la configuración del proyecto.                                            |
+| ┗ `detectron2.yml`             | Archivo de configuración principal del modelo Detectron2.                                      |
+| `data/`                        | Carpeta que contiene los datos de entrenamiento y validación.                                  |
+| ┣ `imagenes/`                  | Carpeta con las imágenes normales del dataset.                                                 |
+| ┗ `imagenes.xml/`              | Carpeta con las imágenes etiquetadas en formato XML.                                           |
+| `resultados/`                  | Carpeta donde se almacenan los resultados del modelo entrenado.                                |
+| `scripts/`                     | Carpeta con los scripts utilizados para entrenar y evaluar el modelo.                          |
+| ┣ `model-final.pth`            | Archivo con los pesos finales del modelo entrenado.                                            |
+| ┣ `dataset.coco.js`            | Archivo en formato JavaScript que contiene la información del dataset en formato COCO.         |
+| ┣ `dataset.coco.json`          | Archivo en formato JSON que contiene la información del dataset en formato COCO.               |
+| ┣ `inference.py`               | Script para hacer inferencias con el modelo entrenado.                                         |
+| ┣ `prueba.py`                  | Script para realizar pruebas o evaluaciones del modelo.                                        |
+| ┣ `register.py`                | Script para registrar el dataset en el modelo.                                                 |
+| ┣ `testmodel.detectron.py`     | Script para evaluar el modelo con los datos de prueba.                                         |
+| ┗ `trainmodel.py`              | Script para entrenar el modelo.                                                                |
+| `value/`                       | Carpeta con las imágenes de evaluación para validar el modelo.                                  |

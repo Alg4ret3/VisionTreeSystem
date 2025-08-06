@@ -1,3 +1,6 @@
+# Tabla comparativa de modelos de machine learning
+# Aprobado por: Asesor Tecnico Ing Oscar Rodriguez
+
 | **Modelo**      | **Precisión de Detección**        | **Velocidad**               | **Requerimientos Computacionales**        |
 |-----------------|----------------------------------|----------------------------|-------------------------------------------|
 | **YOLOv8**      | Alta precisión (mAP > 90%)       | Rápido (real-time)         | Requiere GPU potente, baja latencia       |
