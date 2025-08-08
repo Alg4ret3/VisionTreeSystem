@@ -52,6 +52,6 @@ Este sistema busca conectar la tecnología con la naturaleza, brindando a los vi
 
 - **Espacio en Hugging Face para interactuar con la interfaz web**: [https://huggingface.co/spaces/Alg4ret3/visiontreepasto](https://huggingface.co/spaces/Alg4ret3/visiontreepasto)
 - **Endpoint de la API para predicciones**: [https://alg4ret3-visiontreepasto.hf.space/predict/](https://alg4ret3-visiontreepasto.hf.space/predict/)
-- **Modelo entrenado (Detectron2 - .pth)**: [https://huggingface.co/Alg4ret3/modelvisiontreepasto/resolve/main/VisionTreePastoModel.pth](https://huggingface.co/Alg4ret3/modelvisiontreepasto/resolve/main/VisionTreePastoModel.pth)
+- **Modelo entrenado (Detectron2 - VisionTreePastoModel.pth)**: [https://huggingface.co/Alg4ret3/modelvisiontreepasto/resolve/main/VisionTreePastoModel.pth](https://huggingface.co/Alg4ret3/modelvisiontreepasto/resolve/main/VisionTreePastoModel.pth)
 - **Dataset (imágenes sin procesar)**: [https://huggingface.co/datasets/Alg4ret3/chimayoy-trees-dataset/resolve/main/raw_images.zip](https://huggingface.co/datasets/Alg4ret3/chimayoy-trees-dataset/resolve/main/raw_images.zip)
 - **Anotaciones XML del dataset**: [https://huggingface.co/datasets/Alg4ret3/chimayoy-trees-dataset/resolve/main/annotations_xml.zip](https://huggingface.co/datasets/Alg4ret3/chimayoy-trees-dataset/resolve/main/annotations_xml.zip)
