@@ -12,7 +12,7 @@ Este módulo corresponde a la interfaz de usuario del proyecto **VisionTreePasto
 - **Tailwind CSS**: Estilización rápida, coherente y responsiva.
 - **Framer Motion & ScrollReveal**: Para animaciones suaves y entrada visual.
 - **Supabase**: Plataforma usada para almacenar las respuestas de NPS de los usuarios.
-- **Hugging Face API**: API de predicción utilizada para el procesamiento de imágenes, basada en un modelo de Machine Learning entrenado con Detectron2.
+- **Hugging Face**: API de predicción utilizada para el procesamiento de imágenes, basada en un modelo de Machine Learning entrenado con Detectron2.
 - **Figma**: El diseño completo del frontend está basado en un prototipo UI construido en Figma, siguiendo su estructura como guía principal.
 
 ---
