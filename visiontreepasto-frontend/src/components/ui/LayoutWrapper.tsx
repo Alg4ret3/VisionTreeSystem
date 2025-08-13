@@ -1,8 +1,8 @@
 "use client"; // Este componente se ejecuta en el cliente (necesario por usePathname)
 
 import { usePathname } from "next/navigation";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "@/components/navigation/Navbar";
+import Footer from "@/components/navigation/Footer";
 
 interface LayoutWrapperProps {
   children: React.ReactNode;

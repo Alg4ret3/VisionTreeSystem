@@ -6,14 +6,14 @@ import React, { useState, useRef, useCallback, ChangeEvent } from "react";
 // Importo la función que analiza la imagen (llama a la API)
 import { analizarImagen } from "@/utils/api";
 // Importo componentes que voy a usar en esta página
-import ImageResultTable from "@/components/ImageResultTable";
-import AnalyzeButton from "@/components/AnalyzeButton";
-import StepsSection from "@/components/StepsSection";
-import ImageUploader from "@/components/ImageUploader";
-import NPSDashboard from "@/components/NpsDashboard";
-import NPSResponses from "@/components/NpsResponses";
+import ImageResultTable from "@/components/containers/ImageResultTable";
+import AnalyzeButton from "@/components/ui/AnalyzeButton";
+import StepsSection from "@/components/containers/StepsSection";
+import ImageUploader from "@/components/containers/ImageUploader";
+import NPSDashboard from "@/components/containers/NpsDashboard";
+import NPSResponses from "@/components/containers/NpsResponses";
 import { motion } from "framer-motion"; // Esto es para animaciones
-import ImageCarousel from "@/components/ImageCarousel";
+import ImageCarousel from "@/components/ui/ImageCarousel";
 import { useEffect } from "react";
 
 export default function PageModelo() {

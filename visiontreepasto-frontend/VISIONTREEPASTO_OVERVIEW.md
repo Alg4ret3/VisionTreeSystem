@@ -28,24 +28,29 @@ Este módulo corresponde a la interfaz de usuario del proyecto **VisionTreePasto
 | ┣ `layout.tsx`                | Layout principal que envuelve todas las páginas.                      |
 | ┗ `page.tsx`                  | Página de bienvenida de la aplicación.                                 |
 
-### `components/` – Componentes reutilizables de UI
-| Archivo                       | Descripción                                                            |
-|------------------------------|------------------------------------------------------------------------|
-| `AnalyzeButton.tsx`          | Botón principal para enviar imagen a analizar.                         |
-| `Footer.tsx`                 | Pie de página general del sitio.                                       |
-| `ImageCard.tsx`              | Tarjeta visual que muestra imágenes individuales.                      |
-| `ImageCarousel.tsx`          | Carrusel interactivo de imágenes, adaptado para móvil y desktop.       |
-| `ImageResultTable.tsx`       | Tabla que muestra los resultados de predicción.                        |
-| `ImageUploader.tsx`          | Componente para cargar imágenes locales.                               |
-| `LayoutWrapper.tsx`          | Envoltura de layout con consistencia visual.                           |
-| `LoadingWelcome.tsx`         | Pantalla de carga con animación personalizada.                         |
-| `Navbar.tsx`                 | Barra de navegación principal.                                         |
-| `NpsDashboard.tsx`           | Dashboard visual para ver resultados NPS.                              |
-| `NpsResponses.tsx`           | Visualización para enviar respuestas individuales tipo NPS.            |
-| `PageModelo.tsx`             | Página (principal) de presentación del modelo.                         |
-| `StepsSection.tsx`           | Sección visual de pasos para entender como funciona el proceso.         |
-| `SubmitButton.tsx`           | Botón de envío de formularios.                                         |
-| `Welcome.tsx`                | pagina de bienvenida con animación e introducción.                    |
+### `components/` – Componentes de interfaz y bloques reutilizables
+
+Contiene tanto componentes de UI reutilizables como contenedores específicos de páginas, organizados para facilitar su mantenimiento y escalabilidad.
+
+
+| Archivo / Carpeta                   | Descripción                                                            |
+|-----------------------------------|------------------------------------------------------------------------|
+| `containers/ImageResultTable.tsx` | Tabla que muestra los resultados de predicción.                        |
+| `containers/ImageUploader.tsx`    | Componente para cargar imágenes locales.                               |
+| `containers/NpsDashboard.tsx`     | Dashboard visual para ver resultados NPS.                              |
+| `containers/NpsResponses.tsx`     | Visualización para enviar respuestas individuales tipo NPS.            |
+| `containers/StepsSection.tsx`     | Sección visual de pasos para entender cómo funciona el proceso.        |
+| `navigation/Footer.tsx`           | Pie de página general del sitio.                                       |
+| `navigation/Navbar.tsx`           | Barra de navegación principal.                                         |
+| `ui/AnalyzeButton.tsx`             | Botón principal para enviar imagen a analizar.                         |
+| `ui/ImageCard.tsx`                 | Tarjeta visual que muestra imágenes individuales.                      |
+| `ui/ImageCarousel.tsx`             | Carrusel interactivo de imágenes, adaptado para móvil y desktop.       |
+| `ui/LayoutWrapper.tsx`             | Envoltura de layout con consistencia visual.                           |
+| `ui/LoadingWelcome.tsx`            | Pantalla de carga con animación personalizada.                         |
+| `ui/SubmitButton.tsx`              | Botón de envío de formularios.                                         |
+| `PageModelo.tsx`                   | Página principal de presentación del modelo.                            |
+| `Welcome.tsx`                      | Página de bienvenida con animación e introducción.                     |
+
 
 ### `utils/` – Lógica externa
 | Archivo                       | Descripción                                                            |

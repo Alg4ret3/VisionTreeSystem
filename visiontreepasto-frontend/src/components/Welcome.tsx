@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import LoadingScreen from "@/components/LoadingWelcome";
+import LoadingScreen from "@/components/ui/LoadingWelcome";
 
 export default function Welcome() {
   const router = useRouter(); // Uso esta función para moverme entre páginas

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/utils/supabaseClient";
-import SubmitButton from "@/components/SubmitButton";
+import SubmitButton from "@/components/ui/SubmitButton";
 import Lottie from "lottie-react";
 import treeAnimation from "@/../public/animations/tree.json"; 
 
