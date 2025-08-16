@@ -11,11 +11,16 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "VisionTreePasto AI",
-  description: "Plataforma de identificación de árboles con inteligencia artificial.",
-  icons:{
-    icon: "/icons/favicon.svg",
-  }
+  description: "Descubre qué árbol estás viendo con VisionTreePasto AI: analiza imágenes y clasifica especies en segundos con inteligencia artificial.",
+  icons: {
+    icon: [
+      { url: "/icons/favicon.ico" }, 
+      { url: "/icons/favicon.png", type: "image/png" },
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
 };
+
 
 export default function RootLayout({
   children,
