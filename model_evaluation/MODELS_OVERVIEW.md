@@ -15,5 +15,5 @@ Esta carpeta contiene los recursos necesarios para **comparar y evaluar el rendi
 | `scripts/`                        | Scripts de entrenamiento para cada modelo evaluado.                        |
 | ┣ `train_EfficientDet.py`         | Script de entrenamiento para el modelo EfficientDet.                       |
 | ┣ `train_model_Detectron2.py`     | Script de entrenamiento para el modelo Detectron2.                         |
-| ┗ `train_Yolo.py`                 | Script de entrenamiento para el modelo YOLO.                               |
+| ┗ `train_Yolov8.py`                 | Script de entrenamiento para el modelo YOLO.                               |
 | `MODELS_OVERVIEW.md`              | Visión general y resumen de los modelos implementados y evaluados.        |
